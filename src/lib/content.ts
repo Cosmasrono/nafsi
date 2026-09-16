@@ -1,13 +1,27 @@
 // All site copy lives here so the Nafsi team can update content in one place.
 // Items marked TODO need confirming with Nafsi before launch.
 
+const defaultSiteUrl = "https://www.nafsiafrica.org";
+
+// Tolerates an empty, protocol-less or trailing-slash NEXT_PUBLIC_SITE_URL so a bad env value can't break the build.
+function resolveSiteUrl(value: string | undefined) {
+  const trimmed = value?.trim();
+  if (!trimmed) return defaultSiteUrl;
+  try {
+    const url = new URL(/^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`);
+    return url.origin;
+  } catch {
+    return defaultSiteUrl;
+  }
+}
+
 export const site = {
   name: "Nafsi Africa",
   legalName: "Nafsi Pamoja Organization",
   tagline: "Creativity can change lives.",
   description:
     "Nafsi Africa empowers children and young people in Kenya through arts, digital media, skills, mentorship and cultural exchange — turning creativity into confidence, opportunity and change.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.nafsiafrica.org",
+  url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
   founded: 2010,
   address: "Shalom House Block B, St Daniel Comboni Road, Off Ngong Road, Nairobi, Kenya",
   poBox: "P.O. Box 55809–00200, Nairobi",

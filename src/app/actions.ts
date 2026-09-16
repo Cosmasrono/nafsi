@@ -2,7 +2,7 @@
 
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { involvementTypes, programmes } from "@/lib/content";
+import { involvementTypes, programmes, site } from "@/lib/content";
 import { type FormState, isEmail, readText } from "@/lib/form-state";
 import { recordSubmission } from "@/lib/submissions";
 
@@ -134,7 +134,7 @@ export async function startDonation(_prev: FormState, formData: FormData): Promi
     };
   }
 
-  const origin = (await headers()).get("origin") ?? process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const origin = (await headers()).get("origin") || site.url;
   let authorizationUrl: string;
   try {
     const res = await fetch("https://api.paystack.co/transaction/initialize", {
