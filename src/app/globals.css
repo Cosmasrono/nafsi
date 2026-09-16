@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cocoa-950: #1c100a;
+  --color-cocoa-900: #2a1810;
+  --color-cocoa-800: #3a2419;
+  --color-cocoa-700: #54392b;
+  --color-mustard-600: #cf9410;
+  --color-mustard-500: #e9aa18;
+  --color-mustard-400: #f2c14e;
+  --color-mustard-100: #fbefd2;
+  --color-cream-50: #fbf8f4;
+  --color-sand-100: #efe8de;
+  --color-sand-200: #e3d9cb;
+  --color-ink: #2a1a12;
+  --color-muted: #6e5d51;
+
+  --font-display: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+
+  --animate-marquee: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream-50);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-mustard-400);
+  color: var(--color-cocoa-900);
+}
+
+/* Scroll reveal: content stays visible when JS is off or motion is reduced. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .reveal {
+    transition:
+      opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

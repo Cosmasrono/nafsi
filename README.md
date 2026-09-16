@@ -1,0 +1,34 @@
+# Nafsi Africa website
+
+Next.js 16 (App Router) + Tailwind CSS 4 rebuild of the Nafsi Africa site for Nafsi Pamoja Organization, Nairobi.
+
+## Run it
+
+```bash
+npm install
+cp .env.example .env.local   # optional — everything works without keys
+npm run dev
+```
+
+Open http://localhost:3000.
+
+## What's inside
+
+| Area | Routes |
+| --- | --- |
+| Home | `/` |
+| About | `/about`, `/about/story`, `/about/approach`, `/about/partners`, `/about/impact` |
+| Programmes | `/programmes`, `/programmes/[slug]` (6 programmes) |
+| Stories | `/stories` (filterable), `/stories/[slug]`, `/stories/youth-voices`, `/stories/videos`, `/stories/journal` |
+| Get involved | `/get-involved`, `/get-involved/[type]` (volunteer, partner, sponsor, book-performance, book-studio) |
+| Donate | `/donate`, `/donate/thank-you` |
+| Other | `/events`, `/contact`, `/privacy`, `/safeguarding`, `/terms`, `sitemap.xml`, `robots.txt` |
+
+- **Content** — all copy, programmes, stories, events, partners and contacts live in `src/lib/content.ts`. Search for `TODO` to find items Nafsi must confirm (social links, M-Pesa Paybill, story copy, event details, policies).
+- **Forms** — contact, get-involved, bookings and newsletter use Server Actions (`src/app/actions.ts`) with validation and a honeypot. Set `RESEND_API_KEY` + `NOTIFY_EMAIL` to receive them by email; otherwise they are appended to `.data/submissions.jsonl`.
+- **Donations** — set `PAYSTACK_SECRET_KEY` to send donors to Paystack checkout (M-Pesa + card in KES); the thank-you page verifies the transaction. Without a key, donations are saved as pledges. Monthly giving is recorded in metadata — create a Paystack plan to charge it automatically.
+- **Images** — `public/images` holds temporary photos cropped from the design walkthrough. Replace them with full-resolution originals from Nafsi (same filenames).
+
+## Deploy
+
+Deploy to Vercel (or any Node host), add the environment variables and point `nafsiafrica.org` at it.
