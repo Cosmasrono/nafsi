@@ -103,7 +103,7 @@ export function DonateBanner() {
       <Container className="py-24">
         <Reveal className="max-w-2xl">
           <Eyebrow tone="light">Your support creates opportunity</Eyebrow>
-          <h2 className="mt-5 font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-cocoa-900 sm:text-6xl">
+          <h2 className="mt-5 font-display text-[min(3rem,calc((100vw-2.5rem)/10.2))] font-extrabold leading-[0.95] tracking-tight text-cocoa-900 break-words sm:text-6xl">
             Art becomes confidence. Confidence becomes change.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-cocoa-900/80">
@@ -166,7 +166,9 @@ export function ProgrammeFeature({ programme, index }: { programme: Programme; i
         </Reveal>
         <Reveal delay={120}>
           <Eyebrow>{programme.eyebrow}</Eyebrow>
-          <h2 className="mt-4 font-display text-4xl font-bold tracking-tight text-cocoa-900 sm:text-5xl">{programme.title}</h2>
+          <h2 className="mt-4 font-display text-[min(2.25rem,calc((100vw-2.5rem)/8.6))] font-bold tracking-tight text-cocoa-900 break-words sm:text-5xl md:text-[min(3rem,calc((50vw-4rem)/8.6))]">
+            {programme.title}
+          </h2>
           <p className="mt-5 text-lg leading-relaxed text-muted">{programme.body[0]}</p>
           <div className="mt-6">
             <TagList tags={programme.tags} />
@@ -201,6 +203,7 @@ export function Timeline() {
               <p className="font-display text-xl font-extrabold text-mustard-500">{item.label}</p>
               <h3 className="mt-1 font-display text-lg font-bold text-cocoa-900">{item.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{item.text}</p>
+              {item.note && <p className="mt-3 text-xs text-muted">{item.note}</p>}
             </div>
           </Reveal>
         </li>
@@ -276,8 +279,8 @@ export function EventCard({ event }: { event: NafsiEvent }) {
             </li>
           </ul>
         </div>
-        <Link href="/contact" className="shrink-0 text-sm font-semibold text-mustard-600 hover:text-cocoa-900">
-          Ask about this →
+        <Link href="/contact" className="shrink-0 py-2 text-sm font-semibold text-mustard-600 hover:text-cocoa-900">
+          Ask about this
         </Link>
       </article>
     </Reveal>
@@ -311,7 +314,7 @@ export function VideoGrid() {
           </div>
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-cocoa-950 via-cocoa-950/70 to-transparent p-6 pt-20 sm:p-8 sm:pt-24">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-mustard-400">
-              {featured.series} · {featured.duration}
+              NaiWave Podcasts · {featured.duration}
             </p>
             <h3 className="mt-2 font-display text-2xl font-bold text-cream-50 sm:text-3xl">{featured.title}</h3>
           </div>
@@ -329,7 +332,10 @@ export function VideoGrid() {
               <div className="relative aspect-[232/128] overflow-hidden">
                 <Image src={video.image} alt="" fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
-              <p className="p-4 text-sm font-semibold leading-snug text-cocoa-900">{video.title}</p>
+              <div className="p-4">
+                <p className="text-sm font-semibold leading-snug text-cocoa-900">{video.title}</p>
+                <p className="mt-2 text-xs text-muted">{video.duration}</p>
+              </div>
             </a>
           </Reveal>
         ))}
@@ -344,7 +350,7 @@ export function CreatorsSpotlight() {
       <Container className="grid items-center gap-12 py-24 lg:grid-cols-2">
         <Reveal className="min-w-0">
           <Eyebrow>Meet the creators</Eyebrow>
-          <h2 className="mt-5 font-display text-[1.9rem] font-extrabold leading-[0.98] tracking-tight sm:text-5xl lg:text-[2.9rem]">
+          <h2 className="mt-5 font-display text-[min(1.9rem,calc((100vw-2.5rem)/11.4))] font-extrabold leading-[0.98] tracking-tight break-words sm:text-5xl lg:text-[min(2.9rem,calc((50vw-4rem)/10.8))]">
             These are not beneficiaries. These are creators.
           </h2>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-cream-50/70">
@@ -387,7 +393,7 @@ export function FollowJourney() {
             <SocialPills />
           </div>
           <p className="mt-5 text-sm text-muted">
-            NaiWave also has its own channels — <TextLink href={site.socials.youtube}>YouTube</TextLink>
+            NaiWave also has its own channels — <TextLink href={site.socials.youtube}>YouTube</TextLink>, Instagram and more.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-4">

@@ -24,7 +24,7 @@ export default function SafeguardingPage() {
         {
           heading: "Consent and storytelling",
           paragraphs: [
-            "We ask for informed consent — from parents or guardians for minors — before sharing photos, videos or stories. Participants can withdraw consent at any time.",
+            "We ask for informed consent (from parents or guardians for minors) before sharing photos, videos or stories. Participants can withdraw consent at any time.",
           ],
         },
         {

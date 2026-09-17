@@ -34,8 +34,8 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
         {failed ? (
           <>
             <CircleAlert className="mx-auto size-14 text-mustard-600" />
-            <h1 className="mt-6 font-display text-5xl font-extrabold tracking-tight">Payment not completed</h1>
-            <p className="mt-5 text-lg text-muted">Your payment didn&apos;t go through. No money was taken — you can try again.</p>
+            <h1 className="mt-6 font-display text-4xl font-extrabold tracking-tight break-words sm:text-5xl">Payment not completed</h1>
+            <p className="mt-5 text-lg text-muted">Your payment didn&apos;t go through. No money was taken, so you can try again.</p>
             <ButtonLink href="/donate" className="mt-8">
               Try again
             </ButtonLink>
@@ -43,7 +43,7 @@ export default async function ThankYouPage({ searchParams }: { searchParams: Pro
         ) : (
           <>
             <CircleCheck className="mx-auto size-14 text-mustard-500" />
-            <h1 className="mt-6 font-display text-5xl font-extrabold tracking-tight">Asante sana!</h1>
+            <h1 className="mt-6 font-display text-4xl font-extrabold tracking-tight break-words sm:text-5xl">Asante sana!</h1>
             <p className="mt-5 text-lg text-muted">
               {payment
                 ? `Your gift of ${payment.currency} ${(payment.amount / 100).toLocaleString("en-KE")} was received.`

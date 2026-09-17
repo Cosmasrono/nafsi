@@ -36,7 +36,7 @@ export function NewsletterForm() {
         className="w-full rounded-full border border-cream-50/15 bg-cream-50/5 px-5 py-3.5 text-cream-50 placeholder:text-cream-50/45 focus:border-mustard-500 focus:outline-none"
       />
       <label className="flex items-start gap-2.5 text-xs text-cream-50/60">
-        <input type="checkbox" name="consent" required className="mt-0.5 size-4 accent-mustard-500" />
+        <input type="checkbox" name="consent" required className="size-5 shrink-0 accent-mustard-500" />
         I agree to receive updates from Nafsi Africa and accept the privacy policy.
       </label>
       {state.status === "error" && (

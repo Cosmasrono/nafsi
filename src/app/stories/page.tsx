@@ -6,7 +6,7 @@ import { PageHero } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Stories of Change",
-  description: "Young people are the protagonists — artists, creators, storytellers and change-makers.",
+  description: "Young people are the protagonists: artists, creators, storytellers and change-makers.",
 };
 
 export default function StoriesPage() {

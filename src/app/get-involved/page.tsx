@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 const cards = [
-  { href: "/donate", title: "Donate", text: "Your support creates opportunity — for a child, a creator, a community.", link: "Donate now", icon: "heart" as const },
+  { href: "/donate", title: "Donate", text: "Your support creates opportunity for a child, a creator, a community.", link: "Donate now", icon: "heart" as const },
   ...Object.entries(involvementTypes).map(([type, item]) => ({
     href: `/get-involved/${type}`,
     title: item.title,
@@ -30,7 +30,7 @@ export default function GetInvolvedPage() {
       <PageHero
         eyebrow="Get involved"
         title="Join the journey"
-        intro="However you show up — a gift, your time, a partnership, a booking — you help turn creativity into opportunity for young people in Nairobi."
+        intro="However you show up (a gift, your time, a partnership, a booking), you help turn creativity into opportunity for young people in Nairobi."
       />
 
       <section className="bg-cream-50">

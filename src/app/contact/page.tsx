@@ -9,7 +9,7 @@ import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Questions, partnerships, bookings or just curiosity — get in touch with Nafsi Africa in Nairobi.",
+  description: "Questions, partnerships, bookings or just curiosity? Get in touch with Nafsi Africa in Nairobi.",
 };
 
 export default function ContactPage() {
@@ -18,7 +18,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Let's talk"
-        intro="Questions, partnerships, bookings or just curiosity — we'd love to hear from you."
+        intro="Questions, partnerships, bookings or just curiosity, we'd love to hear from you."
       />
       <section className="bg-cream-50">
         <Container className="grid items-start gap-12 py-20 md:grid-cols-2">
@@ -30,12 +30,12 @@ export default function ContactPage() {
                 {site.poBox}
               </ContactItem>
               <ContactItem icon={<Mail className="size-5" />} label="Email">
-                <a href={`mailto:${site.email}`} className="text-mustard-600 hover:text-cocoa-900">
+                <a href={`mailto:${site.email}`} className="inline-block py-1 text-mustard-600 hover:text-cocoa-900">
                   {site.email}
                 </a>
               </ContactItem>
               <ContactItem icon={<Phone className="size-5" />} label="Call">
-                <a href={site.phoneHref} className="text-mustard-600 hover:text-cocoa-900">
+                <a href={site.phoneHref} className="inline-block py-1 text-mustard-600 hover:text-cocoa-900">
                   {site.phone}
                 </a>
               </ContactItem>

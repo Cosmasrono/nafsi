@@ -3,7 +3,7 @@
 
 const defaultSiteUrl = "https://www.nafsiafrica.org";
 
-// Tolerates an empty, protocol-less or trailing-slash NEXT_PUBLIC_SITE_URL so a bad env value can't break the build.
+// Vercel builds failed once with an empty NEXT_PUBLIC_SITE_URL, so clean it up before using it.
 function resolveSiteUrl(value: string | undefined) {
   const trimmed = value?.trim();
   if (!trimmed) return defaultSiteUrl;
@@ -138,9 +138,9 @@ export const programmes: Programme[] = [
   {
     slug: "performing-arts",
     title: "Performing Arts",
-    eyebrow: "Music · Dance · Acrobatics",
+    eyebrow: "Talent · Confidence · Livelihoods",
     summary:
-      "Weekly training in music, dance, acrobatics, circus, percussion and theatre across five community centres in Nairobi.",
+      "Dance, music, acrobatics, circus, theatre, percussion, yoga and visual arts — the foundation of everything Nafsi does.",
     body: [
       "Through music, acrobatics, circus acts, dance, yoga, percussion, theatre, crafts and visual arts, Nafsi creates safe spaces where children and youth can express themselves, gain confidence and grow.",
       "Every week we run training sessions across Kariobangi, Babadogo, Kibera, Dagoretti and Kivuli centres, offering consistent support and opportunities for self-discovery. Supporters can sponsor a trainer or a centre to keep this journey going.",
@@ -151,10 +151,10 @@ export const programmes: Programme[] = [
   },
   {
     slug: "outreach",
-    title: "Outreach",
-    eyebrow: "Communities · Shows · Care",
+    title: "Outreach Project",
+    eyebrow: "Children · Communities · Mentorship",
     summary:
-      "Taking creativity into schools, children's homes and neighbourhoods — with professional performances by the children themselves.",
+      "Free artistic training and constructive activities for children and young adults across Nairobi's informal settlements.",
     body: [
       "Outreach brings Nafsi's work beyond the training centres. Children and youth perform at community events, partner institutions such as St. Christine Centre, and local and international shows.",
       "Outreach also carries Nafsi's advocacy: tree planting and environmental awareness workshops, sanitary workshops for girls, and conversations on gender equality that start in the community.",
@@ -168,7 +168,7 @@ export const programmes: Programme[] = [
     title: "Tangaza on Smartphone",
     eyebrow: "Flagship digital-media initiative",
     summary:
-      "Training in film shooting, video editing and content production — giving young people the tools to amplify their voices.",
+      "Equipping young people from Nairobi's slums with filmmaking, photography, podcasting and digital storytelling — with a special focus on young women.",
     body: [
       "Tangaza is a flagship initiative of Nafsi Africa. It offers training in film shooting, video editing and content production, giving participants tools to amplify their voices, advocate for change and access the creative economy.",
       "Since its inception Tangaza has reached and empowered 208 young people and aims to impact many more by the end of 2026. Participants produce content that raises awareness on climate change, gender equality and the Sustainable Development Goals. A cornerstone of the project is NaiWave Studios. Tangaza is supported by Spor Media and funded by CISU.",
@@ -182,9 +182,9 @@ export const programmes: Programme[] = [
     title: "NaiWave Studios",
     eyebrow: "Podcasts · Online radio · Youth voices",
     summary:
-      "A creative hub and media platform where young people explore mental health, social justice and relationships on air.",
+      "A podcast studio and online radio opening up conversations on mental health, social justice, relationships and personal development.",
     body: [
-      "NaiWave is a creative hub and media platform that gives young people a voice. By leveraging familiar, accessible digital media, NaiWave creates a safe space for youth to explore sensitive topics — mental health, social justice, relationships and personal development.",
+      "NaiWave is a creative hub and media platform that gives young people a voice. By leveraging familiar, accessible digital media, NaiWave creates a safe space for youth to explore sensitive topics like mental health, social justice, relationships and personal development.",
       "Driven by a community-based approach, it fosters dialogue and promotes positive change through podcasts and live radio. The studio is also available to hire.",
     ],
     tags: ["Podcasts", "Online radio", "Interviews", "Mental health", "Social justice", "Personal development"],
@@ -196,7 +196,7 @@ export const programmes: Programme[] = [
     title: "Global Stay Tours",
     eyebrow: "Cultural exchange · Since 2020",
     summary:
-      "Digital cultural exchange connecting young people in Kenya, Bolivia and Denmark around the Sustainable Development Goals.",
+      "Connecting young people across Kenya, Bolivia and Denmark through digital media and live cultural exchange.",
     body: [
       "Launched in 2020 in response to the disruptions of the COVID-19 pandemic, Global Stay Tours (GST) bridges the gap created by halted travel and interrupted school programmes.",
       "Using digital media and Zoom video conferencing, it connects young people from Kenya, Bolivia and Denmark to exchange culture and collaborate on discussions around the Sustainable Development Goals. GST also creates opportunities for participants to earn a livelihood while engaging in meaningful global conversations.",
@@ -210,10 +210,10 @@ export const programmes: Programme[] = [
     title: "Youth Empowerment",
     eyebrow: "Skills · Mentorship · Leadership",
     summary:
-      "Talent development, advocacy and mentorship that turn participants into confident young leaders.",
+      "The through-line of every Nafsi programme — turning creativity into confidence, skills and opportunity.",
     body: [
       "Across arts, media and exchange, Nafsi nurtures creative, resilient and socially conscious young leaders. Youth Empowerment brings together talent development, advocacy and mentorship so that young people are not only changing their own lives but positively impacting their communities and the world.",
-      "Through structured mentorship, hands-on training and real-world assignments — running an online radio station, creating podcasts, managing community centres — participants gain practical experience, and many go on to take meaningful roles inside Nafsi itself.",
+      "Through structured mentorship, hands-on training and real-world assignments (running an online radio station, creating podcasts, managing community centres), participants gain practical experience, and many go on to take meaningful roles inside Nafsi itself.",
     ],
     tags: ["Talent development", "Advocacy", "Mentorship", "Leadership", "Creative livelihoods"],
     image: "/images/youth.jpg",
@@ -257,7 +257,7 @@ export const stories: Story[] = [
     },
     body: [
       "When travel stopped in 2020, Global Stay Tours found another way to move: young guides in Nairobi began taking students in Denmark and Bolivia on live virtual tours of their neighbourhoods.",
-      "The tours open conversations about climate change, corruption and inequality — not as abstract topics but through the lived experience of the guides. Students ask questions, guides answer, and both sides leave with a wider view of the world.",
+      "The tours open conversations about climate change, corruption and inequality. Not as abstract topics, but through the lived experience of the guides. Students ask questions, guides answer, and both sides leave with a wider view of the world.",
       "For the guides, GST is also a livelihood: they build presentation, research and digital skills that carry into their next opportunity.",
     ],
   },
@@ -296,7 +296,7 @@ export const stories: Story[] = [
     image: "/images/dance.jpg",
     body: [
       "Performance asks a lot of a young person: turning up on time, trusting the person beside you, recovering when a move goes wrong in front of an audience.",
-      "Nafsi's performers carry those lessons from community showcases to local and international stages — and back into school and home.",
+      "Nafsi's performers carry those lessons from community showcases to local and international stages, and back into school and home.",
     ],
   },
   {
@@ -304,11 +304,11 @@ export const stories: Story[] = [
     title: "Hard conversations, on air",
     category: "Youth Voices",
     excerpt:
-      "At NaiWave Studios, young hosts take on mental health, femicide and fatherhood — topics many families never discuss.",
+      "At NaiWave Studios, young hosts take on mental health, femicide and fatherhood, topics many families never discuss.",
     image: "/images/naiwave.jpg",
     body: [
       "NaiWave's podcasts began as a safe space to talk. They have become a place where young Kenyans hear their own questions asked out loud.",
-      "Episodes have covered men's emotional health, the cost of healthcare, gender-based violence and parenting — each one produced by young people trained at the studio.",
+      "Episodes have covered men's emotional health, the cost of healthcare, gender-based violence and parenting. Each one was produced by young people trained at the studio.",
     ],
   },
   {
@@ -320,7 +320,7 @@ export const stories: Story[] = [
     image: "/images/youth.jpg",
     body: [
       "Nafsi's talent development programme gives young people real responsibility: media students manage social platforms and produce content, while ICT interns support the organisation's technical needs.",
-      "As participants gain expertise and confidence, many become mentors and leaders inside Nafsi — keeping the organisation rooted in the communities it serves.",
+      "As participants gain expertise and confidence, many become mentors and leaders inside Nafsi, which keeps the organisation rooted in the communities it serves.",
     ],
   },
 ];
@@ -333,13 +333,54 @@ export const videos = [
   { title: "The Silent Crisis: The Mask We Wear — Men's Emotions", series: "Real Talk with Nicky", duration: "47:02", image: "/images/video-4.jpg" },
 ];
 
-export const timeline = [
-  { label: "2010", title: "Nafsi Pamoja is founded", text: "A community based organisation brings together modern artists from Nairobi's informal settlements." },
-  { label: "2020", title: "Global Stay Tours launches", text: "In response to the COVID-19 pandemic and halted travel, GST uses digital media to connect youth across Kenya, Bolivia and Denmark." },
-  { label: "Tangaza", title: "Tangaza on Smartphone", text: "A flagship digital-media initiative — supported by Spor Media and funded by CISU — empowers youth in filmmaking and storytelling, with a focus on young women. 208 young people reached." },
-  { label: "NaiWave", title: "NaiWave Studios", text: "A podcast studio and online radio opens conversations on mental health, social justice and relationships — and becomes a cornerstone of Tangaza." },
-  { label: "2024", title: "10 years with Spor Media", text: "Spor Media and Nafsi Africa celebrate a decade of partnership in smartphone reporting and online study tours." },
-  { label: "2026 →", title: "Reaching further", text: "Tangaza aims to impact many more young people by the end of 2026, as Nafsi continues to grow as a global creative hub." },
+export const timeline: { label: string; title: string; text: string; note?: string }[] = [
+  {
+    "label": "2010",
+    "title": "Nafsi Pamoja is born",
+    "text": "A Community Based Organization is founded in Nairobi, bringing together modern artists from the city's informal settlements. “Nafsi” — Swahili for “soul” — names the mission."
+  },
+  {
+    "label": "Growing years",
+    "title": "Arts across the communities",
+    "text": "Weekly training in dance, music, acrobatics, circus and theatre takes root across Kariobangi, Babadogo, Kibera, Dagoretti and Kivuli."
+  },
+  {
+    "label": "International stages",
+    "title": "Tours & cultural exchanges",
+    "text": "Nafsi performers travel and connect with international audiences and partners including Kinder Kultur Karawane and Circus Foralle.",
+    "note": "Historical projects — see partner records."
+  },
+  {
+    "label": "~2014",
+    "title": "Spor Media partnership",
+    "text": "A long collaboration with Spor Media begins — later celebrated as a 10-year partnership in 2024.",
+    "note": "Anniversary date confirmed via Spor Media."
+  },
+  {
+    "label": "2020",
+    "title": "Global Stay Tours launches",
+    "text": "In response to the COVID-19 pandemic and halted travel, GST uses digital media to connect youth across Kenya, Bolivia and Denmark."
+  },
+  {
+    "label": "Tangaza",
+    "title": "Tangaza on Smartphone",
+    "text": "A flagship digital-media initiative — supported by Spor Media and funded by CISU — empowers youth in filmmaking and storytelling, with a focus on young women. 208 young people reached."
+  },
+  {
+    "label": "NaiWave",
+    "title": "NaiWave Studios",
+    "text": "A podcast studio and online radio opens conversations on mental health, social justice and relationships — and becomes a cornerstone of Tangaza."
+  },
+  {
+    "label": "2024",
+    "title": "10 years with Spor Media",
+    "text": "Spor Media and Nafsi Africa celebrate a decade of partnership in smartphone reporting and online study tours."
+  },
+  {
+    "label": "2026 →",
+    "title": "Reaching further",
+    "text": "Tangaza aims to impact many more young people by the end of 2026, as Nafsi continues to grow as a global creative hub."
+  }
 ];
 
 export const partners = [
@@ -391,7 +432,7 @@ export const events: NafsiEvent[] = [
     time: "15:00",
     type: "Performance",
     title: "End-of-Year Community Showcase",
-    text: "Children and youth from all five centres perform dance, music and acrobatics — the culmination of a year of weekly training.",
+    text: "Children and youth from all five centres perform dance, music and acrobatics to close out a year of weekly training.",
     venue: "Kariobangi Centre, Nairobi",
   },
 ];
@@ -400,13 +441,13 @@ export const involvementTypes = {
   volunteer: {
     title: "Volunteer",
     heading: "Share your time and skills",
-    text: "Help in the studio, at the centres, or remotely — from coaching and mentoring to photography, design and admin.",
+    text: "Help in the studio, at the centres or remotely, with anything from coaching and mentoring to photography, design and admin.",
     icon: "hands",
   },
   partner: {
     title: "Partner",
     heading: "Partner with Nafsi",
-    text: "Foundations, CSR teams, cultural institutions and development organisations — let's build programmes that last.",
+    text: "Foundations, CSR teams, cultural institutions and development organisations: let's build programmes that last.",
     icon: "handshake",
   },
   sponsor: {

@@ -3,11 +3,7 @@ import path from "node:path";
 
 type Submission = Record<string, string | number>;
 
-/**
- * Delivers a form submission to the Nafsi team.
- * With RESEND_API_KEY + NOTIFY_EMAIL set it sends an email; otherwise it appends
- * to .data/submissions.jsonl so forms work during local development.
- */
+// Emails the team when Resend is set up, otherwise logs to .data/submissions.jsonl (fine for local dev).
 export async function recordSubmission(kind: string, data: Submission) {
   const entry = { kind, receivedAt: new Date().toISOString(), ...data };
   const apiKey = process.env.RESEND_API_KEY;
@@ -24,7 +20,7 @@ export async function recordSubmission(kind: string, data: Submission) {
         from: process.env.NOTIFY_FROM ?? "Nafsi Africa Website <onboarding@resend.dev>",
         to: [to],
         reply_to: typeof data.email === "string" ? data.email : undefined,
-        subject: `New ${kind} submission — nafsiafrica.org`,
+        subject: `New ${kind} submission from nafsiafrica.org`,
         text,
       }),
     });

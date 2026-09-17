@@ -58,7 +58,7 @@ export default async function DonatePage({ searchParams }: { searchParams: Promi
                   <dd className="mt-1 font-display text-xl font-bold text-mustard-400">NAFSI</dd>
                 </div>
               </dl>
-              <p className="mt-4 text-xs text-cream-50/60">Or use the form — checkout supports M-Pesa and card payments.</p>
+              <p className="mt-4 text-xs text-cream-50/60">Or use the form. Checkout supports M-Pesa and card payments.</p>
             </div>
           </Reveal>
           <Reveal delay={120} className="rounded-3xl border border-sand-200 bg-white p-6 shadow-xl shadow-cocoa-900/5 sm:p-8">

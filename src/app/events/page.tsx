@@ -4,7 +4,7 @@ import { Container, PageHero } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Events",
-  description: "Community showcases, Tangaza intensives and Global Stay Tours — see what's coming up at Nafsi Africa.",
+  description: "Community showcases, Tangaza intensives and Global Stay Tours: see what's coming up at Nafsi Africa.",
 };
 
 export default function EventsPage() {
@@ -13,7 +13,7 @@ export default function EventsPage() {
       <PageHero
         eyebrow="Events"
         title="Performances, workshops & exchanges"
-        intro="From community showcases to Tangaza intensives and Global Stay Tours — see what's coming up."
+        intro="From community showcases to Tangaza intensives and Global Stay Tours, here's what's coming up."
       />
       <section className="bg-cream-50">
         <Container className="py-20">

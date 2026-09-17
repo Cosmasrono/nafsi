@@ -11,7 +11,7 @@ const failed: FormState = {
   message: "Something went wrong sending your message. Please try again or email info@nafsiafrica.org.",
 };
 
-// Bots fill every field; people never see this one.
+// hidden honeypot field, only bots fill it in
 function isSpam(formData: FormData) {
   return readText(formData, "company_website") !== "";
 }
@@ -22,7 +22,7 @@ function invalid(errors: Record<string, string>, values: Record<string, string>)
 }
 
 export async function sendContactMessage(_prev: FormState, formData: FormData): Promise<FormState> {
-  if (isSpam(formData)) return { status: "success", message: "Thank you — we'll be in touch soon." };
+  if (isSpam(formData)) return { status: "success", message: "Thanks, we'll be in touch soon." };
 
   const data = {
     name: readText(formData, "name", 120),
@@ -48,13 +48,13 @@ export async function sendContactMessage(_prev: FormState, formData: FormData): 
   }
   return {
     status: "success",
-    message: `Thank you, ${data.name.split(" ")[0]} — your message is with the Nafsi team. We'll reply within two working days.`,
+    message: `Thank you, ${data.name.split(" ")[0]}, your message is with the Nafsi team. We'll reply within two working days.`,
   };
 }
 
 export async function sendInvolvementRequest(type: string, _prev: FormState, formData: FormData): Promise<FormState> {
   if (!(type in involvementTypes)) return failed;
-  if (isSpam(formData)) return { status: "success", message: "Thank you — we'll be in touch soon." };
+  if (isSpam(formData)) return { status: "success", message: "Thanks, we'll be in touch soon." };
 
   const data = {
     name: readText(formData, "name", 120),
@@ -78,7 +78,7 @@ export async function sendInvolvementRequest(type: string, _prev: FormState, for
     console.error(error);
     return { ...failed, values: data };
   }
-  return { status: "success", message: "Asante! Your request has reached the Nafsi team — we'll get back to you shortly." };
+  return { status: "success", message: "Asante! Your request has reached the Nafsi team. We'll get back to you shortly." };
 }
 
 export async function subscribeToNewsletter(_prev: FormState, formData: FormData): Promise<FormState> {
@@ -121,7 +121,7 @@ export async function startDonation(_prev: FormState, formData: FormData): Promi
 
   const secret = process.env.PAYSTACK_SECRET_KEY;
   if (!secret) {
-    // Payments not configured yet: keep the pledge so the team can follow up.
+    // no Paystack key yet, save it as a pledge
     try {
       await recordSubmission("donation-pledge", { ...data, amount });
     } catch (error) {
@@ -130,7 +130,7 @@ export async function startDonation(_prev: FormState, formData: FormData): Promi
     }
     return {
       status: "success",
-      message: `Thank you, ${data.name.split(" ")[0]}! We've recorded your pledge of KES ${amount.toLocaleString("en-KE")}. Online payments are being set up — the Nafsi team will email you M-Pesa details.`,
+      message: `Thank you, ${data.name.split(" ")[0]}! We've recorded your pledge of KES ${amount.toLocaleString("en-KE")}. Online payments are being set up, so the Nafsi team will email you M-Pesa details.`,
     };
   }
 

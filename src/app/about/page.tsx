@@ -16,7 +16,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About Nafsi"
         title="A Nairobi community organization with a creative soul"
-        intro={`${site.legalName} is a Community Based Organization founded in ${site.founded} in Nairobi, Kenya. “Nafsi” is Swahili for “soul” — the heart of our mission.`}
+        intro={`${site.legalName} is a Community Based Organization founded in ${site.founded} in Nairobi, Kenya. “Nafsi” means “soul” in Swahili, and that's the heart of our mission.`}
       />
 
       <section className="bg-cream-50">
@@ -31,7 +31,7 @@ export default function AboutPage() {
               training sessions across {centres.slice(0, -1).join(", ")} and {centres.at(-1)} centres.
             </p>
             <p className="mt-4 text-lg leading-relaxed text-muted">
-              Beyond art, we integrate media and information technology as pillars of empowerment — and connect young people globally
+              Beyond art, we integrate media and information technology as pillars of empowerment, and connect young people globally
               through cultural exchange. By combining art, media and exchange, Nafsi nurtures creative, resilient and socially conscious
               young leaders.
             </p>

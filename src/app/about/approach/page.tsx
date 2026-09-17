@@ -6,7 +6,7 @@ import { Container, PageHero, SectionHeading } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Our Approach",
-  description: "Youth empowerment, talent development and advocacy — aligned with the Sustainable Development Goals.",
+  description: "Youth empowerment, talent development and advocacy, aligned with the Sustainable Development Goals.",
 };
 
 const pillars = [
@@ -66,7 +66,7 @@ export default function ApproachPage() {
           <SectionHeading
             eyebrow="Sustainable Development Goals"
             title="Individual growth, wider transformation"
-            intro="By integrating the SDGs into our empowerment agenda, young people don't just gain skills — they take part in their communities' economic and social development."
+            intro="By integrating the SDGs into our empowerment agenda, young people don't just gain skills, they take part in their communities' economic and social development."
           />
           <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {goals.map((goal, i) => (

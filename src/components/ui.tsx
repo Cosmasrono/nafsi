@@ -63,7 +63,7 @@ export function ButtonLink({
 
 export function TextLink({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <Link href={href} className="group inline-flex items-center gap-1 text-sm font-semibold text-mustard-600 hover:text-cocoa-900">
+    <Link href={href} className="group inline-flex items-center gap-1 py-1.5 text-sm font-semibold text-mustard-600 hover:text-cocoa-900">
       {children}
       <ArrowUpRight className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
     </Link>
@@ -90,7 +90,8 @@ export function PageHero({
       <Container className="relative py-20 sm:py-24">
         <Reveal>
           <Eyebrow>{eyebrow}</Eyebrow>
-          <h1 className="mt-5 max-w-4xl font-display text-[2.6rem] font-extrabold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+          {/* Syne is very wide at 800, so the size follows the viewport until the longest word (~12em) fits */}
+          <h1 className="mt-5 max-w-4xl font-display text-[min(2.6rem,calc((100vw-2.5rem)/9.2))] font-bold leading-[0.95] tracking-tight break-words sm:text-[min(4.25rem,calc((100vw-4rem)/13))] sm:font-extrabold">
             {title}
           </h1>
           {intro && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-cream-50/70">{intro}</p>}
@@ -116,7 +117,7 @@ export function SectionHeading({
     <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
       <div className="max-w-3xl">
         <Eyebrow>{eyebrow}</Eyebrow>
-        <h2 className="mt-4 font-display text-4xl font-bold leading-[1.02] tracking-tight sm:text-5xl">{title}</h2>
+        <h2 className="mt-4 font-display text-[2rem] font-bold leading-[1.02] tracking-tight break-words min-[380px]:text-4xl sm:text-5xl">{title}</h2>
         {intro && <p className="mt-5 text-lg leading-relaxed text-muted">{intro}</p>}
       </div>
       {action && <div className="shrink-0">{action}</div>}

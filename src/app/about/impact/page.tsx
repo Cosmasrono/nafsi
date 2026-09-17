@@ -20,7 +20,7 @@ const uses = [
 ];
 
 const documents = [
-  { Icon: FileText, title: "Annual & project reports", text: "Programme outcomes, tours and partnerships — published as they are verified.", href: "/contact" },
+  { Icon: FileText, title: "Annual & project reports", text: "Programme outcomes, tours and partnerships, published once verified.", href: "/contact" },
   { Icon: ShieldCheck, title: "Safeguarding policy", text: "How we keep every child and young person safe in our programmes.", href: "/safeguarding" },
   { Icon: Landmark, title: "Registration & governance", text: `${site.legalName} is a registered Community Based Organization overseen by a volunteer board.`, href: "/about" },
 ];
@@ -31,11 +31,11 @@ export default function ImpactPage() {
       <PageHero
         eyebrow="Impact & transparency"
         title="Where your support goes"
-        intro="We believe trust is built with evidence. Here's what Nafsi has achieved — and how we keep our work accountable."
+        intro="We believe trust is built with evidence. Here's what Nafsi has achieved and how we keep our work accountable."
       />
       <section className="bg-cream-50">
         <Container className="py-24">
-          <SectionHeading eyebrow="Impact dashboard" title="The numbers that matter" intro="Verified figures from Nafsi's records. Conservative by design — no inflated claims." />
+          <SectionHeading eyebrow="Impact dashboard" title="The numbers that matter" intro="Verified figures from Nafsi's records. We keep them conservative on purpose." />
           <div className="mt-12">
             <ImpactStats tone="light" />
           </div>

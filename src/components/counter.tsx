@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-// Counts up once when scrolled into view. Server-renders the final value so it reads correctly without JS.
+// SSR shows the final number, then it counts up the first time it scrolls into view.
 export function Counter({ value, suffix = "" }: { value: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
 

@@ -53,13 +53,13 @@ export function SiteFooter() {
               {site.address}
             </li>
             <li>
-              <a href={`mailto:${site.email}`} className="flex gap-3 hover:text-mustard-400">
+              <a href={`mailto:${site.email}`} className="flex gap-3 py-1 hover:text-mustard-400">
                 <Mail className="mt-0.5 size-4 shrink-0 text-mustard-500" />
                 {site.email}
               </a>
             </li>
             <li>
-              <a href={site.phoneHref} className="flex gap-3 hover:text-mustard-400">
+              <a href={site.phoneHref} className="flex gap-3 py-1 hover:text-mustard-400">
                 <Phone className="mt-0.5 size-4 shrink-0 text-mustard-500" />
                 {site.phone}
               </a>
@@ -76,10 +76,10 @@ export function SiteFooter() {
         <p>
           © {new Date().getFullYear()} {site.legalName}. All rights reserved.
         </p>
-        <ul className="flex flex-wrap gap-x-6 gap-y-2">
+        <ul className="flex flex-wrap gap-x-6">
           {legalLinks.map((link) => (
             <li key={link.href}>
-              <Link href={link.href} className="hover:text-cream-50">
+              <Link href={link.href} className="inline-block py-2 hover:text-cream-50">
                 {link.label}
               </Link>
             </li>
@@ -94,10 +94,10 @@ function FooterColumn({ title, links }: { title: string; links: { label: string;
   return (
     <div>
       <h3 className="font-display text-sm font-bold uppercase tracking-[0.14em]">{title}</h3>
-      <ul className="mt-5 space-y-3 text-sm text-cream-50/70">
+      <ul className="mt-4 space-y-1 text-sm text-cream-50/70">
         {links.map((link) => (
           <li key={link.href}>
-            <Link href={link.href} className="hover:text-mustard-400">
+            <Link href={link.href} className="inline-block py-1.5 hover:text-mustard-400">
               {link.label}
             </Link>
           </li>

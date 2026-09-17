@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 // Brand marks (lucide-react no longer ships these).
 type Props = { className?: string };
 
@@ -64,18 +66,13 @@ export function XIcon({ className = "size-4" }: Props) {
 
 export function NafsiMark({ className = "size-10" }: Props) {
   return (
-    <svg viewBox="0 0 48 48" className={className} aria-hidden>
-      <circle cx="24" cy="24" r="23" fill="#fbf8f4" stroke="#e3d9cb" strokeWidth="1.5" />
-      <g fill="#2a1810">
-        <circle cx="15" cy="15.5" r="3" />
-        <circle cx="33" cy="15.5" r="3" />
-        <circle cx="24" cy="20" r="3.2" fill="#e9aa18" />
-      </g>
-      <g stroke="#2a1810" strokeWidth="2.6" strokeLinecap="round" fill="none">
-        <path d="M15 19.5v8l-3 7M15 27.5l3 7M9.5 21.5 15 23l4-4" />
-        <path d="M33 19.5v8l3 7M33 27.5l-3 7M38.5 21.5 33 23l-4-4" />
-      </g>
-      <path d="M24 24v9l-2.8 6M24 33l2.8 6M19 27.5h10" stroke="#e9aa18" strokeWidth="2.6" strokeLinecap="round" fill="none" />
-    </svg>
+    <Image
+      src="/images/nafsi-logo.jpeg"
+      alt=""
+      width={864}
+      height={864}
+      sizes="40px"
+      className={`rounded-full object-contain ${className}`}
+    />
   );
 }

@@ -54,16 +54,16 @@ export default async function InvolvementPage({ params }: Props) {
             </ol>
             <div className="mt-10 space-y-3 rounded-2xl bg-white p-6 text-sm">
               <p className="font-semibold text-cocoa-900">Prefer to talk?</p>
-              <a href={site.phoneHref} className="flex items-center gap-2 text-cocoa-800 hover:text-mustard-600">
+              <a href={site.phoneHref} className="flex items-center gap-2 py-1.5 text-cocoa-800 hover:text-mustard-600">
                 <Phone className="size-4 text-mustard-600" />
                 {site.phone}
               </a>
-              <a href={`mailto:${site.email}`} className="flex items-center gap-2 text-cocoa-800 hover:text-mustard-600">
+              <a href={`mailto:${site.email}`} className="flex items-center gap-2 py-1.5 text-cocoa-800 hover:text-mustard-600">
                 <Mail className="size-4 text-mustard-600" />
                 {site.email}
               </a>
             </div>
-            <Link href="/get-involved" className="mt-6 inline-block text-sm font-semibold text-mustard-600 hover:text-cocoa-900">
+            <Link href="/get-involved" className="mt-4 inline-block py-2 text-sm font-semibold text-mustard-600 hover:text-cocoa-900">
               ← All ways to get involved
             </Link>
           </Reveal>

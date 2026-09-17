@@ -8,7 +8,7 @@ import { FacebookIcon, LinkedInIcon, WhatsAppIcon, XIcon } from "./brand-icons";
 export function ShareButtons({ path, title }: { path: string; title: string }) {
   const [copied, setCopied] = useState(false);
   const url = `${site.url}${path}`;
-  const text = encodeURIComponent(`${title} — ${site.name}`);
+  const text = encodeURIComponent(`${title} | ${site.name}`);
   const encodedUrl = encodeURIComponent(url);
 
   const targets = [

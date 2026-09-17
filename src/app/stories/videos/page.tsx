@@ -13,7 +13,7 @@ export default function VideosPage() {
       <PageHero
         eyebrow="Video-first"
         title="See it. Hear it. Feel it."
-        intro="Nafsi stories, Tangaza films, NaiWave podcasts and performance reels — the work is alive on screen."
+        intro="Nafsi stories, Tangaza films, NaiWave podcasts and performance reels. The work is alive on screen."
       />
       <section className="bg-sand-100">
         <Container className="py-20">

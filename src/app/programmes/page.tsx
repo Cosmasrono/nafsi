@@ -14,7 +14,7 @@ export default function ProgrammesPage() {
       <PageHero
         eyebrow="Programmes"
         title="Six ways creativity becomes opportunity"
-        intro="On stage, behind the camera, on air and across borders — every programme builds skills, confidence and community."
+        intro="On stage, behind the camera, on air and across borders, every programme builds skills, confidence and community."
       />
       {programmes.map((programme, i) => (
         <ProgrammeFeature key={programme.slug} programme={programme} index={i} />

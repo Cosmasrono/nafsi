@@ -37,15 +37,17 @@ export function SiteHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-sand-200/70 bg-cream-50/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-sand-200/70">
+      {/* blur sits on its own layer; backdrop-filter on <header> itself traps the fixed mobile menu inside the header */}
+      <div className="absolute inset-0 -z-10 bg-cream-50/90 backdrop-blur-md" aria-hidden />
       <div
         ref={progressRef}
         className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-mustard-500 to-cocoa-700"
         aria-hidden
       />
-      <div className="mx-auto flex h-[4.5rem] w-full max-w-6xl items-center justify-between gap-6 px-5 sm:px-8">
-        <Link href="/" onClick={closeAll} className="flex items-center gap-3" aria-label="Nafsi Africa home">
-          <NafsiMark className="size-10" />
+      <div className="mx-auto flex h-[4.5rem] w-full max-w-6xl items-center justify-between gap-3 px-4 sm:gap-6 sm:px-8">
+        <Link href="/" onClick={closeAll} className="flex min-w-0 items-center gap-3" aria-label="Nafsi Africa home">
+          <NafsiMark className="size-10 shrink-0" />
           <span className="leading-none">
             <span className="block font-display text-lg font-bold tracking-tight text-cocoa-900">Nafsi Africa</span>
             <span className="mt-1 block text-[0.58rem] font-medium uppercase tracking-[0.2em] text-muted">
@@ -120,7 +122,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link href="/donate" onClick={closeAll} className={`${buttonClass("primary", "md")} hidden sm:inline-flex`}>
+          <Link href="/donate" onClick={closeAll} className={`${buttonClass("primary", "md")} max-sm:hidden`}>
             <Heart className="size-4" />
             Donate
           </Link>

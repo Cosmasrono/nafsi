@@ -12,7 +12,7 @@ export default function PrivacyPage() {
         {
           heading: "What we collect",
           paragraphs: [
-            "When you contact us, subscribe to updates, request a booking or donate, we collect the details you give us — such as your name, email, phone number, organization and message.",
+            "When you contact us, subscribe to updates, request a booking or donate, we collect the details you give us, such as your name, email, phone number, organization and message.",
             "Payments are processed by our payment provider. We never see or store your full card or M-Pesa PIN details.",
           ],
         },
