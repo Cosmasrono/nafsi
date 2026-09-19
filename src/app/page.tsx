@@ -21,19 +21,23 @@ export default function HomePage() {
   return (
     <>
       <section className="relative isolate overflow-hidden bg-cocoa-900 text-cream-50">
-        <div className="absolute inset-y-0 right-0 -z-10 w-full md:w-3/5">
-          <Image src="/images/hero.jpg" alt="A young acrobat mid-flip against a Nairobi golden-hour sky" fill preload sizes="(min-width: 768px) 60vw, 100vw" className="object-cover opacity-80" />
-          <div className="absolute inset-0 bg-gradient-to-r from-cocoa-900 via-cocoa-900/60 to-cocoa-900/10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-cocoa-900 via-transparent to-cocoa-900/40" />
+        <div className="relative isolate flex min-h-[calc(100svh-4rem)] flex-col justify-end">
+        <div className="absolute inset-0 -z-10">
+          <Image src="/images/hero.jpg" alt="A young acrobat mid-flip against a Nairobi golden-hour sky" fill preload sizes="100vw" className="object-cover object-[65%_center]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-cocoa-900/60 via-cocoa-900/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-cocoa-900 via-transparent via-40% to-transparent" />
         </div>
-        <Container className="pb-12 pt-24 sm:pt-32">
-          <Reveal>
-            <Eyebrow>Nafsi Pamoja · Nairobi, Kenya · Since {site.founded}</Eyebrow>
+        <div className="w-full px-5 pb-8 pt-24 sm:px-8 sm:pt-32 lg:px-12">
+          <Reveal className="max-w-3xl">
+            <p className="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-cream-50/85">
+              <span className="h-px w-10 bg-current" aria-hidden />
+              Nafsi Pamoja · Nairobi, Kenya · Since {site.founded}
+            </p>
             <h1 className="mt-6 font-display text-5xl font-bold leading-[0.92] tracking-tight break-words min-[380px]:text-6xl sm:text-7xl lg:text-8xl">
               Creativity can
               <span className="block text-mustard-500">change lives.</span>
             </h1>
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-cream-50/75">{site.description}</p>
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-cream-50/85 sm:text-xl">{site.description}</p>
             <div className="mt-9 flex flex-wrap gap-3">
               <ButtonLink href="/donate">
                 <Heart className="size-4" />
@@ -52,7 +56,8 @@ export default function HomePage() {
             Scroll
             <ArrowDown className="size-3.5 animate-bounce" />
           </a>
-        </Container>
+        </div>
+        </div>
 
         <Container className="scroll-mt-24 pb-24 pt-8" >
           <div id="impact" className="scroll-mt-28">

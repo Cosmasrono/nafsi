@@ -214,17 +214,21 @@ export function Timeline() {
 
 export function PartnersGrid() {
   return (
-    <ul className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
+    <ul className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-3">
       {partners.map((partner, i) => (
         <Reveal as="li" key={partner.name} delay={i * 60}>
           <div className="flex h-full flex-col items-center rounded-2xl border border-sand-200 bg-white px-4 py-7 text-center transition-colors hover:border-mustard-500">
-            <span className="grid size-14 place-items-center rounded-full bg-mustard-100 font-display text-xl font-extrabold text-mustard-600">
-              {partner.name
-                .split(" ")
-                .map((word) => word[0])
-                .slice(0, 2)
-                .join("")}
-            </span>
+            {partner.logo ? (
+              <Image src={partner.logo} alt={`${partner.name} logo`} width={96} height={96} className="size-20 rounded-xl object-contain" />
+            ) : (
+              <span className="grid size-20 place-items-center rounded-full bg-mustard-100 font-display text-2xl font-extrabold text-mustard-600">
+                {partner.name
+                  .split(" ")
+                  .map((word) => word[0])
+                  .slice(0, 2)
+                  .join("")}
+              </span>
+            )}
             <p className="mt-4 font-display font-bold text-cocoa-900">{partner.name}</p>
             <p className="mt-1 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-muted">{partner.role}</p>
           </div>

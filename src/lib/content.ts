@@ -383,15 +383,13 @@ export const timeline: { label: string; title: string; text: string; note?: stri
   }
 ];
 
-export const partners = [
-  { name: "Spor Media", role: "Media partner" },
-  { name: "CISU", role: "Funder" },
-  { name: "Kinder Kultur Karawane", role: "Cultural partner" },
-  { name: "Koinonia", role: "Implementation partner" },
-  { name: "Circus Foralle", role: "Cultural partner" },
+export const partners: { name: string; role: string; logo?: string }[] = [
+  { name: "Spor Media", role: "Media partner", logo: "/images/partners/spor-media.jpg" },
+  { name: "CISU", role: "Funder", logo: "/images/partners/cisu.jpg" },
+  { name: "Kinder Kultur Karawane", role: "Cultural partner", logo: "/images/partners/kinder-kultur-karawane.jpg" },
+  { name: "Koinonia", role: "Implementation partner", logo: "/images/partners/koinonia.jpg" },
+  { name: "Circus Foralle", role: "Cultural partner", logo: "/images/partners/circus-foralle.jpg" },
   { name: "Per Agnese", role: "Funder" },
-  { name: "Friends of Nafsi", role: "Implementation partner" },
-  { name: "Waldensian Church", role: "Funder" },
 ];
 
 export const board = [
