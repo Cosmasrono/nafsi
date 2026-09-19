@@ -1,9 +1,10 @@
 import { ArrowRight, ArrowUpRight, CalendarDays, CalendarHeart, Clock, Globe, Heart, MapPin, Smartphone, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { events, impactStats, partners, site, timeline, videos, type NafsiEvent, type Programme } from "@/lib/content";
+import { events, impactStats, partners, site, timeline, type NafsiEvent, type Programme } from "@/lib/content";
 import { FacebookIcon, InstagramIcon, TikTokIcon, YouTubeIcon } from "./brand-icons";
 import { Counter } from "./counter";
+import { VideoGridClient } from "./video-grid-client";
 import { Reveal } from "./reveal";
 import { ButtonLink, Container, Eyebrow, SectionHeading, TagList, TextLink } from "./ui";
 
@@ -238,19 +239,6 @@ export function PartnersGrid() {
   );
 }
 
-export function MapEmbed({ className = "" }: { className?: string }) {
-  return (
-    <div className={`overflow-hidden rounded-3xl border border-sand-200 bg-sand-100 ${className}`}>
-      <iframe
-        title="Map showing Nafsi Africa at Shalom House, Ngong Road, Nairobi"
-        src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&output=embed`}
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-        className="h-[22rem] w-full"
-      />
-    </div>
-  );
-}
 
 export function EventCard({ event }: { event: NafsiEvent }) {
   return (
@@ -303,49 +291,7 @@ export function EventsList() {
 }
 
 export function VideoGrid() {
-  const [featured, ...rest] = videos;
-  return (
-    <div className="mt-12 grid gap-4">
-      <Reveal>
-        <a
-          href={site.socials.youtube}
-          target="_blank"
-          rel="noreferrer"
-          className="group relative block overflow-hidden rounded-3xl bg-cocoa-950"
-        >
-          <div className="relative aspect-[982/470]">
-            <Image src={featured.image} alt="" fill sizes="(min-width: 1152px) 1100px, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
-          </div>
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-cocoa-950 via-cocoa-950/70 to-transparent p-6 pt-20 sm:p-8 sm:pt-24">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-mustard-400">
-              NaiWave Podcasts · {featured.duration}
-            </p>
-            <h3 className="mt-2 font-display text-2xl font-bold text-cream-50 sm:text-3xl">{featured.title}</h3>
-          </div>
-        </a>
-      </Reveal>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {rest.map((video, i) => (
-          <Reveal key={video.title} delay={i * 80}>
-            <a
-              href={site.socials.youtube}
-              target="_blank"
-              rel="noreferrer"
-              className="group block h-full overflow-hidden rounded-2xl border border-sand-200 bg-white"
-            >
-              <div className="relative aspect-[232/128] overflow-hidden">
-                <Image src={video.image} alt="" fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-              </div>
-              <div className="p-4">
-                <p className="text-sm font-semibold leading-snug text-cocoa-900">{video.title}</p>
-                <p className="mt-2 text-xs text-muted">{video.duration}</p>
-              </div>
-            </a>
-          </Reveal>
-        ))}
-      </div>
-    </div>
-  );
+  return <VideoGridClient />;
 }
 
 export function CreatorsSpotlight() {

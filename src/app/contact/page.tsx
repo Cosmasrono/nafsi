@@ -2,7 +2,7 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { ContactForm } from "@/components/contact-form";
-import { MapEmbed, SocialIcons } from "@/components/sections";
+import { SocialIcons } from "@/components/sections";
 import { Reveal } from "@/components/reveal";
 import { Container, PageHero } from "@/components/ui";
 import { site } from "@/lib/content";
@@ -49,11 +49,6 @@ export default function ContactPage() {
           <Reveal delay={120}>
             <ContactForm />
           </Reveal>
-        </Container>
-      </section>
-      <section className="bg-sand-100">
-        <Container className="py-16">
-          <MapEmbed />
         </Container>
       </section>
     </>

@@ -27,7 +27,7 @@ Open http://localhost:3000.
 - **Content** — all copy, programmes, stories, events, partners and contacts live in `src/lib/content.ts`. Search for `TODO` to find items Nafsi must confirm (social links, M-Pesa Paybill, story copy, event details, policies).
 - **Forms** — contact, get-involved, bookings and newsletter use Server Actions (`src/app/actions.ts`) with validation and a honeypot. Set `RESEND_API_KEY` + `NOTIFY_EMAIL` to receive them by email; otherwise they are appended to `.data/submissions.jsonl`.
 - **Donations** — set `PAYSTACK_SECRET_KEY` to send donors to Paystack checkout (M-Pesa + card in KES); the thank-you page verifies the transaction. Without a key, donations are saved as pledges. Monthly giving is recorded in metadata — create a Paystack plan to charge it automatically.
-- **Images** — `public/images` holds temporary photos cropped from the design walkthrough. Replace them with full-resolution originals from Nafsi (same filenames).
+- **Images** — community, Tangaza, GST and youth photos now use larger assets from Nafsi's website; video thumbnails use the matching YouTube originals. See `public/images/SOURCES.md`. The dance, NaiWave, creator and portrait crops still need full-resolution originals; enlarging those files cannot restore missing detail.
 
 ## Deploy
 

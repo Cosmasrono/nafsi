@@ -8,8 +8,8 @@ import {
   PartnersGrid,
   ProgrammeCard,
   Timeline,
-  VideoGrid,
 } from "@/components/sections";
+import { VideoGridClient } from "@/components/video-grid-client";
 import { GlobalConnections } from "@/components/global-connections";
 import { Counter } from "@/components/counter";
 import { Reveal } from "@/components/reveal";
@@ -87,7 +87,7 @@ export default function HomePage() {
           </Reveal>
           <Reveal className="relative">
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
-              <Image src="/images/community.jpg" alt="Nafsi community in performance" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+              <Image src="/images/community-hd.jpg" alt="Nafsi community in performance" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
             </div>
             <div className="absolute bottom-6 left-6 right-6 rounded-2xl bg-cream-50/95 p-6 text-cocoa-900 backdrop-blur-sm">
               <p className="font-display text-5xl font-extrabold"><Counter value={new Date().getFullYear() - site.founded} suffix="+" /></p>
@@ -152,7 +152,7 @@ export default function HomePage() {
               </ButtonLink>
             }
           />
-          <VideoGrid />
+          <VideoGridClient />
         </Container>
       </section>
 

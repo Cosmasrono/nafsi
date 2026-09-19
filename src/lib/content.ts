@@ -160,7 +160,7 @@ export const programmes: Programme[] = [
       "Outreach also carries Nafsi's advocacy: tree planting and environmental awareness workshops, sanitary workshops for girls, and conversations on gender equality that start in the community.",
     ],
     tags: ["Community shows", "Children's homes", "Environment", "Gender equality", "Girls' health"],
-    image: "/images/community.jpg",
+    image: "/images/community-hd.jpg",
     cta: "Explore Outreach",
   },
   {
@@ -174,7 +174,7 @@ export const programmes: Programme[] = [
       "Since its inception Tangaza has reached and empowered 208 young people and aims to impact many more by the end of 2026. Participants produce content that raises awareness on climate change, gender equality and the Sustainable Development Goals. A cornerstone of the project is NaiWave Studios. Tangaza is supported by Spor Media and funded by CISU.",
     ],
     tags: ["Smartphone filmmaking", "Photography", "Video editing", "Podcasting", "Digital storytelling", "SDG advocacy"],
-    image: "/images/tangaza.jpg",
+    image: "/images/tangaza-session.jpg",
     cta: "Explore Tangaza",
   },
   {
@@ -202,7 +202,7 @@ export const programmes: Programme[] = [
       "Using digital media and Zoom video conferencing, it connects young people from Kenya, Bolivia and Denmark to exchange culture and collaborate on discussions around the Sustainable Development Goals. GST also creates opportunities for participants to earn a livelihood while engaging in meaningful global conversations.",
     ],
     tags: ["Cultural exchange", "Digital dialogue", "SDGs", "Cross-cultural collaboration", "Livelihoods"],
-    image: "/images/gst.jpg",
+    image: "/images/gst-hd.jpg",
     cta: "Explore Global Stay Tours",
   },
   {
@@ -216,7 +216,7 @@ export const programmes: Programme[] = [
       "Through structured mentorship, hands-on training and real-world assignments (running an online radio station, creating podcasts, managing community centres), participants gain practical experience, and many go on to take meaningful roles inside Nafsi itself.",
     ],
     tags: ["Talent development", "Advocacy", "Mentorship", "Leadership", "Creative livelihoods"],
-    image: "/images/youth.jpg",
+    image: "/images/youth-hd.jpg",
     cta: "Explore Youth Empowerment",
   },
 ];
@@ -250,7 +250,7 @@ export const stories: Story[] = [
     category: "Global Exchange Stories",
     excerpt:
       "Through Global Stay Tours, a young cultural guide in Nairobi and a classroom in Denmark meet over Zoom — and exchange more than culture.",
-    image: "/images/gst.jpg",
+    image: "/images/gst-hd.jpg",
     quote: {
       text: "It has been a great experience for me, and I've gained significant knowledge throughout the process.",
       by: "Robinson Nyangasi, GST Tour Guide",
@@ -267,7 +267,7 @@ export const stories: Story[] = [
     category: "Tangaza Stories",
     excerpt:
       "Smartphones become film studios. 208 young people — many of them young women — learning to shoot, edit and tell stories that matter.",
-    image: "/images/tangaza.jpg",
+    image: "/images/tangaza-session.jpg",
     body: [
       "A Tangaza cohort starts with the phone already in your pocket. Participants learn framing, sound, lighting and interviewing before moving on to editing, motion graphics and formatting for social media.",
       "Every cohort ends with portfolio-ready work: short documentaries and reports on climate, gender equality and life in Nairobi's informal settlements.",
@@ -280,7 +280,7 @@ export const stories: Story[] = [
     category: "From the Community",
     excerpt:
       "Across Kariobangi, Babadogo, Kibera, Dagoretti and Kivuli, weekly training turns afternoons into dance, music and acrobatics.",
-    image: "/images/community.jpg",
+    image: "/images/community-hd.jpg",
     body: [
       "Each week, trainers arrive at five community centres across Nairobi. Within minutes, open ground becomes a stage: warm-ups, balances, drumming and choreography.",
       "The sessions are consistent by design. Showing up every week gives children a safe routine, trusted adults and a group that notices when they are missing.",
@@ -317,7 +317,7 @@ export const stories: Story[] = [
     category: "Nafsi Alumni",
     excerpt:
       "Talent development at Nafsi builds a pipeline: today's media students run the social channels and tomorrow's programmes.",
-    image: "/images/youth.jpg",
+    image: "/images/youth-hd.jpg",
     body: [
       "Nafsi's talent development programme gives young people real responsibility: media students manage social platforms and produce content, while ICT interns support the organisation's technical needs.",
       "As participants gain expertise and confidence, many become mentors and leaders inside Nafsi, which keeps the organisation rooted in the communities it serves.",
@@ -326,11 +326,11 @@ export const stories: Story[] = [
 ];
 
 export const videos = [
-  { title: "Money vs. Presence: Attention is the Best Gift", series: "Real Talk with Nicky", duration: "45:25", image: "/images/video-main.jpg" },
-  { title: "From Classroom to Corner Office: A GenZ HR", series: "Real Talk with Nicky", duration: "28:07", image: "/images/video-1.jpg" },
-  { title: "A Mother's Desperation: NHIF/SHA's Neglect", series: "Real Talk with Nicky", duration: "55:46", image: "/images/video-2.jpg" },
-  { title: "Ending the Violence: A Future Without Femicide", series: "Real Talk with Nicky", duration: "21:28", image: "/images/video-3.jpg" },
-  { title: "The Silent Crisis: The Mask We Wear — Men's Emotions", series: "Real Talk with Nicky", duration: "47:02", image: "/images/video-4.jpg" },
+  { title: "Money vs. Presence: Attention is the Best Gift", series: "Real Talk with Nicky", duration: "45:25", image: "/images/video-main-hd.jpg", youtubeId: "WAEEA5t-wNs" },
+  { title: "From Classroom to Corner Office: A GenZ HR", series: "Real Talk with Nicky", duration: "28:07", image: "/images/video-1-hd.jpg", youtubeId: "xkMq-bYMTFI" },
+  { title: "A Mother's Desperation: NHIF/SHA's Neglect", series: "Real Talk with Nicky", duration: "55:46", image: "/images/video-2-hd.jpg", youtubeId: "Us37EUGXltY" },
+  { title: "Ending the Violence: A Future Without Femicide", series: "Real Talk with Nicky", duration: "21:28", image: "/images/video-3-hd.jpg", youtubeId: "VgMaakoms9M" },
+  { title: "The Silent Crisis: The Mask We Wear — Men's Emotions", series: "Real Talk with Nicky", duration: "47:02", image: "/images/video-4-hd.jpg", youtubeId: "h_roaAxRJcs" },
 ];
 
 export const timeline: { label: string; title: string; text: string; note?: string }[] = [

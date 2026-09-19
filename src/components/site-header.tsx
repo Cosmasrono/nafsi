@@ -45,7 +45,7 @@ export function SiteHeader() {
         className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-mustard-500 to-cocoa-700"
         aria-hidden
       />
-      <div className="mx-auto flex h-[4.5rem] w-full max-w-6xl items-center justify-between gap-3 px-4 sm:gap-6 sm:px-8">
+      <div className="flex h-[4.5rem] w-full items-center justify-between gap-3 px-4 sm:gap-6 sm:px-8">
         <Link href="/" onClick={closeAll} className="flex min-w-0 items-center gap-3" aria-label="Nafsi Africa home">
           <NafsiMark className="size-10 shrink-0" />
           <span className="leading-none">

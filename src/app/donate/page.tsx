@@ -1,6 +1,7 @@
 import { Smartphone } from "lucide-react";
 import type { Metadata } from "next";
 import { DonateForm } from "@/components/donate-form";
+import { PayPalDonate } from "@/components/paypal-donate";
 import { Reveal } from "@/components/reveal";
 import { Container, Eyebrow, PageHero } from "@/components/ui";
 import { programmes } from "@/lib/content";
@@ -61,9 +62,12 @@ export default async function DonatePage({ searchParams }: { searchParams: Promi
               <p className="mt-4 text-xs text-cream-50/60">Or use the form. Checkout supports M-Pesa and card payments.</p>
             </div>
           </Reveal>
-          <Reveal delay={120} className="rounded-3xl border border-sand-200 bg-white p-6 shadow-xl shadow-cocoa-900/5 sm:p-8">
-            <DonateForm defaultProgramme={defaultProgramme} />
-          </Reveal>
+          <div className="min-w-0 space-y-8">
+            <PayPalDonate />
+            <Reveal delay={120} className="rounded-3xl border border-sand-200 bg-white p-6 shadow-xl shadow-cocoa-900/5 sm:p-8">
+              <DonateForm defaultProgramme={defaultProgramme} />
+            </Reveal>
+          </div>
         </Container>
       </section>
     </>

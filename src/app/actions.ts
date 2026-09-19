@@ -101,36 +101,60 @@ export async function subscribeToNewsletter(_prev: FormState, formData: FormData
 
 export async function startDonation(_prev: FormState, formData: FormData): Promise<FormState> {
   const amount = Number(readText(formData, "amount", 12));
+  const currency = readText(formData, "currency", 10) || "USD";
   const data = {
     name: readText(formData, "name", 120),
     email: readText(formData, "email", 200),
     frequency: readText(formData, "frequency", 20) === "monthly" ? "monthly" : "once",
-    programme: readText(formData, "programme", 60) || "where-needed",
+    programme: readText(formData, "programme", 60) || "support-a-child",
+    currency,
   };
 
+  const minAmount = currency === "USD" ? 1 : 100;
   const errors: Record<string, string> = {};
-  if (!Number.isFinite(amount) || amount < 100) errors.amount = "The minimum donation is KES 100.";
-  else if (amount > 5_000_000) errors.amount = "For large gifts please contact us directly.";
+  if (!Number.isFinite(amount) || amount < minAmount) {
+    errors.amount = `The minimum donation is ${currency === "USD" ? "$1" : "KES 100"}.`;
+  } else if (amount > 5_000_000) {
+    errors.amount = "For large gifts please contact us directly.";
+  }
   if (!data.name) errors.name = "Please tell us your name.";
   if (!isEmail(data.email)) errors.email = "Please enter a valid email address.";
-  if (data.programme !== "where-needed" && !programmes.some((p) => p.slug === data.programme)) {
-    errors.programme = "Please choose a programme.";
+
+  const validProgrammes = ["support-a-child", "where-needed", ...programmes.map((p) => p.slug)];
+  if (!validProgrammes.includes(data.programme)) {
+    errors.programme = "Please choose a valid purpose.";
   }
   const invalidState = invalid(errors, data);
   if (invalidState) return invalidState;
+
+  const purposeTitle =
+    data.programme === "support-a-child"
+      ? "Support a child"
+      : data.programme === "where-needed"
+      ? "Where it's needed most"
+      : programmes.find((p) => p.slug === data.programme)?.title || data.programme;
+
+  const formattedAmount =
+    currency === "USD" ? `$${amount}` : `KES ${amount.toLocaleString("en-KE")}`;
 
   const secret = process.env.PAYSTACK_SECRET_KEY;
   if (!secret) {
     // no Paystack key yet, save it as a pledge
     try {
-      await recordSubmission("donation-pledge", { ...data, amount });
+      await recordSubmission("donation-pledge", { ...data, amount, purposeTitle });
     } catch (error) {
       console.error(error);
       return { ...failed, values: data };
     }
     return {
       status: "success",
-      message: `Thank you, ${data.name.split(" ")[0]}! We've recorded your pledge of KES ${amount.toLocaleString("en-KE")}. Online payments are being set up, so the Nafsi team will email you M-Pesa details.`,
+      message: `Your ${data.frequency === "monthly" ? "monthly" : "one-time"} ${formattedAmount} gift toward ${purposeTitle} has been recorded.`,
+      values: {
+        ...data,
+        amount: String(amount),
+        formattedAmount,
+        purposeTitle,
+      },
     };
   }
 
