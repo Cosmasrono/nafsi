@@ -110,32 +110,44 @@ export async function startDonation(_prev: FormState, formData: FormData): Promi
     currency,
   };
 
-  const minAmount = currency === "USD" ? 1 : 100;
+  const minAmount = currency === "USD" || currency === "EUR" ? 1 : 100;
   const errors: Record<string, string> = {};
   if (!Number.isFinite(amount) || amount < minAmount) {
-    errors.amount = `The minimum donation is ${currency === "USD" ? "$1" : "KES 100"}.`;
+    errors.amount = `The minimum donation is ${currency === "USD" ? "$1" : currency === "EUR" ? "€1" : "KES 100"}.`;
   } else if (amount > 5_000_000) {
     errors.amount = "For large gifts please contact us directly.";
   }
   if (!data.name) errors.name = "Please tell us your name.";
   if (!isEmail(data.email)) errors.email = "Please enter a valid email address.";
 
-  const validProgrammes = ["support-a-child", "where-needed", ...programmes.map((p) => p.slug)];
+  const validProgrammes = ["support-a-child", "where-needed", "equipment", ...programmes.map((p) => p.slug)];
   if (!validProgrammes.includes(data.programme)) {
     errors.programme = "Please choose a valid purpose.";
   }
   const invalidState = invalid(errors, data);
   if (invalidState) return invalidState;
 
+  const purposeMap: Record<string, string> = {
+    "support-a-child": "Support a child",
+    "where-needed": "General support (Where it's needed most)",
+    "equipment": "Equipment (Cameras, instruments, studio gear)",
+    "performing-arts": "Performing arts training",
+    "tangaza": "A youth digital-media trainee",
+    "outreach": "Community outreach",
+    "naiwave": "NaiWave Studios",
+  };
+
   const purposeTitle =
-    data.programme === "support-a-child"
-      ? "Support a child"
-      : data.programme === "where-needed"
-      ? "Where it's needed most"
-      : programmes.find((p) => p.slug === data.programme)?.title || data.programme;
+    purposeMap[data.programme] ||
+    programmes.find((p) => p.slug === data.programme)?.title ||
+    data.programme;
 
   const formattedAmount =
-    currency === "USD" ? `$${amount}` : `KES ${amount.toLocaleString("en-KE")}`;
+    currency === "USD"
+      ? `$${amount}`
+      : currency === "EUR"
+      ? `€${amount}`
+      : `KES ${amount.toLocaleString("en-KE")}`;
 
   const secret = process.env.PAYSTACK_SECRET_KEY;
   if (!secret) {

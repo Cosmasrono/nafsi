@@ -1,27 +1,83 @@
 "use client";
 
-import { Check, ChevronLeft, ChevronRight, Heart, Loader2, ShieldCheck } from "lucide-react";
+import { Check, ChevronDown, ChevronLeft, ChevronRight, ExternalLink, Heart, Loader2, ShieldCheck } from "lucide-react";
 import { useActionState, useState } from "react";
 import { startDonation } from "@/app/actions";
-import { programmes } from "@/lib/content";
 import { initialFormState } from "@/lib/form-state";
 import { FormError, Honeypot } from "./form-fields";
 
-const usdPresets = [10, 25, 50, 100, 250];
-const kesPresets = [500, 1000, 2500, 5000, 10000];
+export const donationPurposes = [
+  {
+    slug: "where-needed",
+    title: "General support",
+    desc: "Where it's needed most",
+  },
+  {
+    slug: "support-a-child",
+    title: "Support a child",
+    desc: "Safe spaces, training and mentorship",
+  },
+  {
+    slug: "performing-arts",
+    title: "Performing arts training",
+    desc: "Dance, music, acrobatics, theatre",
+  },
+  {
+    slug: "tangaza",
+    title: "A youth digital-media trainee",
+    desc: "Filmmaking, editing, storytelling",
+  },
+  {
+    slug: "outreach",
+    title: "Community outreach",
+    desc: "Centres across Nairobi's settlements",
+  },
+  {
+    slug: "naiwave",
+    title: "NaiWave Studios",
+    desc: "Youth podcast and online radio",
+  },
+  {
+    slug: "equipment",
+    title: "Equipment",
+    desc: "Cameras, instruments, studio gear",
+  },
+];
 
-export function DonateForm({ defaultProgramme = "support-a-child" }: { defaultProgramme?: string }) {
+const usdPresets = [10, 25, 50, 100, 250];
+const eurPresets = [10, 25, 50, 100, 250];
+const kesPresets = [1000, 2500, 5000, 10000, 25000];
+
+function getImpactDescription(currency: "USD" | "EUR" | "KES", amount: number): string {
+  if (currency === "USD" || currency === "EUR") {
+    const sym = currency === "USD" ? "$" : "€";
+    if (amount >= 250) return `${sym}250 helps sustain a trainer at a community centre.`;
+    if (amount >= 100) return `${sym}100 supports a young person through a full workshop cycle.`;
+    if (amount >= 50) return `${sym}50 can put a smartphone in the hands of a Tangaza trainee.`;
+    if (amount >= 25) return `${sym}25 helps stock a community training session with materials.`;
+    return `${sym}10 provides daily workshop materials and snacks for youth.`;
+  }
+  if (amount >= 25000) return "KES 25,000 helps sustain a trainer at a community centre.";
+  if (amount >= 10000) return "KES 10,000 supports a young person through a full workshop cycle.";
+  if (amount >= 5000) return "KES 5,000 can put a smartphone in the hands of a Tangaza trainee.";
+  if (amount >= 2500) return "KES 2,500 helps stock a community training session with materials.";
+  return "KES 1,000 provides daily workshop materials and snacks for youth.";
+}
+
+export function DonateForm({ defaultProgramme = "where-needed" }: { defaultProgramme?: string }) {
   const [state, formAction, pending] = useActionState(startDonation, initialFormState);
 
   // Steps: 1 = AMOUNT, 2 = DETAILS, 3 = CONFIRM
   const [currentStep, setCurrentStep] = useState<1 | 2 | 3>(1);
 
-  // Step 1: Amount & purpose
-  const [currency, setCurrency] = useState<"USD" | "KES">("USD");
+  // Step 1: Amount, currency, frequency, purpose
+  const [currency, setCurrency] = useState<"USD" | "EUR" | "KES">("USD");
   const [frequency, setFrequency] = useState<"once" | "monthly">("once");
-  const [preset, setPreset] = useState<number | null>(10);
+  const [preset, setPreset] = useState<number | null>(50);
   const [custom, setCustom] = useState("");
-  const [programme, setProgramme] = useState(defaultProgramme);
+  const [programme, setProgramme] = useState(
+    donationPurposes.some((p) => p.slug === defaultProgramme) ? defaultProgramme : "where-needed"
+  );
 
   // Step 2: Donor details
   const [name, setName] = useState("");
@@ -31,22 +87,22 @@ export function DonateForm({ defaultProgramme = "support-a-child" }: { defaultPr
   const amount = preset ?? (Number(custom) || 0);
 
   const formattedAmount =
-    currency === "USD" ? `$${amount}` : `KES ${amount.toLocaleString("en-KE")}`;
+    currency === "USD"
+      ? `$${amount}`
+      : currency === "EUR"
+      ? `€${amount}`
+      : `KES ${amount.toLocaleString("en-KE")}`;
 
-  const purposeTitle =
-    programme === "support-a-child"
-      ? "Support a child"
-      : programme === "where-needed"
-      ? "Where it's needed most"
-      : programmes.find((p) => p.slug === programme)?.title || programme;
+  const selectedPurpose = donationPurposes.find((p) => p.slug === programme) || donationPurposes[0];
 
-  // Validation before step transitions
   function validateStep1() {
-    const minAmount = currency === "USD" ? 1 : 100;
+    const minAmount = currency === "USD" || currency === "EUR" ? 1 : 100;
     if (!amount || amount < minAmount) {
       setStepErrors((prev) => ({
         ...prev,
-        amount: `Please enter an amount of at least ${currency === "USD" ? "$1" : "KES 100"}.`,
+        amount: `Please enter an amount of at least ${
+          currency === "USD" ? "$1" : currency === "EUR" ? "€1" : "KES 100"
+        }.`,
       }));
       return false;
     }
@@ -68,7 +124,7 @@ export function DonateForm({ defaultProgramme = "support-a-child" }: { defaultPr
     setCurrentStep(1);
     setName("");
     setEmail("");
-    setPreset(currency === "USD" ? 10 : 2500);
+    setPreset(currency === "KES" ? 5000 : 50);
     setCustom("");
     setStepErrors({});
     if (state.status === "success") {
@@ -77,17 +133,16 @@ export function DonateForm({ defaultProgramme = "support-a-child" }: { defaultPr
     }
   }
 
-  // If donation action succeeded (confirmation shown as in the 4th screenshot)
+  // Asante Sana confirmation screen
   if (state.status === "success") {
     const firstName = (state.values?.name || name).split(" ")[0];
     const displayAmount = state.values?.formattedAmount || formattedAmount;
     const displayFreq = (state.values?.frequency || frequency) === "monthly" ? "monthly" : "one-time";
-    const displayPurpose = state.values?.purposeTitle || purposeTitle;
+    const displayPurpose = state.values?.purposeTitle || selectedPurpose.title;
     const displayEmail = state.values?.email || email;
 
     return (
       <div className="flex flex-col items-center py-6 text-center animate-modal-in">
-        {/* Soft circle checkmark */}
         <div className="flex size-14 items-center justify-center rounded-full bg-[#f2e6d8] text-[#8e4a1a]">
           <Check className="size-6 stroke-[2.5]" />
         </div>
@@ -103,17 +158,28 @@ export function DonateForm({ defaultProgramme = "support-a-child" }: { defaultPr
         </p>
 
         <p className="mt-4 max-w-md text-xs leading-relaxed text-muted">
-          To complete your payment, our team will reach out with secure options (card / M-Pesa / bank
-          transfer). Thank you for turning creativity into opportunity.
+          You can complete your payment securely via PayPal. Thank you for turning creativity into opportunity.
         </p>
 
-        <button
-          type="button"
-          onClick={handleReset}
-          className="mt-8 inline-flex items-center justify-center rounded-full border border-sand-200 bg-white px-6 py-2.5 text-sm font-semibold text-cocoa-900 transition-colors hover:border-mustard-500 hover:bg-mustard-50"
-        >
-          Make another gift
-        </button>
+        <div className="mt-6 flex flex-col sm:flex-row items-center gap-3">
+          <a
+            href="https://www.paypal.com/ncp/payment/NDG9RFXNW7LGC"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-mustard-500 px-6 py-3 text-sm font-bold text-cocoa-900 shadow-sm transition-transform hover:bg-mustard-400 active:scale-[0.99]"
+          >
+            Open PayPal Checkout
+            <ExternalLink className="size-4" />
+          </a>
+
+          <button
+            type="button"
+            onClick={handleReset}
+            className="inline-flex items-center justify-center rounded-full border border-sand-200 bg-white px-6 py-3 text-sm font-semibold text-cocoa-900 transition-colors hover:border-mustard-500 hover:bg-mustard-50"
+          >
+            Make another gift
+          </button>
+        </div>
       </div>
     );
   }
@@ -124,10 +190,11 @@ export function DonateForm({ defaultProgramme = "support-a-child" }: { defaultPr
     { num: 3, label: "CONFIRM" },
   ];
 
+  const presets = currency === "USD" ? usdPresets : currency === "EUR" ? eurPresets : kesPresets;
+
   return (
     <form action={formAction} className="relative grid gap-6" noValidate>
       <Honeypot />
-      {/* Hidden inputs to pass full state to server action */}
       <input type="hidden" name="amount" value={amount} />
       <input type="hidden" name="currency" value={currency} />
       <input type="hidden" name="frequency" value={frequency} />
@@ -135,8 +202,8 @@ export function DonateForm({ defaultProgramme = "support-a-child" }: { defaultPr
       <input type="hidden" name="name" value={name} />
       <input type="hidden" name="email" value={email} />
 
-      {/* STEP INDICATOR HEADER (matching screenshot with 1 AMOUNT - 2 DETAILS - 3 CONFIRM) */}
-      <div className="flex items-center justify-between px-2 pt-1 pb-4">
+      {/* STEP INDICATOR HEADER (matching screenshot) */}
+      <div className="flex items-center justify-between border-b border-sand-200/70 px-1 pb-4">
         {steps.map((s, idx) => {
           const isActive = currentStep === s.num;
           const isDone = currentStep > s.num;
@@ -154,8 +221,10 @@ export function DonateForm({ defaultProgramme = "support-a-child" }: { defaultPr
               >
                 <span
                   className={`flex size-6 items-center justify-center rounded-full text-xs font-bold transition-colors ${
-                    isActive || isDone
-                      ? "bg-mustard-500 text-cocoa-900 font-extrabold"
+                    isActive
+                      ? "bg-mustard-500 text-cocoa-950 font-black ring-2 ring-mustard-500/30"
+                      : isDone
+                      ? "bg-cocoa-900 text-cream-50"
                       : "border border-sand-200 bg-sand-100 text-cocoa-700"
                   }`}
                 >
@@ -163,7 +232,7 @@ export function DonateForm({ defaultProgramme = "support-a-child" }: { defaultPr
                 </span>
                 <span
                   className={`text-[0.72rem] font-bold tracking-wider uppercase sm:text-xs ${
-                    isActive ? "text-cocoa-900" : isDone ? "text-cocoa-800" : "text-muted"
+                    isActive ? "text-cocoa-900 font-extrabold" : isDone ? "text-cocoa-800" : "text-muted"
                   }`}
                 >
                   {s.label}
@@ -184,132 +253,156 @@ export function DonateForm({ defaultProgramme = "support-a-child" }: { defaultPr
 
       {/* ======================= STEP 1: AMOUNT ======================= */}
       {currentStep === 1 && (
-        <div className="grid gap-6 animate-modal-in">
-          {/* Frequency & Currency selectors */}
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div
-              className="grid grid-cols-2 rounded-full bg-sand-100 p-1"
-              role="radiogroup"
-              aria-label="Donation frequency"
+        <div className="grid gap-5 animate-modal-in">
+          {/* Frequency Toggle: One-Time / Monthly */}
+          <div
+            className="grid grid-cols-2 rounded-full bg-[#efeae2] p-1.5 shadow-inner"
+            role="radiogroup"
+            aria-label="Donation frequency"
+          >
+            <button
+              type="button"
+              role="radio"
+              aria-checked={frequency === "once"}
+              onClick={() => setFrequency("once")}
+              className={`rounded-full py-2.5 text-xs sm:text-sm font-bold transition-all ${
+                frequency === "once"
+                  ? "bg-cocoa-900 text-cream-50 shadow-sm"
+                  : "text-cocoa-800 hover:text-cocoa-950"
+              }`}
             >
-              {(["once", "monthly"] as const).map((option) => (
-                <button
-                  key={option}
-                  type="button"
-                  role="radio"
-                  aria-checked={frequency === option}
-                  onClick={() => setFrequency(option)}
-                  className={`rounded-full px-4 py-2 text-xs font-semibold sm:text-sm transition-colors ${
-                    frequency === option ? "bg-cocoa-900 text-cream-50" : "text-cocoa-800"
-                  }`}
-                >
-                  {option === "once" ? "Give once" : "Give monthly"}
-                </button>
-              ))}
+              One-Time
+            </button>
+            <button
+              type="button"
+              role="radio"
+              aria-checked={frequency === "monthly"}
+              onClick={() => setFrequency("monthly")}
+              className={`rounded-full py-2.5 text-xs sm:text-sm font-bold transition-all ${
+                frequency === "monthly"
+                  ? "bg-cocoa-900 text-cream-50 shadow-sm"
+                  : "text-cocoa-800 hover:text-cocoa-950"
+              }`}
+            >
+              Monthly
+            </button>
+          </div>
+
+          {/* Currency Dropdown + Amount Input Row */}
+          <div className="flex items-center gap-2 rounded-2xl border border-sand-200 bg-sand-50/50 p-2 focus-within:border-mustard-500 focus-within:ring-2 focus-within:ring-mustard-500/20 transition-all">
+            <div className="relative">
+              <select
+                value={currency}
+                onChange={(e) => {
+                  const cur = e.target.value as "USD" | "EUR" | "KES";
+                  setCurrency(cur);
+                  setPreset(cur === "KES" ? 5000 : 50);
+                  setCustom("");
+                  setStepErrors((prev) => ({ ...prev, amount: undefined }));
+                }}
+                className="appearance-none rounded-xl border border-sand-200 bg-white py-2 pl-3.5 pr-8 text-xs sm:text-sm font-bold text-cocoa-900 shadow-sm focus:outline-none focus:border-mustard-500 cursor-pointer"
+              >
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="KES">KES</option>
+              </select>
+              <ChevronDown className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 size-3.5 text-cocoa-700" />
             </div>
 
-            <div
-              className="flex rounded-full border border-sand-200 bg-sand-100 p-0.5"
-              role="radiogroup"
-              aria-label="Currency"
-            >
-              {(["USD", "KES"] as const).map((cur) => (
-                <button
-                  key={cur}
-                  type="button"
-                  role="radio"
-                  aria-checked={currency === cur}
-                  onClick={() => {
-                    setCurrency(cur);
-                    setPreset(cur === "USD" ? 10 : 2500);
-                    setCustom("");
-                  }}
-                  className={`rounded-full px-3 py-1.5 text-xs font-bold transition-colors ${
-                    currency === cur ? "bg-mustard-500 text-cocoa-900 shadow-sm" : "text-cocoa-700"
-                  }`}
-                >
-                  {cur === "USD" ? "USD ($)" : "KES (KSh)"}
-                </button>
-              ))}
+            <div className="flex flex-1 items-center gap-2 px-2">
+              <span className="text-sm sm:text-base font-bold text-cocoa-700">
+                {currency === "USD" ? "$" : currency === "EUR" ? "€" : "KSh"}
+              </span>
+              <input
+                type="text"
+                inputMode="numeric"
+                value={custom !== "" ? custom : preset !== null ? String(preset) : ""}
+                onChange={(e) => {
+                  const val = e.target.value.replace(/[^\d]/g, "");
+                  setCustom(val);
+                  setPreset(val ? Number(val) : null);
+                  setStepErrors((prev) => ({ ...prev, amount: undefined }));
+                }}
+                placeholder="50"
+                className="w-full bg-transparent text-base sm:text-lg font-bold text-cocoa-900 placeholder:text-muted/60 focus:outline-none"
+              />
             </div>
           </div>
 
-          {/* Amount buttons */}
-          <fieldset>
-            <legend className="text-sm font-semibold text-cocoa-900">
-              Amount ({currency === "USD" ? "USD $" : "KES"})
-            </legend>
-            <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-6">
-              {(currency === "USD" ? usdPresets : kesPresets).map((val) => (
+          {/* Quick preset amount buttons */}
+          <div className="grid grid-cols-5 gap-2">
+            {presets.map((val) => {
+              const isSelected = preset === val && custom === "";
+              return (
                 <button
                   key={val}
                   type="button"
-                  aria-pressed={preset === val}
+                  aria-pressed={isSelected}
                   onClick={() => {
                     setPreset(val);
                     setCustom("");
                     setStepErrors((prev) => ({ ...prev, amount: undefined }));
                   }}
-                  className={`rounded-xl border py-3 text-sm font-bold transition-colors ${
-                    preset === val
-                      ? "border-mustard-500 bg-mustard-500 text-cocoa-900 shadow-sm"
-                      : "border-sand-200 bg-cream-50 text-cocoa-800 hover:border-mustard-500"
+                  className={`rounded-xl py-3 text-xs sm:text-sm font-bold transition-all ${
+                    isSelected
+                      ? "border border-mustard-500 bg-mustard-500 text-cocoa-950 shadow-sm"
+                      : "border border-transparent bg-[#f0ebe3] text-cocoa-800 hover:bg-[#e7e1d8]"
                   }`}
                 >
-                  {currency === "USD" ? `$${val}` : val.toLocaleString("en-KE")}
+                  {currency === "USD" ? `$${val}` : currency === "EUR" ? `€${val}` : val.toLocaleString("en-KE")}
                 </button>
-              ))}
-              <label className="sr-only" htmlFor="custom-amount">
-                Other amount
-              </label>
-              <input
-                id="custom-amount"
-                inputMode="numeric"
-                placeholder="Other"
-                value={custom}
-                onChange={(e) => {
-                  setCustom(e.target.value.replace(/[^\d]/g, ""));
-                  setPreset(null);
-                  setStepErrors((prev) => ({ ...prev, amount: undefined }));
-                }}
-                className={`rounded-xl border bg-cream-50 px-3 py-3 text-center text-sm font-bold focus:border-mustard-500 focus:outline-none ${
-                  preset === null && custom ? "border-mustard-500" : "border-sand-200"
-                }`}
-              />
-            </div>
-            {stepErrors.amount && <p className="mt-2 text-sm text-red-700">{stepErrors.amount}</p>}
-          </fieldset>
-
-          {/* Purpose */}
-          <div>
-            <label htmlFor="field-programme" className="text-sm font-semibold text-cocoa-900">
-              Direct my gift to
-            </label>
-            <select
-              id="field-programme"
-              value={programme}
-              onChange={(e) => setProgramme(e.target.value)}
-              className="mt-2 block w-full rounded-xl border border-sand-200 bg-cream-50 px-4 py-3 text-[0.95rem] text-cocoa-900 focus:border-mustard-500 focus:outline-none"
-            >
-              <option value="support-a-child">Support a child</option>
-              <option value="where-needed">Where it&apos;s needed most</option>
-              {programmes.map((p) => (
-                <option key={p.slug} value={p.slug}>
-                  {p.title}
-                </option>
-              ))}
-            </select>
+              );
+            })}
           </div>
 
+          {stepErrors.amount && <p className="text-sm font-medium text-red-600">{stepErrors.amount}</p>}
+
+          {/* YOUR SUPPORT CREATES */}
+          <div>
+            <p className="text-[0.72rem] font-bold tracking-wider uppercase text-cocoa-700">
+              — YOUR SUPPORT CREATES
+            </p>
+            <div className="mt-2 rounded-2xl border border-[#eadccf] bg-[#f7efe6] px-4 py-3 text-xs sm:text-sm font-medium text-cocoa-900 leading-relaxed shadow-sm">
+              {getImpactDescription(currency, amount)}
+            </div>
+          </div>
+
+          {/* CHOOSE A PURPOSE */}
+          <div>
+            <p className="text-[0.72rem] font-bold tracking-wider uppercase text-cocoa-700">
+              CHOOSE A PURPOSE
+            </p>
+            <div className="mt-2.5 grid sm:grid-cols-2 gap-2.5">
+              {donationPurposes.map((p) => {
+                const isSelected = programme === p.slug;
+                return (
+                  <button
+                    key={p.slug}
+                    type="button"
+                    onClick={() => setProgramme(p.slug)}
+                    className={`rounded-2xl p-3.5 text-left transition-all ${
+                      isSelected
+                        ? "border-2 border-mustard-500 bg-[#fffcf5] shadow-sm ring-2 ring-mustard-500/20"
+                        : "border border-sand-200 bg-white hover:border-sand-300"
+                    }`}
+                  >
+                    <p className="text-xs sm:text-sm font-bold text-cocoa-900">{p.title}</p>
+                    <p className="mt-0.5 text-[0.72rem] sm:text-xs text-muted leading-snug">{p.desc}</p>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Continue button */}
           <button
             type="button"
             onClick={() => {
               if (validateStep1()) setCurrentStep(2);
             }}
-            className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-mustard-500 py-3.5 text-sm font-bold text-cocoa-900 shadow-md transition-transform hover:bg-mustard-400 active:scale-[0.99]"
+            className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-mustard-500 py-3.5 sm:py-4 text-sm sm:text-base font-bold text-cocoa-950 shadow-md transition-transform hover:bg-mustard-400 active:scale-[0.99]"
           >
-            Continue to Details
-            <ChevronRight className="size-4" />
+            Continue →
           </button>
         </div>
       )}
@@ -318,7 +411,16 @@ export function DonateForm({ defaultProgramme = "support-a-child" }: { defaultPr
       {currentStep === 2 && (
         <div className="grid gap-5 animate-modal-in">
           <div>
-            <label htmlFor="donor-name" className="text-sm font-semibold text-cocoa-900">
+            <h3 className="font-display text-xl font-bold tracking-tight text-cocoa-900">
+              Your details
+            </h3>
+            <p className="mt-1 text-xs text-muted">
+              We need your name and email to record your gift and send your receipt.
+            </p>
+          </div>
+
+          <div>
+            <label htmlFor="donor-name" className="text-xs sm:text-sm font-semibold text-cocoa-900">
               Full name <span className="text-red-600">*</span>
             </label>
             <input
@@ -332,15 +434,15 @@ export function DonateForm({ defaultProgramme = "support-a-child" }: { defaultPr
                 setName(e.target.value);
                 setStepErrors((prev) => ({ ...prev, name: undefined }));
               }}
-              className={`mt-2 block w-full rounded-xl border bg-cream-50 px-4 py-3 text-[0.95rem] text-cocoa-900 focus:border-mustard-500 focus:outline-none ${
+              className={`mt-2 block w-full rounded-2xl border bg-sand-50/50 px-4 py-3 text-sm text-cocoa-900 focus:border-mustard-500 focus:bg-white focus:outline-none ${
                 stepErrors.name ? "border-red-400" : "border-sand-200"
               }`}
             />
-            {stepErrors.name && <p className="mt-1.5 text-sm text-red-700">{stepErrors.name}</p>}
+            {stepErrors.name && <p className="mt-1.5 text-xs text-red-600">{stepErrors.name}</p>}
           </div>
 
           <div>
-            <label htmlFor="donor-email" className="text-sm font-semibold text-cocoa-900">
+            <label htmlFor="donor-email" className="text-xs sm:text-sm font-semibold text-cocoa-900">
               Email address <span className="text-red-600">*</span>
             </label>
             <input
@@ -354,11 +456,11 @@ export function DonateForm({ defaultProgramme = "support-a-child" }: { defaultPr
                 setEmail(e.target.value);
                 setStepErrors((prev) => ({ ...prev, email: undefined }));
               }}
-              className={`mt-2 block w-full rounded-xl border bg-cream-50 px-4 py-3 text-[0.95rem] text-cocoa-900 focus:border-mustard-500 focus:outline-none ${
+              className={`mt-2 block w-full rounded-2xl border bg-sand-50/50 px-4 py-3 text-sm text-cocoa-900 focus:border-mustard-500 focus:bg-white focus:outline-none ${
                 stepErrors.email ? "border-red-400" : "border-sand-200"
               }`}
             />
-            {stepErrors.email && <p className="mt-1.5 text-sm text-red-700">{stepErrors.email}</p>}
+            {stepErrors.email && <p className="mt-1.5 text-xs text-red-600">{stepErrors.email}</p>}
           </div>
 
           <div className="mt-3 flex items-center gap-3">
@@ -375,22 +477,24 @@ export function DonateForm({ defaultProgramme = "support-a-child" }: { defaultPr
               onClick={() => {
                 if (validateStep2()) setCurrentStep(3);
               }}
-              className="flex flex-1 items-center justify-center gap-2 rounded-full bg-mustard-500 py-3 text-sm font-bold text-cocoa-900 shadow-md transition-transform hover:bg-mustard-400 active:scale-[0.99]"
+              className="flex flex-1 items-center justify-center gap-2 rounded-full bg-mustard-500 py-3 text-sm font-bold text-cocoa-950 shadow-md transition-transform hover:bg-mustard-400 active:scale-[0.99]"
             >
-              Review & Confirm
-              <ChevronRight className="size-4" />
+              Review & Confirm →
             </button>
           </div>
         </div>
       )}
 
-      {/* ======================= STEP 3: CONFIRM (matching screenshot 3) ======================= */}
+      {/* ======================= STEP 3: CONFIRM & PAY ======================= */}
       {currentStep === 3 && (
         <div className="grid gap-6 animate-modal-in">
           <div>
             <h3 className="font-display text-2xl font-bold tracking-tight text-cocoa-900">
               Confirm your gift
             </h3>
+            <p className="mt-1 text-xs text-muted">
+              Review your details below and complete your donation using PayPal.
+            </p>
           </div>
 
           {/* Summary table */}
@@ -404,7 +508,7 @@ export function DonateForm({ defaultProgramme = "support-a-child" }: { defaultPr
 
             <div className="flex items-center justify-between border-b border-sand-200/70 px-5 py-3.5 text-sm">
               <span className="text-muted">Purpose</span>
-              <span className="font-bold text-cocoa-900">{purposeTitle}</span>
+              <span className="font-bold text-cocoa-900 text-right">{selectedPurpose.title}</span>
             </div>
 
             <div className="flex items-center justify-between border-b border-sand-200/70 px-5 py-3.5 text-sm">
@@ -424,14 +528,30 @@ export function DonateForm({ defaultProgramme = "support-a-child" }: { defaultPr
           <div className="flex items-start gap-2.5 text-xs leading-relaxed text-muted">
             <ShieldCheck className="mt-0.5 size-4 shrink-0 text-mustard-600" />
             <p>
-              Your details are securely stored. A Nafsi team member will follow up with secure payment
-              options (card, M-Pesa or bank transfer). You will receive a confirmation email.
+              Your details are securely stored. All payments are processed securely through PayPal. You will receive an Asante Sana confirmation email.
             </p>
+          </div>
+
+          {/* PayPal Checkout Button */}
+          <div className="rounded-2xl border border-sand-200 bg-sand-50/50 p-4">
+            <p className="text-xs font-bold uppercase tracking-wider text-cocoa-700">Pay with PayPal</p>
+            <p className="mt-1 text-xs text-muted">
+              Click below to complete your {formattedAmount} donation securely on PayPal.
+            </p>
+            <a
+              href="https://www.paypal.com/ncp/payment/NDG9RFXNW7LGC"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-[#0070BA] hover:bg-[#005ea6] py-3 text-sm font-bold text-white shadow-sm transition-all"
+            >
+              Continue to PayPal Checkout
+              <ExternalLink className="size-4" />
+            </a>
           </div>
 
           <FormError state={state} />
 
-          {/* Action buttons matching screenshot: [Back] [Give $10] */}
+          {/* Action buttons: Back and Record Pledge */}
           <div className="flex items-center gap-3 pt-1">
             <button
               type="button"
@@ -445,14 +565,14 @@ export function DonateForm({ defaultProgramme = "support-a-child" }: { defaultPr
             <button
               type="submit"
               disabled={pending}
-              className="flex flex-1 items-center justify-center gap-2 rounded-full bg-mustard-500 py-3.5 text-sm font-bold text-cocoa-900 shadow-md transition-transform hover:bg-mustard-400 active:scale-[0.99] disabled:opacity-50"
+              className="flex flex-1 items-center justify-center gap-2 rounded-full bg-mustard-500 py-3.5 text-sm font-bold text-cocoa-950 shadow-md transition-transform hover:bg-mustard-400 active:scale-[0.99] disabled:opacity-50"
             >
               {pending ? (
                 <Loader2 className="size-4 animate-spin" />
               ) : (
                 <Heart className="size-4 fill-current" />
               )}
-              Give {formattedAmount}
+              Confirm & Record {formattedAmount}
             </button>
           </div>
         </div>
