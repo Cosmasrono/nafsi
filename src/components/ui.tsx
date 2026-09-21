@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { Reveal } from "./reveal";
 
 export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <div className={`w-full px-5 sm:px-8 ${className}`}>{children}</div>;
+  return <div className={`mx-auto w-full px-5 sm:px-8 ${className}`}>{children}</div>;
 }
 
 export function Eyebrow({ children, tone = "mustard" }: { children: ReactNode; tone?: "mustard" | "light" }) {

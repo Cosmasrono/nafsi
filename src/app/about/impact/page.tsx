@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const uses = [
-  "Trainers who lead weekly sessions at five community centres",
+  "Trainers who lead weekly sessions at six community centres",
   "Safe, consistent spaces for children and youth to practise",
   "Smartphones, cameras and studio equipment for Tangaza and NaiWave",
   "Cohort training, mentorship and portfolio projects",

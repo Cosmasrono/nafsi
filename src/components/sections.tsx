@@ -99,27 +99,29 @@ export function ImpactStats({ tone = "dark" }: { tone?: "dark" | "light" }) {
 
 export function DonateBanner() {
   return (
-    <section className="relative isolate overflow-hidden bg-mustard-500">
-      <Image src="/images/dance.jpg" alt="" fill sizes="100vw" className="-z-10 object-cover opacity-15 mix-blend-multiply" />
-      <Container className="py-24">
-        <Reveal className="max-w-2xl">
-          <Eyebrow tone="light">Your support creates opportunity</Eyebrow>
-          <h2 className="mt-5 font-display text-[min(3rem,calc((100vw-2.5rem)/10.2))] font-extrabold leading-[0.95] tracking-tight text-cocoa-900 break-words sm:text-6xl">
-            Art becomes confidence. Confidence becomes change.
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-cocoa-900/80">
-            Your support helps create a safe space where a young person can discover talent, develop skills and see a different
-            future. Give once, or give monthly.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <ButtonLink href="/donate" variant="light">
-              <Heart className="size-4" />
-              Donate now
-            </ButtonLink>
-            <ButtonLink href="/get-involved" variant="outline">
-              Join the journey
-              <ArrowRight className="size-4" />
-            </ButtonLink>
+    <section className="py-12 sm:py-16">
+      <Container>
+        <Reveal className="relative isolate overflow-hidden rounded-[2.5rem] bg-mustard-500 p-8 sm:p-12 md:p-14 shadow-xl shadow-cocoa-900/10">
+          <Image src="/images/dance.jpg" alt="" fill sizes="(min-width: 1024px) 1024px, 100vw" className="-z-10 object-cover opacity-15 mix-blend-multiply" />
+          <div className="max-w-2xl">
+            <Eyebrow tone="light">Your support creates opportunity</Eyebrow>
+            <h2 className="mt-4 font-display text-[min(2.5rem,calc((100vw-3rem)/10.2))] font-extrabold leading-[0.98] tracking-tight text-cocoa-900 break-words sm:text-5xl">
+              Art becomes confidence. Confidence becomes change.
+            </h2>
+            <p className="mt-4 text-base sm:text-lg leading-relaxed text-cocoa-900/85">
+              Your support helps create a safe space where a young person can discover talent, develop skills and see a different
+              future. Give once, or give monthly.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <ButtonLink href="/donate" variant="light">
+                <Heart className="size-4" />
+                Donate now
+              </ButtonLink>
+              <ButtonLink href="/get-involved" variant="outline">
+                Join the journey
+                <ArrowRight className="size-4" />
+              </ButtonLink>
+            </div>
           </div>
         </Reveal>
       </Container>

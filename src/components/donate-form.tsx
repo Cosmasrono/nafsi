@@ -368,30 +368,30 @@ export function DonateForm({ defaultProgramme = "where-needed" }: { defaultProgr
           </div>
 
           {/* CHOOSE A PURPOSE */}
-          <div>
-            <p className="text-[0.72rem] font-bold tracking-wider uppercase text-cocoa-700">
-              CHOOSE A PURPOSE
-            </p>
-            <div className="mt-2.5 grid sm:grid-cols-2 gap-2.5">
-              {donationPurposes.map((p) => {
-                const isSelected = programme === p.slug;
-                return (
-                  <button
-                    key={p.slug}
-                    type="button"
-                    onClick={() => setProgramme(p.slug)}
-                    className={`rounded-2xl p-3.5 text-left transition-all ${
-                      isSelected
-                        ? "border-2 border-mustard-500 bg-[#fffcf5] shadow-sm ring-2 ring-mustard-500/20"
-                        : "border border-sand-200 bg-white hover:border-sand-300"
-                    }`}
-                  >
-                    <p className="text-xs sm:text-sm font-bold text-cocoa-900">{p.title}</p>
-                    <p className="mt-0.5 text-[0.72rem] sm:text-xs text-muted leading-snug">{p.desc}</p>
-                  </button>
-                );
-              })}
+          <div className="grid gap-1.5">
+            <label htmlFor="donation-purpose-select" className="text-[0.72rem] font-bold tracking-wider uppercase text-cocoa-700">
+              Choose a Purpose
+            </label>
+            <div className="relative">
+              <select
+                id="donation-purpose-select"
+                value={programme}
+                onChange={(e) => setProgramme(e.target.value)}
+                className="w-full appearance-none rounded-xl border border-sand-200 bg-sand-50/70 py-3 pl-4 pr-10 text-xs sm:text-sm font-semibold text-cocoa-900 shadow-sm focus:border-mustard-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-mustard-500/20 cursor-pointer"
+              >
+                {donationPurposes.map((p) => (
+                  <option key={p.slug} value={p.slug}>
+                    {p.title} — {p.desc}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 size-4 text-cocoa-700" />
             </div>
+            {selectedPurpose && (
+              <p className="text-[0.72rem] sm:text-xs text-muted pl-1">
+                Supporting: <span className="font-semibold text-cocoa-900">{selectedPurpose.title}</span> ({selectedPurpose.desc})
+              </p>
+            )}
           </div>
 
           {/* Continue button */}

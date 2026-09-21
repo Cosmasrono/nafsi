@@ -48,8 +48,8 @@ export default function AboutPage() {
 
       <section className="bg-sand-100">
         <Container className="py-24">
-          <SectionHeading eyebrow="Where we work" title="Five centres, one family" intro="Consistent weekly training, close to home." />
-          <ul className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-5">
+          <SectionHeading eyebrow="Where we work" title="Six centres, one family" intro="Consistent weekly training, close to home." />
+          <ul className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
             {centres.map((centre, i) => (
               <Reveal as="li" key={centre} delay={i * 70}>
                 <div className="rounded-2xl border border-sand-200 bg-white p-6">

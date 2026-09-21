@@ -90,7 +90,7 @@ export const nav: NavItem[] = [
   { label: "Contact", href: "/contact" },
 ];
 
-export const centres = ["Kariobangi", "Babadogo", "Kibera", "Dagoretti", "Kivuli"];
+export const centres = ["Kariobangi", "Babadogo", "Kibera", "Dagoretti", "Kivuli", "Glad Kids School"];
 
 export const impactStats = [
   {
@@ -109,7 +109,7 @@ export const impactStats = [
   },
   {
     icon: "pin",
-    value: 5,
+    value: 6,
     suffix: "",
     label: "Community training centres",
     note: centres.join(", ").replace(/, (?=[^,]*$)/, " and ") + ".",
@@ -143,7 +143,7 @@ export const programmes: Programme[] = [
       "Dance, music, acrobatics, circus, theatre, percussion, yoga and visual arts — the foundation of everything Nafsi does.",
     body: [
       "Through music, acrobatics, circus acts, dance, yoga, percussion, theatre, crafts and visual arts, Nafsi creates safe spaces where children and youth can express themselves, gain confidence and grow.",
-      "Every week we run training sessions across Kariobangi, Babadogo, Kibera, Dagoretti and Kivuli centres, offering consistent support and opportunities for self-discovery. Supporters can sponsor a trainer or a centre to keep this journey going.",
+      "Every week we run training sessions across Kariobangi, Babadogo, Kibera, Dagoretti, Kivuli and Glad Kids School centres, offering consistent support and opportunities for self-discovery. Supporters can sponsor a trainer or a centre to keep this journey going.",
     ],
     tags: ["Dance", "Acrobatics", "Music & percussion", "Theatre", "Circus arts", "Visual arts"],
     image: "/images/dance.jpg",
@@ -279,10 +279,10 @@ export const stories: Story[] = [
     title: "A week at the community centres",
     category: "From the Community",
     excerpt:
-      "Across Kariobangi, Babadogo, Kibera, Dagoretti and Kivuli, weekly training turns afternoons into dance, music and acrobatics.",
+      "Across Kariobangi, Babadogo, Kibera, Dagoretti, Kivuli and Glad Kids School, weekly training turns afternoons into dance, music and acrobatics.",
     image: "/images/community-hd.jpg",
     body: [
-      "Each week, trainers arrive at five community centres across Nairobi. Within minutes, open ground becomes a stage: warm-ups, balances, drumming and choreography.",
+      "Each week, trainers arrive at six community centres across Nairobi. Within minutes, open ground becomes a stage: warm-ups, balances, drumming and choreography.",
       "The sessions are consistent by design. Showing up every week gives children a safe routine, trusted adults and a group that notices when they are missing.",
       "Supporters can sponsor a trainer or a whole centre to keep these afternoons going.",
     ],
@@ -430,7 +430,7 @@ export const events: NafsiEvent[] = [
     time: "15:00",
     type: "Performance",
     title: "End-of-Year Community Showcase",
-    text: "Children and youth from all five centres perform dance, music and acrobatics to close out a year of weekly training.",
+    text: "Children and youth from all six centres perform dance, music and acrobatics to close out a year of weekly training.",
     venue: "Kariobangi Centre, Nairobi",
   },
 ];
