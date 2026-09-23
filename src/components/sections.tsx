@@ -350,7 +350,7 @@ export function FollowJourney() {
         </div>
         <div className="grid grid-cols-2 gap-4">
           <Reveal className="relative aspect-[3/4] overflow-hidden rounded-3xl">
-            <Image src="images/one.jpeg" alt="Children dancing at a Nafsi community centre" fill sizes="(min-width: 768px) 25vw, 50vw" className="object-cover" />
+            <Image src="/images/one.jpeg" alt="Children dancing at a Nafsi community centre" fill sizes="(min-width: 768px) 25vw, 50vw" className="object-cover" />
             <span className="absolute bottom-3 left-3 flex items-center gap-1.5 text-xs font-semibold text-cream-50">
               <InstagramIcon className="size-3.5" />
               @nafsiafrica

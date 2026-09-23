@@ -146,7 +146,7 @@ export default function HomePage() {
             title="See it. Hear it. Feel it."
             intro="Nafsi stories, Tangaza films, NaiWave podcasts and performance reels — the work is alive on screen."
             action={
-              <ButtonLink href="/stories/videos" variant="outline">
+              <ButtonLink href={site.socials.youtube} variant="outline">
                 All videos
                 <ArrowUpRight className="size-4" />
               </ButtonLink>
