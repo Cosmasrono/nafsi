@@ -315,7 +315,7 @@ export function CreatorsSpotlight() {
           </ButtonLink>
         </Reveal>
         <Reveal delay={150} className="relative aspect-[4/3] overflow-hidden rounded-3xl">
-          <Image src="/images/creator.jpg" alt="A young creator filming on a smartphone above a Nairobi street" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+          <Image src="/images/creator-camera.jpg" alt="A young Nafsi creator behind the camera, capturing stories from the community" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover object-top" />
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-cocoa-950/90 to-transparent p-6 pt-16">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-mustard-500 px-3 py-1 text-xs font-semibold text-cocoa-900">
               <Sparkles className="size-3.5" />
@@ -350,7 +350,7 @@ export function FollowJourney() {
         </div>
         <div className="grid grid-cols-2 gap-4">
           <Reveal className="relative aspect-[3/4] overflow-hidden rounded-3xl">
-            <Image src="/images/dance-tall.jpg" alt="Children dancing at a Nafsi community centre" fill sizes="(min-width: 768px) 25vw, 50vw" className="object-cover" />
+            <Image src="images/one.jpeg" alt="Children dancing at a Nafsi community centre" fill sizes="(min-width: 768px) 25vw, 50vw" className="object-cover" />
             <span className="absolute bottom-3 left-3 flex items-center gap-1.5 text-xs font-semibold text-cream-50">
               <InstagramIcon className="size-3.5" />
               @nafsiafrica

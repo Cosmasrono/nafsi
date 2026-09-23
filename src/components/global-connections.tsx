@@ -104,16 +104,55 @@ const cities: CityConnection[] = [
     labelDy: -4,
   },
   {
-    name: "Lima",
-    country: "Peru",
+    name: "La Paz",
+    country: "Bolivia",
     role: "South-South Creative & Cultural Exchange",
     detail:
       "Connecting Latin American and African community art initiatives through Global Stay Tours, youth acrobatics and traditional storytelling.",
-    distance: "12,680 km from Nairobi",
-    x: 286,
-    y: 283,
+    distance: "11,550 km from Nairobi",
+    x: 308,
+    y: 292,
     labelDx: -8,
     labelDy: -2,
+    textAnchor: "end",
+  },
+  {
+    name: "Kampala",
+    country: "Uganda",
+    role: "East Africa Cultural Exchange & Youth Arts",
+    detail:
+      "Cross-border performing arts collaborations, youth acrobatic workshops, and regional grassroots creative networks across East Africa.",
+    distance: "505 km from Nairobi",
+    x: 588,
+    y: 248,
+    labelDx: -8,
+    labelDy: -5,
+    textAnchor: "end",
+  },
+  {
+    name: "Dar es Salaam",
+    country: "Tanzania",
+    role: "Regional Arts Dialogue & Community Performance",
+    detail:
+      "East African youth arts solidarity, coastal music and percussion exchanges, and cross-border creative community mentorship.",
+    distance: "670 km from Nairobi",
+    x: 610,
+    y: 272,
+    labelDx: 8,
+    labelDy: 5,
+    textAnchor: "start",
+  },
+  {
+    name: "Accra",
+    country: "Ghana",
+    role: "Pan-African Youth Media & Cultural Exchange",
+    detail:
+      "Connecting East and West African youth creators through smartphone filmmaking, digital storytelling, and shared cultural narratives.",
+    distance: "4,210 km from Nairobi",
+    x: 498,
+    y: 236,
+    labelDx: -8,
+    labelDy: 3,
     textAnchor: "end",
   },
   {
@@ -140,7 +179,7 @@ export function GlobalConnections() {
         <SectionHeading
           eyebrow="From Nairobi to the world"
           title="A global creative hub, headquartered in Nairobi"
-          intro="Young people from Nairobi's informal settlements connect across Europe, Latin America and beyond — including Denmark, Bolivia, Germany, Italy, Bulgaria, Norway, Peru and Austria."
+          intro="Young people from Nairobi's informal settlements connect across Africa, Europe, Latin America and beyond — including Uganda, Tanzania, Ghana, Denmark, Bolivia, Germany, Italy, Bulgaria, Norway and Austria."
         />
 
         <div className="mt-12 overflow-hidden rounded-3xl border border-cream-50/15 bg-cocoa-950 shadow-2xl shadow-cocoa-950/40">
@@ -193,8 +232,9 @@ export function GlobalConnections() {
                   const isCurActive = active === city.name;
                   // Quadratic curve with apex control point
                   const midX = (602 + city.x) / 2;
-                  const isWestHemisphere = city.x < 450;
-                  const midY = Math.min(254, city.y) - (isWestHemisphere ? 90 : 50);
+                  const dist = Math.hypot(602 - city.x, 254 - city.y);
+                  const arcHeight = city.x < 450 ? 90 : Math.min(50, Math.max(12, dist * 0.4));
+                  const midY = Math.min(254, city.y) - arcHeight;
 
                   return (
                     <g key={`arc-${city.name}`}>

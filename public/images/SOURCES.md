@@ -16,7 +16,11 @@ Updated 2026-09-19. Programme photos were retrieved from Nafsi Africa's existing
 | video-4-hd.jpg | https://i.ytimg.com/vi/h_roaAxRJcs/maxresdefault.jpg |
 | mazingira.jpg | User-provided Mazingira climate action performance photograph |
 | outreach-bus.jpg | User-provided community outreach excursion bus photograph |
+| youth-movement.jpg | User-provided outdoor procession of Nafsi youth and leaders; used for Nafsi Alumni story |
+| tangaza-lab.jpg | User-provided video/digital media editing computer session; used for Tangaza cohort story |
+| creator-camera.jpg | User-provided young creator with Canon DSLR camera; used for Creator Spotlight |
+| community-mentor.jpg | User-provided Nafsi mentor with school children; used for Community Centres story |
 
 All five video IDs were checked against YouTube's oEmbed endpoint, including matching the episode titles and NaiWave channel. The first four were sourced from https://www.nafsiafrica.org/services-3 and the fifth from https://www.youtube.com/@Naiwave/search?query=silent. Thumbnails are 1280 × 720 pixels.
 
-Remaining small design crops: dance.jpg, dance-tall.jpg, naiwave.jpg, podcast-tall.jpg and creator.jpg. Replace these with the corresponding full-resolution originals when available. Use at least 1600–2000px-wide source photos for large desktop panels, and a 2560px-wide or larger original for a full-width hero. Do not upscale small crops and expect additional detail.
+Remaining small design crops: dance-tall.jpg, naiwave.jpg, and podcast-tall.jpg. Replace these with the corresponding full-resolution originals when available. Use at least 1600–2000px-wide source photos for large desktop panels, and a 2560px-wide or larger original for a full-width hero. Do not upscale small crops and expect additional detail.

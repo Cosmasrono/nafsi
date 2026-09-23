@@ -117,10 +117,10 @@ export const impactStats = [
   },
   {
     icon: "globe",
-    value: 9,
+    value: 11,
     suffix: "",
     label: "Countries connected",
-    note: "Kenya, Denmark, Bolivia, Germany, Italy, Bulgaria, Norway, Peru and Austria.",
+    note: "Kenya, Uganda, Tanzania, Ghana, Denmark, Bolivia, Germany, Italy, Bulgaria, Norway and Austria.",
   },
 ] as const;
 
@@ -200,7 +200,7 @@ export const programmes: Programme[] = [
       "Connecting young people across Kenya, Bolivia, Denmark, and global partner nations through digital media and live cultural exchange.",
     body: [
       "Launched in 2020 in response to the disruptions of the COVID-19 pandemic, Global Stay Tours (GST) bridges the gap created by halted travel and interrupted school programmes.",
-      "Using digital media and live video conferencing, it connects young people from Kenya with peers across Denmark, Bolivia, Germany, Italy, Bulgaria, Norway, Peru and Austria to exchange culture and collaborate on discussions around the Sustainable Development Goals. GST also creates opportunities for participants to earn a livelihood while engaging in meaningful global conversations.",
+      "Using digital media and live video conferencing, it connects young people from Kenya with peers across Uganda, Tanzania, Ghana, Denmark, Bolivia, Germany, Italy, Bulgaria, Norway and Austria to exchange culture and collaborate on discussions around the Sustainable Development Goals. GST also creates opportunities for participants to earn a livelihood while engaging in meaningful global conversations.",
     ],
     tags: ["Cultural exchange", "Digital dialogue", "SDGs", "Cross-cultural collaboration", "Livelihoods"],
     image: "/images/gst-hd.jpg",
@@ -288,7 +288,7 @@ export const stories: Story[] = [
     category: "Tangaza Stories",
     excerpt:
       "Smartphones become film studios. 208 young people — many of them young women — learning to shoot, edit and tell stories that matter.",
-    image: "/images/tangaza-session.jpg",
+    image: "/images/tangaza-lab.jpg",
     body: [
       "A Tangaza cohort starts with the phone already in your pocket. Participants learn framing, sound, lighting and interviewing before moving on to editing, motion graphics and formatting for social media.",
       "Every cohort ends with portfolio-ready work: short documentaries and reports on climate, gender equality and life in Nairobi's informal settlements.",
@@ -301,7 +301,7 @@ export const stories: Story[] = [
     category: "From the Community",
     excerpt:
       "Across Kariobangi, Babadogo, Kibera, Dagoretti, Kivuli and Glad Kids School, weekly training turns afternoons into dance, music and acrobatics.",
-    image: "/images/community-hd.jpg",
+    image: "/images/community-mentor.jpg",
     body: [
       "Each week, trainers arrive at six community centres across Nairobi. Within minutes, open ground becomes a stage: warm-ups, balances, drumming and choreography.",
       "The sessions are consistent by design. Showing up every week gives children a safe routine, trusted adults and a group that notices when they are missing.",
@@ -314,7 +314,7 @@ export const stories: Story[] = [
     category: "Artist Stories",
     excerpt:
       "For Nafsi's young performers, every rehearsal teaches discipline, teamwork and the confidence to be seen.",
-    image: "/images/dance.jpg",
+    image: "/images/community-hd.jpg",
     body: [
       "Performance asks a lot of a young person: turning up on time, trusting the person beside you, recovering when a move goes wrong in front of an audience.",
       "Nafsi's performers carry those lessons from community showcases to local and international stages, and back into school and home.",
@@ -338,7 +338,7 @@ export const stories: Story[] = [
     category: "Nafsi Alumni",
     excerpt:
       "Talent development at Nafsi builds a pipeline: today's media students run the social channels and tomorrow's programmes.",
-    image: "/images/youth-hd.jpg",
+    image: "/images/youth-movement.jpg",
     body: [
       "Nafsi's talent development programme gives young people real responsibility: media students manage social platforms and produce content, while ICT interns support the organisation's technical needs.",
       "As participants gain expertise and confidence, many become mentors and leaders inside Nafsi, which keeps the organisation rooted in the communities it serves.",
