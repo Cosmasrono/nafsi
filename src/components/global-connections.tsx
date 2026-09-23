@@ -42,18 +42,6 @@ const cities: CityConnection[] = [
     labelDy: -2,
   },
   {
-    name: "Cochabamba",
-    country: "Bolivia",
-    role: "Tri-Continental Youth Exchange",
-    detail:
-      "Connecting young acrobats, dancers and media creators across Kenya, Denmark and Bolivia through Global Stay Tours.",
-    distance: "11,540 km from Nairobi",
-    x: 316,
-    y: 298,
-    labelDx: 8,
-    labelDy: 3,
-  },
-  {
     name: "Hamburg",
     country: "Germany",
     role: "Cultural Tour Partner · Kinder Kultur Karawane",
@@ -106,9 +94,9 @@ const cities: CityConnection[] = [
   {
     name: "La Paz",
     country: "Bolivia",
-    role: "South-South Creative & Cultural Exchange",
+    role: "Tri-Continental Youth Exchange",
     detail:
-      "Connecting Latin American and African community art initiatives through Global Stay Tours, youth acrobatics and traditional storytelling.",
+      "Connecting young acrobats, dancers and media creators across Kenya, Denmark and Bolivia through Global Stay Tours and South-South creative dialogue.",
     distance: "11,550 km from Nairobi",
     x: 308,
     y: 292,
