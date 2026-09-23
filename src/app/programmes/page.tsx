@@ -5,7 +5,7 @@ import { programmes } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Programmes",
-  description: "Performing arts, outreach, Tangaza on Smartphone, NaiWave Studios, Global Stay Tours and youth empowerment.",
+  description: "Performing arts, outreach, Tangaza on Smartphone, NaiWave Studios, Global Stay Tours, youth empowerment and Mazingira climate action.",
 };
 
 export default function ProgrammesPage() {
@@ -13,7 +13,7 @@ export default function ProgrammesPage() {
     <>
       <PageHero
         eyebrow="Programmes"
-        title="Six ways creativity becomes opportunity"
+        title="Seven ways creativity becomes opportunity"
         intro="On stage, behind the camera, on air and across borders, every programme builds skills, confidence and community."
       />
       {programmes.map((programme, i) => (

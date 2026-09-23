@@ -62,6 +62,7 @@ export const nav: NavItem[] = [
       { label: "NaiWave Studios", href: "/programmes/naiwave" },
       { label: "Global Stay Tours", href: "/programmes/global-stay-tours" },
       { label: "Youth Empowerment", href: "/programmes/youth-empowerment" },
+      { label: "Mazingira (Climate Action)", href: "/programmes/mazingira" },
     ],
   },
   {
@@ -116,10 +117,10 @@ export const impactStats = [
   },
   {
     icon: "globe",
-    value: 3,
+    value: 9,
     suffix: "",
     label: "Countries connected",
-    note: "Kenya, Denmark and Bolivia through Global Stay Tours.",
+    note: "Kenya, Denmark, Bolivia, Germany, Italy, Bulgaria, Norway, Peru and Austria.",
   },
 ] as const;
 
@@ -160,7 +161,7 @@ export const programmes: Programme[] = [
       "Outreach also carries Nafsi's advocacy: tree planting and environmental awareness workshops, sanitary workshops for girls, and conversations on gender equality that start in the community.",
     ],
     tags: ["Community shows", "Children's homes", "Environment", "Gender equality", "Girls' health"],
-    image: "/images/community-hd.jpg",
+    image: "/images/outreach-bus.jpg",
     cta: "Explore Outreach",
   },
   {
@@ -196,10 +197,10 @@ export const programmes: Programme[] = [
     title: "Global Stay Tours",
     eyebrow: "Cultural exchange · Since 2020",
     summary:
-      "Connecting young people across Kenya, Bolivia and Denmark through digital media and live cultural exchange.",
+      "Connecting young people across Kenya, Bolivia, Denmark, and global partner nations through digital media and live cultural exchange.",
     body: [
       "Launched in 2020 in response to the disruptions of the COVID-19 pandemic, Global Stay Tours (GST) bridges the gap created by halted travel and interrupted school programmes.",
-      "Using digital media and Zoom video conferencing, it connects young people from Kenya, Bolivia and Denmark to exchange culture and collaborate on discussions around the Sustainable Development Goals. GST also creates opportunities for participants to earn a livelihood while engaging in meaningful global conversations.",
+      "Using digital media and live video conferencing, it connects young people from Kenya with peers across Denmark, Bolivia, Germany, Italy, Bulgaria, Norway, Peru and Austria to exchange culture and collaborate on discussions around the Sustainable Development Goals. GST also creates opportunities for participants to earn a livelihood while engaging in meaningful global conversations.",
     ],
     tags: ["Cultural exchange", "Digital dialogue", "SDGs", "Cross-cultural collaboration", "Livelihoods"],
     image: "/images/gst-hd.jpg",
@@ -218,6 +219,26 @@ export const programmes: Programme[] = [
     tags: ["Talent development", "Advocacy", "Mentorship", "Leadership", "Creative livelihoods"],
     image: "/images/youth-hd.jpg",
     cta: "Explore Youth Empowerment",
+  },
+  {
+    slug: "mazingira",
+    title: "Mazingira: Creative Climate Action",
+    eyebrow: "Climate Activism · Art · Environment",
+    summary:
+      "Nafsi’s creative response to the climate crisis — using theatre, dance, music, murals, recycled art and smartphone film to spark environmental action in Nairobi’s informal settlements.",
+    body: [
+      "Mazingira — Swahili for “environment” — is Nafsi’s creative response to the climate crisis. Building on Tangaza’s track record of climate storytelling, young people use theatre, dance, music, murals, recycled-material art and smartphone film to raise awareness and spark environmental action in Nairobi’s informal settlements — the communities that feel the effects of climate change first. From performances and community dialogues to youth-made documentaries on local environmental issues, this direction turns young creators into climate voices, proving that creativity can move communities where facts alone cannot.",
+    ],
+    tags: [
+      "Climate storytelling",
+      "Environmental theatre",
+      "Recycled-material art",
+      "Community dialogues",
+      "Youth climate advocacy",
+      "SDG 13 action",
+    ],
+    image: "/images/mazingira.jpg",
+    cta: "Support climate action",
   },
 ];
 

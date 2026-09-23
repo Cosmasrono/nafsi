@@ -5,7 +5,20 @@ import { useState } from "react";
 import { Container, SectionHeading } from "./ui";
 import { worldMapSvgPath } from "./world-map-path";
 
-const cities = [
+type CityConnection = {
+  name: string;
+  country: string;
+  role: string;
+  detail: string;
+  distance: string;
+  x: number;
+  y: number;
+  labelDx?: number;
+  labelDy?: number;
+  textAnchor?: "start" | "middle" | "end";
+};
+
+const cities: CityConnection[] = [
   {
     name: "Nairobi",
     country: "Kenya",
@@ -25,6 +38,8 @@ const cities = [
     distance: "6,920 km from Nairobi",
     x: 535,
     y: 95,
+    labelDx: 8,
+    labelDy: -2,
   },
   {
     name: "Cochabamba",
@@ -35,6 +50,8 @@ const cities = [
     distance: "11,540 km from Nairobi",
     x: 316,
     y: 298,
+    labelDx: 8,
+    labelDy: 3,
   },
   {
     name: "Hamburg",
@@ -45,6 +62,9 @@ const cities = [
     distance: "6,740 km from Nairobi",
     x: 528,
     y: 101,
+    labelDx: -8,
+    labelDy: 3,
+    textAnchor: "end",
   },
   {
     name: "Rome",
@@ -55,6 +75,58 @@ const cities = [
     distance: "5,380 km from Nairobi",
     x: 535,
     y: 134,
+    labelDx: -8,
+    labelDy: 4,
+    textAnchor: "end",
+  },
+  {
+    name: "Sofia",
+    country: "Bulgaria",
+    role: "Cultural Exchange & Youth Circus Arts",
+    detail:
+      "Intercultural arts dialogues, youth circus collaborations, and creative performance exchange connecting Bulgarian and Kenyan youth.",
+    distance: "4,950 km from Nairobi",
+    x: 565,
+    y: 131,
+    labelDx: 8,
+    labelDy: 3,
+  },
+  {
+    name: "Oslo",
+    country: "Norway",
+    role: "Nordic Youth Dialogues & Cultural Exchange",
+    detail:
+      "Nordic-African creative collaborations, educational storytelling initiatives and environmental youth advocacy.",
+    distance: "7,420 km from Nairobi",
+    x: 530,
+    y: 84,
+    labelDx: 8,
+    labelDy: -4,
+  },
+  {
+    name: "Lima",
+    country: "Peru",
+    role: "South-South Creative & Cultural Exchange",
+    detail:
+      "Connecting Latin American and African community art initiatives through Global Stay Tours, youth acrobatics and traditional storytelling.",
+    distance: "12,680 km from Nairobi",
+    x: 286,
+    y: 283,
+    labelDx: -8,
+    labelDy: -2,
+    textAnchor: "end",
+  },
+  {
+    name: "Vienna",
+    country: "Austria",
+    role: "Intercultural Arts & Educational Exchange",
+    detail:
+      "Community music and performing arts workshops, European cultural dialogue, and creative workshops supporting youth development.",
+    distance: "5,890 km from Nairobi",
+    x: 545,
+    y: 116,
+    labelDx: 8,
+    labelDy: -2,
   },
 ];
 
@@ -68,7 +140,7 @@ export function GlobalConnections() {
         <SectionHeading
           eyebrow="From Nairobi to the world"
           title="A global creative hub, headquartered in Nairobi"
-          intro="Young people from Nairobi's informal settlements connect with Denmark, Bolivia and beyond — through digital dialogue, cultural exchange and shared stories."
+          intro="Young people from Nairobi's informal settlements connect across Europe, Latin America and beyond — including Denmark, Bolivia, Germany, Italy, Bulgaria, Norway, Peru and Austria."
         />
 
         <div className="mt-12 overflow-hidden rounded-3xl border border-cream-50/15 bg-cocoa-950 shadow-2xl shadow-cocoa-950/40">
@@ -121,7 +193,8 @@ export function GlobalConnections() {
                   const isCurActive = active === city.name;
                   // Quadratic curve with apex control point
                   const midX = (602 + city.x) / 2;
-                  const midY = Math.min(254, city.y) - (city.name === "Cochabamba" ? 90 : 50);
+                  const isWestHemisphere = city.x < 450;
+                  const midY = Math.min(254, city.y) - (isWestHemisphere ? 90 : 50);
 
                   return (
                     <g key={`arc-${city.name}`}>
@@ -200,8 +273,9 @@ export function GlobalConnections() {
                       />
                       {/* City label on map */}
                       <text
-                        x={city.x + 8}
-                        y={city.y - 6}
+                        x={city.x + (city.labelDx ?? 8)}
+                        y={city.y + (city.labelDy ?? -6)}
+                        textAnchor={city.textAnchor ?? "start"}
                         fill={isCurActive ? "#ffffff" : "#cbb29b"}
                         fontSize="11"
                         fontWeight={isCurActive ? "700" : "500"}

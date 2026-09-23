@@ -14,6 +14,8 @@ Updated 2026-09-19. Programme photos were retrieved from Nafsi Africa's existing
 | video-2-hd.jpg | https://i.ytimg.com/vi/Us37EUGXltY/maxresdefault.jpg |
 | video-3-hd.jpg | https://i.ytimg.com/vi/VgMaakoms9M/maxresdefault.jpg |
 | video-4-hd.jpg | https://i.ytimg.com/vi/h_roaAxRJcs/maxresdefault.jpg |
+| mazingira.jpg | User-provided Mazingira climate action performance photograph |
+| outreach-bus.jpg | User-provided community outreach excursion bus photograph |
 
 All five video IDs were checked against YouTube's oEmbed endpoint, including matching the episode titles and NaiWave channel. The first four were sourced from https://www.nafsiafrica.org/services-3 and the fifth from https://www.youtube.com/@Naiwave/search?query=silent. Thumbnails are 1280 × 720 pixels.
 

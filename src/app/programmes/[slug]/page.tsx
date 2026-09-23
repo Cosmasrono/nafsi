@@ -15,6 +15,7 @@ const relatedCategory: Record<string, StoryCategory> = {
   naiwave: "Youth Voices",
   "global-stay-tours": "Global Exchange Stories",
   "youth-empowerment": "Nafsi Alumni",
+  mazingira: "Youth Voices",
 };
 
 export const dynamicParams = false;

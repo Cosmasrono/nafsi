@@ -101,7 +101,7 @@ export default function HomePage() {
         <Container className="py-24">
           <SectionHeading
             eyebrow="What we do"
-            title="Six pathways from creativity to opportunity"
+            title="Seven pathways from creativity to opportunity"
             intro="Nafsi is not a charity that hands out help. It is a platform where art becomes confidence, confidence becomes skills, and skills become opportunity."
           />
           <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
