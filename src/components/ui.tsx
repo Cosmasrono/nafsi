@@ -4,17 +4,19 @@ import type { ReactNode } from "react";
 import { Reveal } from "./reveal";
 
 export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <div className={`mx-auto w-full px-5 sm:px-8 ${className}`}>{children}</div>;
+  return <div className={`content-container mx-auto w-full px-5 sm:px-8 ${className}`}>{children}</div>;
 }
 
-export function Eyebrow({ children, tone = "mustard" }: { children: ReactNode; tone?: "mustard" | "light" }) {
+export function Eyebrow({ children, tone = "mustard" }: { children: ReactNode; tone?: "mustard" | "light" | "gold" }) {
   return (
     <p
-      className={`flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.22em] ${
-        tone === "light" ? "text-cocoa-900/70" : "text-mustard-500"
+      className={`inline-flex items-center gap-2.5 rounded-full px-3 py-1 text-[0.7rem] font-bold uppercase tracking-[0.2em] ${
+        tone === "light"
+          ? "border border-cocoa-900/10 bg-cocoa-900/5 text-cocoa-900/80"
+          : tone === "gold" ? "border border-mustard-500/20 bg-mustard-500/10 text-mustard-300" : "border border-mustard-500/20 bg-mustard-500/10 text-[#996008]"
       }`}
     >
-      <span className="h-px w-6 bg-current" aria-hidden />
+      <span className="size-1.5 rounded-full bg-current" aria-hidden />
       {children}
     </p>
   );
@@ -23,15 +25,20 @@ export function Eyebrow({ children, tone = "mustard" }: { children: ReactNode; t
 type ButtonVariant = "primary" | "outline" | "outline-light" | "light" | "dark";
 
 const variants: Record<ButtonVariant, string> = {
-  primary: "bg-mustard-500 text-cocoa-900 hover:bg-mustard-400",
-  outline: "border border-cocoa-900/20 text-cocoa-900 hover:border-cocoa-900 hover:bg-cocoa-900 hover:text-cream-50",
-  "outline-light": "border border-cream-50/25 text-cream-50 hover:border-cream-50 hover:bg-cream-50 hover:text-cocoa-900",
-  light: "bg-cream-50 text-mustard-600 hover:bg-white",
-  dark: "bg-cocoa-900 text-cream-50 hover:bg-cocoa-800",
+  primary:
+    "bg-mustard-500 text-cocoa-950 hover:bg-mustard-400 hover:-translate-y-0.5 active:translate-y-0",
+  outline:
+    "border-2 border-cocoa-900/15 bg-white/60 text-cocoa-900 hover:border-cocoa-900 hover:bg-cocoa-900 hover:text-cream-50 hover:-translate-y-0.5 active:translate-y-0 shadow-xs",
+  "outline-light":
+    "border-2 border-cream-50/30 bg-cocoa-950/20 text-cream-50 hover:border-cream-50 hover:bg-cream-50 hover:text-cocoa-950 hover:-translate-y-0.5 active:translate-y-0 backdrop-blur-xs shadow-xs",
+  light:
+    "bg-white text-mustard-600 font-bold hover:bg-cream-50 hover:text-mustard-700 shadow-md hover:-translate-y-0.5 active:translate-y-0",
+  dark:
+    "bg-cocoa-900 text-cream-50 hover:bg-cocoa-800 shadow-md hover:-translate-y-0.5 active:translate-y-0",
 };
 
 export function buttonClass(variant: ButtonVariant = "primary", size: "md" | "lg" = "md") {
-  return `inline-flex items-center justify-center gap-2 rounded-full font-display font-bold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard-500 disabled:cursor-not-allowed disabled:opacity-60 ${
+  return `inline-flex min-h-11 items-center justify-center gap-2 rounded-full font-sans font-semibold transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mustard-500 disabled:cursor-not-allowed disabled:opacity-60 cursor-pointer ${
     size === "lg" ? "px-7 py-3.5 text-[0.95rem]" : "px-5 py-2.5 text-sm"
   } ${variants[variant]}`;
 }
@@ -82,14 +89,14 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden bg-cocoa-900 text-cream-50">
+    <section className="creative-hero relative isolate overflow-hidden bg-cocoa-900 text-cream-50">
       <div
         className="pointer-events-none absolute -right-40 -top-40 size-[34rem] rounded-full bg-mustard-500/10 blur-3xl"
         aria-hidden
       />
       <Container className="relative py-20 sm:py-24">
         <Reveal>
-          <Eyebrow>{eyebrow}</Eyebrow>
+          <Eyebrow tone="gold">{eyebrow}</Eyebrow>
           {/* Syne is very wide at 800, so the size follows the viewport until the longest word (~12em) fits */}
           <h1 className="mt-5 max-w-4xl font-display text-[min(2.6rem,calc((100vw-2.5rem)/9.2))] font-bold leading-[0.95] tracking-tight break-words sm:text-[min(4.25rem,calc((100vw-4rem)/13))] sm:font-extrabold">
             {title}

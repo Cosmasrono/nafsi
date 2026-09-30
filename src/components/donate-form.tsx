@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, ChevronDown, ChevronLeft, ChevronRight, ExternalLink, Heart, Loader2, ShieldCheck } from "lucide-react";
+import { Check, ChevronDown, ChevronLeft, ExternalLink, Heart, Loader2, ShieldCheck } from "lucide-react";
 import { useActionState, useState } from "react";
 import { startDonation } from "@/app/actions";
 import { initialFormState } from "@/lib/form-state";
@@ -66,6 +66,10 @@ function getImpactDescription(currency: "USD" | "EUR" | "KES", amount: number): 
 
 export function DonateForm({ defaultProgramme = "where-needed" }: { defaultProgramme?: string }) {
   const [state, formAction, pending] = useActionState(startDonation, initialFormState);
+  // useActionState can't be reset, so "make another donation" remembers which
+  // success result it dismissed; a new submission yields a new result object.
+  const [dismissed, setDismissed] = useState<typeof state | null>(null);
+  const succeeded = state.status === "success" && state !== dismissed;
 
   // Steps: 1 = AMOUNT, 2 = DETAILS, 3 = CONFIRM
   const [currentStep, setCurrentStep] = useState<1 | 2 | 3>(1);
@@ -127,14 +131,11 @@ export function DonateForm({ defaultProgramme = "where-needed" }: { defaultProgr
     setPreset(currency === "KES" ? 5000 : 50);
     setCustom("");
     setStepErrors({});
-    if (state.status === "success") {
-      state.status = "idle";
-      state.message = "";
-    }
+    setDismissed(state);
   }
 
   // Asante Sana confirmation screen
-  if (state.status === "success") {
+  if (succeeded) {
     const firstName = (state.values?.name || name).split(" ")[0];
     const displayAmount = state.values?.formattedAmount || formattedAmount;
     const displayFreq = (state.values?.frequency || frequency) === "monthly" ? "monthly" : "one-time";

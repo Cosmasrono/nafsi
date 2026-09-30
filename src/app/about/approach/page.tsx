@@ -1,8 +1,9 @@
 import { Megaphone, Sprout, Users } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { DonateBanner } from "@/components/sections";
 import { Reveal } from "@/components/reveal";
-import { Container, PageHero, SectionHeading } from "@/components/ui";
+import { Container, PageHero, SectionHeading, TextLink } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Our Approach",
@@ -13,16 +14,25 @@ const pillars = [
   {
     Icon: Users,
     title: "Youth empowerment",
+    image: "/images/youth-hd.jpg",
+    href: "/programmes/youth-empowerment",
+    action: "Explore youth empowerment",
     text: "A holistic approach focused on skill development, self-esteem and economic sustainability. Projects in education, creative arts, media and outreach equip children and young adults with marketable skills for future independence.",
   },
   {
     Icon: Sprout,
     title: "Talent development",
+    image: "/images/tangaza-lab.jpg",
+    href: "/programmes/tangaza",
+    action: "Discover creative training",
     text: "Structured mentorship, hands-on training and real-world assignments in media, community development and ICT. Participants run an online radio station, create podcasts and help manage community centres.",
   },
   {
     Icon: Megaphone,
     title: "Advocacy",
+    image: "/images/mazingira.jpg",
+    href: "/programmes/mazingira",
+    action: "See climate action",
     text: "Environmental conservation and gender equality through tree planting, awareness workshops, sanitary workshops for girls and global conversations through Global Stay Tours.",
   },
 ];
@@ -47,14 +57,21 @@ export default function ApproachPage() {
       <section className="bg-cream-50">
         <Container className="py-24">
           <ul className="grid gap-6 md:grid-cols-3">
-            {pillars.map(({ Icon, title, text }, i) => (
+            {pillars.map(({ Icon, title, text, image, href, action }, i) => (
               <Reveal as="li" key={title} delay={i * 90}>
-                <div className="h-full rounded-3xl border border-sand-200 bg-white p-8">
+                <div className="flex h-full flex-col overflow-hidden rounded-3xl border border-sand-200 bg-white">
+                  <div className="relative aspect-[4/3]">
+                    <Image src={image} alt="" fill quality={85} sizes="(min-width: 1328px) 390px, (min-width: 768px) 30vw, 100vw" className="object-cover" />
+                    <span className="absolute left-5 top-5 rounded-full bg-cream-50 px-3 py-1 font-display text-sm font-bold text-cocoa-900">0{i + 1}</span>
+                  </div>
+                  <div className="flex flex-1 flex-col p-6 lg:p-8">
                   <span className="grid size-12 place-items-center rounded-2xl bg-mustard-100 text-mustard-600">
                     <Icon className="size-6" />
                   </span>
                   <h2 className="mt-6 font-display text-2xl font-bold text-cocoa-900">{title}</h2>
                   <p className="mt-3 leading-relaxed text-muted">{text}</p>
+                  <div className="mt-auto pt-6"><TextLink href={href}>{action}</TextLink></div>
+                  </div>
                 </div>
               </Reveal>
             ))}

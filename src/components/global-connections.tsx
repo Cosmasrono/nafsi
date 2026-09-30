@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Globe, Sparkles } from "lucide-react";
+import { Globe } from "lucide-react";
 import { useState } from "react";
 import { Container, SectionHeading } from "./ui";
 import { worldMapSvgPath } from "./world-map-path";

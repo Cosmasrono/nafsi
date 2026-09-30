@@ -21,7 +21,7 @@ export function SiteFooter() {
     <footer className="bg-cocoa-900 text-cream-50">
       <Container className="grid gap-10 border-b border-cream-50/10 py-16 md:grid-cols-2 md:items-center">
         <div>
-          <Eyebrow>Stay connected</Eyebrow>
+          <Eyebrow tone="gold">Stay connected</Eyebrow>
           <h2 className="mt-4 font-display text-3xl font-bold leading-tight sm:text-4xl">
             Get stories, opportunities and updates from Nafsi Africa.
           </h2>

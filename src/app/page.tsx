@@ -1,5 +1,6 @@
-import { ArrowDown, ArrowUpRight, Heart, Play } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Heart } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   CreatorsSpotlight,
   DonateBanner,
@@ -12,6 +13,7 @@ import {
 import { VideoGridClient } from "@/components/video-grid-client";
 import { GlobalConnections } from "@/components/global-connections";
 import { Counter } from "@/components/counter";
+import { ProgrammeBrowser } from "@/components/programme-browser";
 import { Reveal } from "@/components/reveal";
 import { StoryCard } from "@/components/story-card";
 import { ButtonLink, Container, Eyebrow, SectionHeading } from "@/components/ui";
@@ -21,50 +23,66 @@ export default function HomePage() {
   return (
     <>
       <section className="relative isolate overflow-hidden bg-cocoa-900 text-cream-50">
-        <div className="relative isolate flex min-h-[calc(100svh-4rem)] flex-col justify-end">
+        <div className="relative isolate">
         <div className="absolute inset-0 -z-10">
-          <Image src="/images/hero.jpg" alt="A young acrobat mid-flip against a Nairobi golden-hour sky" fill preload sizes="100vw" className="object-cover object-[65%_center]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-cocoa-900/60 via-cocoa-900/20 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-cocoa-900 via-transparent via-40% to-transparent" />
+          <Image src="/images/hero.jpg" alt="A young acrobat mid-flip against a Nairobi golden-hour sky" fill preload quality={85} sizes="100vw" className="object-cover object-[65%_center]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-cocoa-950/95 via-cocoa-950/75 to-cocoa-950/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-cocoa-900 via-transparent to-transparent" />
+          <div className="hero-grid absolute inset-0" />
         </div>
-        <div className="w-full px-5 pb-8 pt-24 sm:px-8 sm:pt-32 lg:px-12">
-          <Reveal className="max-w-3xl">
+        <Container className="grid items-center gap-12 py-16 sm:py-20 lg:min-h-[690px] lg:grid-cols-[1.25fr_0.85fr] lg:gap-16 lg:py-24">
+          <Reveal className="min-w-0">
             <p className="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-cream-50/85">
               <span className="h-px w-10 bg-current" aria-hidden />
               Nafsi Pamoja · Nairobi, Kenya · Since {site.founded}
             </p>
-            <h1 className="mt-6 font-display text-5xl font-bold leading-[0.92] tracking-tight break-words min-[380px]:text-6xl sm:text-7xl lg:text-8xl">
+            <h1 className="mt-6 font-display text-[clamp(2.65rem,5.2vw,4.75rem)] font-bold leading-[1.06] tracking-tight">
               Creativity can
               <span className="block text-mustard-500">change lives.</span>
             </h1>
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-cream-50/85 sm:text-xl">{site.description}</p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <ButtonLink href="/donate">
-                <Heart className="size-4" />
-                Donate now
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-cream-50/80 sm:text-lg">We help young people in Kenya turn creative talent into confidence, practical skills and opportunity — through arts, media and cultural exchange.</p>
+            <div className="mt-8 flex flex-col gap-3 min-[400px]:flex-row min-[400px]:flex-wrap">
+              <ButtonLink href="/programmes">
+                Explore our programmes
+                <ArrowUpRight className="size-4" />
               </ButtonLink>
-              <ButtonLink href="/programmes" variant="outline-light">
-                <Play className="size-4" />
-                Discover our work
-              </ButtonLink>
-              <ButtonLink href="/get-involved" variant="outline-light">
-                Get involved
+              <ButtonLink href="/donate" variant="outline-light">
+                <Heart className="size-4" /> Support a young person
               </ButtonLink>
             </div>
+            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-xs font-medium text-cream-50/80 sm:text-sm">
+              {["Rooted in Nairobi", "Led by creativity", "Connected globally"].map((value) => <li key={value} className="flex items-center gap-2"><Check className="size-4 text-mustard-400" aria-hidden />{value}</li>)}
+            </ul>
           </Reveal>
-          <a href="#impact" className="mx-auto mt-16 flex w-fit flex-col items-center gap-2 text-[0.65rem] uppercase tracking-[0.3em] text-cream-50/50 hover:text-cream-50">
-            Scroll
-            <ArrowDown className="size-3.5 animate-bounce" />
-          </a>
-        </div>
+          <Reveal delay={120} className="rounded-3xl border border-cream-50/20 bg-cocoa-900/85 p-6 shadow-2xl backdrop-blur-md sm:p-8">
+            <Eyebrow tone="gold">The Nafsi pathway</Eyebrow>
+            <h2 className="mt-5 font-display text-2xl font-bold sm:text-3xl">A space to belong.<br />A chance to grow.</h2>
+            <ol className="mt-7 space-y-3">
+              {[
+                { title: "Discover your voice", text: "Explore art, movement and storytelling.", href: "/programmes/performing-arts" },
+                { title: "Build real skills", text: "Learn with mentors. Create with purpose.", href: "/programmes/tangaza" },
+                { title: "Open new doors", text: "Connect through media and cultural exchange.", href: "/programmes/global-stay-tours" },
+              ].map((step, i) => (
+                <li key={step.title}>
+                  <Link href={step.href} className="group flex items-start gap-3 rounded-2xl border border-cream-50/10 bg-cream-50/5 p-4 transition-colors hover:border-mustard-400/50 hover:bg-cream-50/10">
+                    <span className="pt-0.5 text-xs font-semibold text-mustard-400">0{i + 1}</span>
+                    <div className="min-w-0 flex-1"><h3 className="text-sm font-semibold sm:text-base">{step.title}</h3><p className="mt-1 text-xs leading-relaxed text-cream-50/65 sm:text-sm">{step.text}</p></div>
+                    <ArrowUpRight className="mt-1 size-4 shrink-0 text-mustard-400 transition-transform group-hover:-translate-y-0.5" aria-hidden />
+                  </Link>
+                </li>
+              ))}
+            </ol>
+            <Link href="/about/approach" className="mt-6 flex min-h-11 items-center justify-between gap-4 border-t border-cream-50/15 pt-5 text-sm font-semibold text-mustard-300 hover:text-white">See how our approach works <ArrowRight className="size-4" aria-hidden /></Link>
+          </Reveal>
+        </Container>
         </div>
 
-        <Container className="scroll-mt-24 pb-24 pt-8" >
+        <Container className="scroll-mt-24 pb-16 pt-4 sm:pb-20" >
           <div id="impact" className="scroll-mt-28">
             <Reveal>
-              <Eyebrow>Impact in motion</Eyebrow>
-              <h2 className="mt-4 max-w-2xl font-display text-4xl font-bold leading-[1.02] tracking-tight sm:text-5xl">
-                From creativity to opportunity — measured.
+              <Eyebrow tone="gold">Impact in motion</Eyebrow>
+              <h2 className="mt-4 max-w-2xl font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+                Rooted in community. Built for lasting change.
               </h2>
             </Reveal>
             <div className="mt-12">
@@ -104,13 +122,10 @@ export default function HomePage() {
             title="Seven pathways from creativity to opportunity"
             intro="Nafsi is not a charity that hands out help. It is a platform where art becomes confidence, confidence becomes skills, and skills become opportunity."
           />
-          <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {programmes.map((programme, i) => (
-              <li key={programme.slug}>
-                <ProgrammeCard programme={programme} index={i} />
-              </li>
-            ))}
-          </ul>
+          <ProgrammeBrowser items={programmes.map((programme) => ({
+            slug: programme.slug,
+            card: <ProgrammeCard programme={programme} />,
+          }))} />
         </Container>
       </section>
 
