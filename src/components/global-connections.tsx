@@ -165,6 +165,7 @@ export function GlobalConnections() {
     <section className="bg-cocoa-900 text-cream-50">
       <Container className="py-24 [&_p.text-muted]:text-cream-50/70">
         <SectionHeading
+          tone="dark"
           eyebrow="From Nairobi to the world"
           title="A global creative hub, headquartered in Nairobi"
           intro="Young people from Nairobi's informal settlements connect across Africa, Europe, Latin America and beyond — including Uganda, Tanzania, Ghana, Denmark, Bolivia, Germany, Italy, Bulgaria, Norway and Austria."

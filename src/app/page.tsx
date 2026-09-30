@@ -55,24 +55,22 @@ export default function HomePage() {
             </ul>
           </Reveal>
           <Reveal delay={120} className="rounded-3xl border border-cream-50/20 bg-cocoa-900/85 p-6 shadow-2xl backdrop-blur-md sm:p-8">
-            <Eyebrow tone="gold">The Nafsi pathway</Eyebrow>
-            <h2 className="mt-5 font-display text-2xl font-bold sm:text-3xl">A space to belong.<br />A chance to grow.</h2>
-            <ol className="mt-7 space-y-3">
+            <h2 className="font-display text-2xl font-bold sm:text-3xl">What you can do at Nafsi</h2>
+            <ul className="mt-7 space-y-3">
               {[
-                { title: "Discover your voice", text: "Explore art, movement and storytelling.", href: "/programmes/performing-arts" },
-                { title: "Build real skills", text: "Learn with mentors. Create with purpose.", href: "/programmes/tangaza" },
-                { title: "Open new doors", text: "Connect through media and cultural exchange.", href: "/programmes/global-stay-tours" },
-              ].map((step, i) => (
-                <li key={step.title}>
-                  <Link href={step.href} className="group flex items-start gap-3 rounded-2xl border border-cream-50/10 bg-cream-50/5 p-4 transition-colors hover:border-mustard-400/50 hover:bg-cream-50/10">
-                    <span className="pt-0.5 text-xs font-semibold text-mustard-400">0{i + 1}</span>
-                    <div className="min-w-0 flex-1"><h3 className="text-sm font-semibold sm:text-base">{step.title}</h3><p className="mt-1 text-xs leading-relaxed text-cream-50/65 sm:text-sm">{step.text}</p></div>
+                { title: "Performing arts", text: "Take part in dance, music, acrobatics and theatre with other young people.", href: "/programmes/performing-arts" },
+                { title: "Film and storytelling", text: "Learn to film, edit and tell stories using a smartphone.", href: "/programmes/tangaza" },
+                { title: "Cultural exchange", text: "Meet other young creatives and share your work across cultures.", href: "/programmes/global-stay-tours" },
+              ].map((programme) => (
+                <li key={programme.title}>
+                  <Link href={programme.href} className="group flex items-start gap-3 rounded-2xl border border-cream-50/10 bg-cream-50/5 p-4 transition-colors hover:border-mustard-400/50 hover:bg-cream-50/10">
+                    <div className="min-w-0 flex-1"><h3 className="text-sm font-semibold sm:text-base">{programme.title}</h3><p className="mt-1 text-xs leading-relaxed text-cream-50/65 sm:text-sm">{programme.text}</p></div>
                     <ArrowUpRight className="mt-1 size-4 shrink-0 text-mustard-400 transition-transform group-hover:-translate-y-0.5" aria-hidden />
                   </Link>
                 </li>
               ))}
-            </ol>
-            <Link href="/about/approach" className="mt-6 flex min-h-11 items-center justify-between gap-4 border-t border-cream-50/15 pt-5 text-sm font-semibold text-mustard-300 hover:text-white">See how our approach works <ArrowRight className="size-4" aria-hidden /></Link>
+            </ul>
+            <Link href="/programmes" className="mt-6 flex min-h-11 items-center justify-between gap-4 border-t border-cream-50/15 pt-5 text-sm font-semibold text-mustard-300 hover:text-white">View all programmes <ArrowRight className="size-4" aria-hidden /></Link>
           </Reveal>
         </Container>
         </div>

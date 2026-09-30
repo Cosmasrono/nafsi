@@ -14,6 +14,8 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileSection, setMobileSection] = useState<string | null>(null);
   const progressRef = useRef<HTMLDivElement>(null);
+  const mobileDialogRef = useRef<HTMLDialogElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -27,8 +29,28 @@ export function SiteHeader() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    if (!mobileOpen) return;
+    const dialog = mobileDialogRef.current;
+    const previousOverflow = document.body.style.overflow;
+    dialog?.showModal();
+    document.body.style.overflow = "hidden";
+    const desktop = window.matchMedia("(min-width: 1280px)");
+    const closeOnDesktop = () => { if (desktop.matches) setMobileOpen(false); };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => {
+      dialog?.close();
+      document.body.style.overflow = previousOverflow;
+      desktop.removeEventListener("change", closeOnDesktop);
+    };
   }, [mobileOpen]);
+
+  useEffect(() => {
+    const onPointerDown = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) setOpenMenu(null);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, []);
 
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`));
   const closeAll = () => {
@@ -37,7 +59,7 @@ export function SiteHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-sand-200/70">
+    <header ref={headerRef} className="sticky top-0 z-50 border-b border-sand-200/70" onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node)) setOpenMenu(null); }}>
       {/* blur sits on its own layer; backdrop-filter on <header> itself traps the fixed mobile menu inside the header */}
       <div className="absolute inset-0 -z-10 bg-cream-50/90 backdrop-blur-md" aria-hidden />
       <div
@@ -45,7 +67,7 @@ export function SiteHeader() {
         className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-mustard-500 to-cocoa-700"
         aria-hidden
       />
-      <div className="flex h-[4.5rem] w-full items-center justify-between gap-3 px-4 sm:gap-6 sm:px-8">
+      <div className="mx-auto flex h-[4.5rem] w-full max-w-[84rem] items-center justify-between gap-3 px-5 sm:gap-6 sm:px-8">
         <Link href="/" onClick={closeAll} className="flex min-w-0 items-center gap-3" aria-label="Nafsi Africa home">
           <NafsiMark className="size-10 shrink-0" />
           <span className="leading-none">
@@ -56,7 +78,7 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav aria-label="Main" className="hidden lg:block">
+        <nav aria-label="Main" className="hidden xl:block">
           <ul className="flex items-center gap-1">
             {nav.map((item) =>
               item.children ? (
@@ -72,7 +94,7 @@ export function SiteHeader() {
                     onClick={() => setOpenMenu(openMenu === item.label ? null : item.label)}
                     onKeyDown={(e) => e.key === "Escape" && setOpenMenu(null)}
                     className={`flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium transition-colors hover:text-mustard-600 ${
-                      isActive(item.href) ? "text-mustard-600" : "text-cocoa-800"
+                      isActive(item.href) ? "bg-sand-100 text-cocoa-900" : "text-cocoa-800"
                     }`}
                   >
                     {item.label}
@@ -90,6 +112,7 @@ export function SiteHeader() {
                           <li key={child.href}>
                             <Link
                               href={child.href}
+                              aria-current={pathname === child.href ? "page" : undefined}
                               onClick={closeAll}
                               className={`block rounded-xl px-3 py-2 text-sm transition-colors ${
                                 pathname === child.href
@@ -109,6 +132,7 @@ export function SiteHeader() {
                 <li key={item.label}>
                   <Link
                     href={item.href}
+                    aria-current={pathname === item.href ? "page" : undefined}
                     className={`rounded-full px-3 py-2 text-sm font-medium transition-colors hover:text-mustard-600 ${
                       isActive(item.href) ? "text-mustard-600" : "text-cocoa-800"
                     }`}
@@ -128,9 +152,10 @@ export function SiteHeader() {
           </Link>
           <button
             type="button"
-            className="grid size-11 place-items-center rounded-full border border-sand-200 text-cocoa-900 lg:hidden"
+            className="grid size-11 place-items-center rounded-full border border-sand-200 text-cocoa-900 xl:hidden"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
@@ -139,7 +164,11 @@ export function SiteHeader() {
       </div>
 
       {mobileOpen && (
-        <div className="fixed inset-x-0 bottom-0 top-[4.5rem] overflow-y-auto border-t border-sand-200 bg-cream-50 px-5 pb-10 pt-4 lg:hidden">
+        <dialog ref={mobileDialogRef} id="mobile-navigation" aria-label="Main navigation" onCancel={() => setMobileOpen(false)} className="mobile-navigation fixed inset-0 m-0 h-dvh max-h-dvh w-full max-w-none overflow-y-auto bg-cream-50 px-5 pb-10 text-cocoa-900 xl:hidden">
+          <div className="sticky top-0 z-10 flex h-[4.5rem] items-center justify-between border-b border-sand-200 bg-cream-50">
+            <Link href="/" onClick={closeAll} className="flex items-center gap-3 font-display text-lg font-bold"><NafsiMark className="size-9" />Nafsi Africa</Link>
+            <button type="button" autoFocus aria-label="Close menu" onClick={closeAll} className="grid size-11 place-items-center rounded-full border border-sand-200"><X className="size-5" /></button>
+          </div>
           <ul className="divide-y divide-sand-200">
             {nav.map((item) => (
               <li key={item.label}>
@@ -160,6 +189,7 @@ export function SiteHeader() {
                           <li key={child.href}>
                             <Link
                               href={child.href}
+                              aria-current={pathname === child.href ? "page" : undefined}
                               onClick={closeAll}
                               className={`block rounded-xl px-3 py-2.5 ${
                                 pathname === child.href ? "bg-mustard-500 text-cocoa-900" : "text-cocoa-800"
@@ -173,7 +203,7 @@ export function SiteHeader() {
                     )}
                   </>
                 ) : (
-                  <Link href={item.href} onClick={closeAll} className="block py-4 font-display text-xl font-bold text-cocoa-900">
+                  <Link href={item.href} aria-current={pathname === item.href ? "page" : undefined} onClick={closeAll} className="block py-4 font-display text-xl font-bold text-cocoa-900">
                     {item.label}
                   </Link>
                 )}
@@ -184,7 +214,7 @@ export function SiteHeader() {
             <Heart className="size-4" />
             Donate now
           </Link>
-        </div>
+        </dialog>
       )}
     </header>
   );

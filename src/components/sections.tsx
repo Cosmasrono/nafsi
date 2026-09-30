@@ -111,7 +111,7 @@ export function DonateBanner() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-cocoa-950 via-cocoa-950/85 to-transparent -z-10" />
           <div className="max-w-2xl">
-            <Eyebrow>Your support creates opportunity</Eyebrow>
+            <Eyebrow tone="gold">Your support creates opportunity</Eyebrow>
             <h2 className="mt-4 font-display text-[min(2.5rem,calc((100vw-3rem)/10.2))] font-extrabold leading-[0.98] tracking-tight text-white break-words sm:text-5xl">
               Art becomes confidence. <span className="text-mustard-400">Confidence becomes change.</span>
             </h2>
@@ -316,7 +316,7 @@ export function CreatorsSpotlight() {
     <section className="bg-cocoa-900 text-cream-50">
       <Container className="grid items-center gap-12 py-24 lg:grid-cols-2">
         <Reveal className="min-w-0">
-          <Eyebrow>Meet the creators</Eyebrow>
+          <Eyebrow tone="gold">Meet the creators</Eyebrow>
           <h2 className="mt-5 font-display text-[min(1.9rem,calc((100vw-2.5rem)/11.4))] font-extrabold leading-[0.98] tracking-tight break-words sm:text-5xl lg:text-[min(2.9rem,calc((50vw-4rem)/10.8))]">
             These are not beneficiaries. These are creators.
           </h2>

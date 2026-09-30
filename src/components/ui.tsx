@@ -114,18 +114,20 @@ export function SectionHeading({
   title,
   intro,
   action,
+  tone = "light",
 }: {
   eyebrow: string;
   title: ReactNode;
   intro?: ReactNode;
   action?: ReactNode;
+  tone?: "light" | "dark";
 }) {
   return (
     <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
       <div className="max-w-3xl">
-        <Eyebrow>{eyebrow}</Eyebrow>
+        <Eyebrow tone={tone === "dark" ? "gold" : "mustard"}>{eyebrow}</Eyebrow>
         <h2 className="mt-4 font-display text-[2rem] font-bold leading-[1.02] tracking-tight break-words min-[380px]:text-4xl sm:text-5xl">{title}</h2>
-        {intro && <p className="mt-5 text-lg leading-relaxed text-muted">{intro}</p>}
+        {intro && <p className={`mt-5 text-lg leading-relaxed ${tone === "dark" ? "text-cream-50/70" : "text-muted"}`}>{intro}</p>}
       </div>
       {action && <div className="shrink-0">{action}</div>}
     </Reveal>
