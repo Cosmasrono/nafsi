@@ -186,7 +186,7 @@ export const programmes: Programme[] = [
       "A podcast studio and online radio opening up conversations on mental health, social justice, relationships and personal development.",
     body: [
       "NaiWave is a creative hub and media platform that gives young people a voice. By leveraging familiar, accessible digital media, NaiWave creates a safe space for youth to explore sensitive topics like mental health, social justice, relationships and personal development.",
-      "Driven by a community-based approach, it fosters dialogue and promotes positive change through podcasts and live radio. The studio is also available to hire.",
+      "Driven by a community-based approach, it fosters dialogue and promotes positive change through podcasts and live radio. The studio is also available to book.",
     ],
     tags: ["Podcasts", "Online radio", "Interviews", "Mental health", "Social justice", "Personal development"],
     image: "/images/naiwave.jpg",
@@ -483,7 +483,7 @@ export const involvementTypes = {
   },
   "book-studio": {
     title: "Book the Studio",
-    heading: "Hire NaiWave Studios",
+    heading: "Book a session at NaiWave Studios",
     text: "A professional podcast and recording studio in Ngong, Nairobi. Pick a service and book your slot online.",
     icon: "mic",
   },

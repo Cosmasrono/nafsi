@@ -10,7 +10,7 @@ import { involvementTypes } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Get Involved",
-  description: "Donate, volunteer, partner, sponsor a programme, book a performance or hire NaiWave Studios.",
+  description: "Donate, volunteer, partner, sponsor a programme, book a performance or book a session at NaiWave Studios.",
 };
 
 const cards = [

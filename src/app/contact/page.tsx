@@ -40,7 +40,7 @@ export default function ContactPage() {
                 </a>
               </ContactItem>
               <ContactItem icon={<Clock className="size-5" />} label="Studio bookings">
-                To hire the NaiWave podcast studio, call {site.phone}.
+                To book the NaiWave podcast studio, call {site.phone}.
               </ContactItem>
             </ul>
             <p className="mt-10 text-sm font-bold uppercase tracking-[0.14em] text-cocoa-900">Follow</p>
