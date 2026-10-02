@@ -47,3 +47,6 @@ next-env.d.ts
 
 # editor / tooling
 /.claude
+
+# extracted reference frames (regenerate with scratch/extract-frames.py)
+/scratch/b44-frames

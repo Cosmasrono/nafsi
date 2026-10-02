@@ -66,6 +66,12 @@ export default async function ProgrammePage({ params }: Props) {
                 Sponsor a cohort
                 <ArrowRight className="size-4" />
               </ButtonLink>
+              {programme.slug === "naiwave" && (
+                <ButtonLink href="/get-involved/book-studio" variant="outline">
+                  Hire the studio
+                  <ArrowRight className="size-4" />
+                </ButtonLink>
+              )}
             </div>
           </Reveal>
         </Container>

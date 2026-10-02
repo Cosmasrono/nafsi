@@ -24,3 +24,25 @@ Updated 2026-09-19. Programme photos were retrieved from Nafsi Africa's existing
 All five video IDs were checked against YouTube's oEmbed endpoint, including matching the episode titles and NaiWave channel. The first four were sourced from https://www.nafsiafrica.org/services-3 and the fifth from https://www.youtube.com/@Naiwave/search?query=silent. Thumbnails are 1280 × 720 pixels.
 
 Remaining small design crops: dance-tall.jpg, naiwave.jpg, and podcast-tall.jpg. Replace these with the corresponding full-resolution originals when available. Use at least 1600–2000px-wide source photos for large desktop panels, and a 2560px-wide or larger original for a full-width hero. Do not upscale small crops and expect additional detail.
+
+## Nafsi photographs added 2 October 2026
+
+Supplied by Nafsi as `NAFSI PICTURES.zip`. Each one replaced a generated stock
+image or a small crop. They came off WhatsApp, so `scratch/process-photos.py`
+crops them to the aspect the slot renders at, resamples with LANCZOS (never
+more than 1.6x), unsharp-masks and re-encodes at 4:4:4. Re-run that script if
+the originals are ever re-supplied at higher resolution. The files they replaced
+are in `lowres-backup/`.
+
+| Local file | Original | Shows | Size |
+| --- | --- | --- | --- |
+| one.jpeg | IMG-20230316-WA0003 | An acrobat lifting a child overhead against the sky | 1200 x 1600 |
+| dance.jpg, dance-hd.jpg | IMG-20230513-WA0005 | A young acrobat in the splits while her group watches | 1280 x 960 |
+| community-hd.jpg, community.jpg | IMG-20221201-WA0003 | Children singing in face paint and costume | 1280 x 853 |
+| tangaza-lab.jpg | IMG-20221007-WA0006 | Three young creators round a phone | 1500 x 844 |
+| creator-camera.jpg | IMG-20221007-WA0009 | Two young creators reviewing footage on a phone | 1500 x 1125 |
+| acrobats-pyramid.jpg | IMG-20210928-WA0016 | The troupe holding a pyramid in Nafsi kit (photo: Jose Contez) | 750 x 1000 |
+
+Still generated stock, still waiting on real Nafsi photographs: `hero.jpg` /
+`hero-hd.jpg` (needs a 2560px-wide original), `naiwave.jpg` / `naiwave-hd.jpg`
+and `podcast-tall.jpg` (both need real NaiWave Studios interiors).

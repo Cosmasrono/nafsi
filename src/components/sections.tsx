@@ -104,7 +104,7 @@ export function DonateBanner() {
         <Reveal className="relative isolate overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-cocoa-950 via-cocoa-900 to-cocoa-800 p-8 sm:p-12 md:p-16 shadow-2xl text-cream-50 border border-cream-50/10">
           <Image
             src="/images/dance.jpg"
-            alt="Nafsi dancers performing in Nairobi"
+            alt="A young acrobat stretching into the splits while her group watches at weekly training"
             fill
             sizes="(min-width: 1024px) 1024px, 100vw"
             className="-z-10 object-cover opacity-25 object-center"
@@ -330,7 +330,7 @@ export function CreatorsSpotlight() {
           </ButtonLink>
         </Reveal>
         <Reveal delay={150} className="relative aspect-[4/3] overflow-hidden rounded-3xl">
-          <Image src="/images/creator-camera.jpg" alt="A young Nafsi creator behind the camera, capturing stories from the community" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover object-top" />
+          <Image src="/images/creator-camera.jpg" alt="Two young Nafsi creators reviewing the footage they just shot on a phone" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover object-top" />
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-cocoa-950/90 to-transparent p-6 pt-16">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-mustard-500 px-3 py-1 text-xs font-semibold text-cocoa-900">
               <Sparkles className="size-3.5" />
@@ -367,7 +367,7 @@ export function FollowJourney() {
           <Reveal className="group relative aspect-[3/4] overflow-hidden rounded-3xl shadow-xl transition-all duration-300 hover:-translate-y-1">
             <Image
               src="/images/one.jpeg"
-              alt="Children dancing at a Nafsi community centre"
+              alt="A Nafsi acrobat lifting a child overhead against the Nairobi sky"
               fill
               sizes="(min-width: 768px) 25vw, 50vw"
               className="object-cover transition-transform duration-700 group-hover:scale-105"

@@ -41,7 +41,7 @@ export default function AboutPage() {
             </div>
           </Reveal>
           <Reveal delay={120} className="relative aspect-[456/515] overflow-hidden rounded-3xl shadow-2xl shadow-cocoa-900/15">
-            <Image src="/images/dance.jpg" alt="Children dancing with a Nafsi trainer" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+            <Image src="/images/acrobats-pyramid.jpg" alt="Nafsi acrobats holding a pyramid during an outdoor performance in Nairobi" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
           </Reveal>
         </Container>
       </section>

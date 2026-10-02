@@ -64,7 +64,7 @@ export default function ApproachPage() {
           </div>
           <figure className="overflow-hidden rounded-3xl border border-cream-50/15 bg-cocoa-800">
             <div className="relative aspect-[4/3] sm:aspect-[5/4]">
-              <Image src="/images/community-hd.jpg" alt="Nafsi's creative community coming together in performance" fill preload quality={85} sizes="(min-width: 1344px) 560px, (min-width: 1024px) 45vw, 100vw" className="object-cover" />
+              <Image src="/images/community-hd.jpg" alt="Children from a Nafsi centre singing together in face paint and costume" fill preload quality={85} sizes="(min-width: 1344px) 560px, (min-width: 1024px) 45vw, 100vw" className="object-cover" />
             </div>
             <figcaption className="flex items-center justify-between gap-4 px-5 py-5 sm:px-7"><span className="text-sm font-medium">From belonging to becoming.</span><span className="text-xs uppercase tracking-widest text-mustard-400">Nafsi Pamoja</span></figcaption>
           </figure>

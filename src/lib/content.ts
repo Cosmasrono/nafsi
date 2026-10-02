@@ -484,11 +484,44 @@ export const involvementTypes = {
   "book-studio": {
     title: "Book the Studio",
     heading: "Hire NaiWave Studios",
-    text: "A professional podcast and recording studio in Nairobi, available to hire for your own recordings.",
+    text: "A professional podcast and recording studio in Ngong, Nairobi. Pick a service and book your slot online.",
     icon: "mic",
   },
 } as const;
 
 export type InvolvementType = keyof typeof involvementTypes;
+
+// NaiWave takes its studio bookings through Goldie, so the website hands the
+// booking itself over rather than collecting the request twice. Rates below
+// mirror the Goldie listing — update both together.
+type StudioService = { name: string; duration: string; price: string; note?: string };
+
+export const studioBooking = {
+  url: "https://book.heygoldie.com/0a8fc8b28078",
+  name: "NaiWave Studios",
+  location: "Ngong, Nairobi County",
+  intro:
+    "NaiWave's podcast and creatives studio takes its bookings through Goldie. Pick a service, choose a slot and pay the deposit — it is confirmed straight away.",
+  services: [
+    { name: "Podcast booking", duration: "1 hr 30 min", price: "KSh 3,500 – 5,500" },
+    { name: "Monthly plan — 4 episodes", duration: "1 hr 30 min per session", price: "KSh 14,000 – 26,000" },
+    { name: "Podcast coaching", duration: "1 hr", price: "KSh 6,500", note: "Two free sessions for beginners on booking" },
+    { name: "Voice-over recording", duration: "1 hr", price: "KSh 4,500" },
+    { name: "Professional studio shoot", duration: "30 min", price: "KSh 6,000", note: "5 edited photos, 3 outfit changes" },
+    { name: "Full-day photography", duration: "Full day", price: "KSh 15,000" },
+    { name: "Videography", duration: "Full day", price: "KSh 25,000" },
+    { name: "Consultation", duration: "30 min", price: "Free" },
+  ] as StudioService[],
+  hours: [
+    { days: "Monday – Friday", time: "8:00 – 21:00" },
+    { days: "Saturday", time: "8:00 – 18:00" },
+    { days: "Sunday", time: "9:00 – 18:00" },
+  ],
+  terms: [
+    "Pay at least half the amount when you book; the balance is due on the day.",
+    "Editing starts once payment is complete.",
+    "Cancel or reschedule up to 24 hours before the start time.",
+  ],
+};
 
 export const donationAmounts = [500, 1000, 2500, 5000, 10000];

@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { InvolveForm } from "@/components/involve-form";
 import { InvolvementIcon } from "@/components/involvement-icon";
 import { Reveal } from "@/components/reveal";
+import { StudioBooking } from "@/components/studio-booking";
 import { Container, PageHero } from "@/components/ui";
 import { involvementTypes, site, type InvolvementType } from "@/lib/content";
 
@@ -25,12 +26,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return type ? { title: involvementTypes[type].title, description: involvementTypes[type].text } : {};
 }
 
-const steps = ["Send us your request using the form.", "A member of the Nafsi team replies within two working days.", "We agree the details together and get started."];
+const defaultSteps = [
+  "Send us your request using the form.",
+  "A member of the Nafsi team replies within two working days.",
+  "We agree the details together and get started.",
+];
+
+// Studio bookings are handled by NaiWave's Goldie page, so the steps describe
+// that flow instead of the contact form the other involvement types use.
+const studioSteps = [
+  "Pick a service and a time slot on NaiWave's booking page.",
+  "Pay at least half the amount to confirm the session.",
+  "Turn up at NaiWave Studios in Ngong — the balance is due on the day.",
+];
 
 export default async function InvolvementPage({ params }: Props) {
   const type = getType((await params).type);
   if (!type) notFound();
   const item = involvementTypes[type];
+  const isStudio = type === "book-studio";
+  const steps = isStudio ? studioSteps : defaultSteps;
 
   return (
     <>
@@ -68,7 +83,7 @@ export default async function InvolvementPage({ params }: Props) {
             </Link>
           </Reveal>
           <Reveal delay={120}>
-            <InvolveForm type={type} />
+            {isStudio ? <StudioBooking /> : <InvolveForm type={type} />}
           </Reveal>
         </Container>
       </section>
