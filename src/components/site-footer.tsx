@@ -19,18 +19,18 @@ const legalLinks = [
 export function SiteFooter() {
   return (
     <footer className="bg-cocoa-900 text-cream-50">
-      <Container className="grid gap-10 border-b border-cream-50/10 py-16 md:grid-cols-2 md:items-center">
+      <Container className="grid gap-8 border-b border-cream-50/10 py-12 sm:gap-10 sm:py-16 md:grid-cols-2 md:items-center">
         <div>
           <Eyebrow tone="gold">Stay connected</Eyebrow>
-          <h2 className="mt-4 font-display text-3xl font-bold leading-tight sm:text-4xl">
+          <h2 className="mt-4 font-display text-2xl font-bold leading-tight sm:text-4xl">
             Get stories, opportunities and updates from Nafsi Africa.
           </h2>
         </div>
         <NewsletterForm />
       </Container>
 
-      <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
+      <Container className="grid grid-cols-2 gap-x-6 gap-y-10 py-12 sm:py-14 lg:grid-cols-4">
+        <div className="col-span-2 lg:col-span-1">
           <Link href="/" className="flex items-center gap-3">
             <NafsiMark className="size-10" />
             <span className="font-display text-lg font-bold uppercase tracking-tight">Nafsi Africa</span>
@@ -45,17 +45,17 @@ export function SiteFooter() {
         <FooterColumn title="Programmes" links={programmeLinks} />
         <FooterColumn title="Get involved" links={involveLinks} />
 
-        <div>
+        <div className="col-span-2 lg:col-span-1">
           <h3 className="font-display text-sm font-bold uppercase tracking-[0.14em]">Contact</h3>
           <ul className="mt-5 space-y-3 text-sm text-cream-50/70">
             <li className="flex gap-3">
               <MapPin className="mt-0.5 size-4 shrink-0 text-mustard-500" />
-              {site.address}
+              <span className="min-w-0">{site.address}</span>
             </li>
             <li>
               <a href={`mailto:${site.email}`} className="flex gap-3 py-1 hover:text-mustard-400">
                 <Mail className="mt-0.5 size-4 shrink-0 text-mustard-500" />
-                {site.email}
+                <span className="min-w-0 break-all">{site.email}</span>
               </a>
             </li>
             <li>
@@ -72,11 +72,25 @@ export function SiteFooter() {
         </div>
       </Container>
 
-      <Container className="flex flex-col gap-4 border-t border-cream-50/10 py-6 text-xs text-cream-50/50 md:flex-row md:items-center md:justify-between">
-        <p>
-          © {new Date().getFullYear()} {site.legalName}. All rights reserved.
-        </p>
-        <ul className="flex flex-wrap gap-x-6">
+      {/* Right padding keeps the text clear of the fixed back-to-top and WhatsApp buttons. */}
+      <Container className="flex flex-col gap-3 border-t border-cream-50/10 py-6 pr-24 text-xs text-cream-50/50 md:flex-row md:items-center md:justify-between">
+        <div className="space-y-1">
+          <p>
+            © {new Date().getFullYear()} {site.legalName}. All rights reserved.
+          </p>
+          <p>
+            Art and designed by{" "}
+            <a
+              href="https://nebtech.online"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-cream-50/70 underline-offset-2 hover:text-mustard-400 hover:underline"
+            >
+              NebTech Solutions
+            </a>
+          </p>
+        </div>
+        <ul className="flex flex-wrap gap-x-5 gap-y-0 sm:gap-x-6">
           {legalLinks.map((link) => (
             <li key={link.href}>
               <Link href={link.href} className="inline-block py-2 hover:text-cream-50">
@@ -94,7 +108,7 @@ function FooterColumn({ title, links }: { title: string; links: { label: string;
   return (
     <div>
       <h3 className="font-display text-sm font-bold uppercase tracking-[0.14em]">{title}</h3>
-      <ul className="mt-4 space-y-1 text-sm text-cream-50/70">
+      <ul className="mt-4 space-y-0.5 text-sm text-cream-50/70 sm:space-y-1">
         {links.map((link) => (
           <li key={link.href}>
             <Link href={link.href} className="inline-block py-1.5 hover:text-mustard-400">

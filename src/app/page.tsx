@@ -54,8 +54,8 @@ export default function HomePage() {
               {["Rooted in Nairobi", "Led by creativity", "Connected globally"].map((value) => <li key={value} className="flex items-center gap-2"><Check className="size-4 text-mustard-400" aria-hidden />{value}</li>)}
             </ul>
           </Reveal>
-          <Reveal delay={120} className="rounded-3xl border border-cream-50/20 bg-cocoa-900/85 p-6 shadow-2xl backdrop-blur-md sm:p-8">
-            <h2 className="font-display text-2xl font-bold sm:text-3xl">What you can do at Nafsi</h2>
+          <Reveal delay={120} className="rounded-3xl border border-cream-50/20 bg-cocoa-950/25 p-6 shadow-2xl backdrop-blur-[2px] sm:p-8">
+            <h2 className="font-display text-2xl font-bold drop-shadow-md sm:text-3xl">What you can do at Nafsi</h2>
             <ul className="mt-7 space-y-3">
               {[
                 { title: "Performing arts", text: "Take part in dance, music, acrobatics and theatre with other young people.", href: "/programmes/performing-arts" },
@@ -63,7 +63,7 @@ export default function HomePage() {
                 { title: "Cultural exchange", text: "Meet other young creatives and share your work across cultures.", href: "/programmes/global-stay-tours" },
               ].map((programme) => (
                 <li key={programme.title}>
-                  <Link href={programme.href} className="group flex items-start gap-3 rounded-2xl border border-cream-50/10 bg-cream-50/5 p-4 transition-colors hover:border-mustard-400/50 hover:bg-cream-50/10">
+                  <Link href={programme.href} className="group flex items-start gap-3 rounded-2xl border border-cream-50/15 bg-cocoa-950/45 p-4 transition-colors hover:border-mustard-400/50 hover:bg-cocoa-950/60">
                     <div className="min-w-0 flex-1"><h3 className="text-sm font-semibold sm:text-base">{programme.title}</h3><p className="mt-1 text-xs leading-relaxed text-cream-50/65 sm:text-sm">{programme.text}</p></div>
                     <ArrowUpRight className="mt-1 size-4 shrink-0 text-mustard-400 transition-transform group-hover:-translate-y-0.5" aria-hidden />
                   </Link>
