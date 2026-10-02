@@ -25,7 +25,7 @@ export default function HomePage() {
       <section className="relative isolate overflow-hidden bg-cocoa-900 text-cream-50">
         <div className="relative isolate">
         <div className="absolute inset-0 -z-10">
-          <Image src="/images/hero.jpg" alt="A young acrobat mid-flip against a Nairobi golden-hour sky" fill preload quality={85} sizes="100vw" className="object-cover object-[65%_center]" />
+          <Image src="/images/hero.jpg" alt="Three young Nafsi performers in Nafsi T-shirts on stage under the big top" fill preload quality={85} sizes="100vw" className="object-cover object-[65%_center]" />
           <div className="absolute inset-0 bg-gradient-to-r from-cocoa-950/95 via-cocoa-950/75 to-cocoa-950/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-cocoa-900 via-transparent to-transparent" />
           <div className="hero-grid absolute inset-0" />
@@ -103,7 +103,7 @@ export default function HomePage() {
           </Reveal>
           <Reveal className="relative">
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
-              <Image src="/images/community-hd.jpg" alt="Children from a Nafsi centre singing together in face paint and costume" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+              <Image src="/images/one.jpeg" alt="A Nafsi acrobat lifting a child overhead against the Nairobi sky" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
             </div>
             <div className="absolute bottom-6 left-6 right-6 rounded-2xl bg-cream-50/95 p-6 text-cocoa-900 backdrop-blur-sm">
               <p className="font-display text-5xl font-extrabold"><Counter value={new Date().getFullYear() - site.founded} suffix="+" /></p>

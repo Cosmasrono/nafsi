@@ -161,7 +161,7 @@ export const programmes: Programme[] = [
       "Outreach also carries Nafsi's advocacy: tree planting and environmental awareness workshops, sanitary workshops for girls, and conversations on gender equality that start in the community.",
     ],
     tags: ["Community shows", "Children's homes", "Environment", "Gender equality", "Girls' health"],
-    image: "/images/outreach-bus.jpg",
+    image: "/images/outreach.jpg",
     cta: "Explore Outreach",
   },
   {
@@ -175,7 +175,7 @@ export const programmes: Programme[] = [
       "Since its inception Tangaza has reached and empowered 208 young people and aims to impact many more by the end of 2026. Participants produce content that raises awareness on climate change, gender equality and the Sustainable Development Goals. A cornerstone of the project is NaiWave Studios. Tangaza is supported by Spor Media and funded by CISU.",
     ],
     tags: ["Smartphone filmmaking", "Photography", "Video editing", "Podcasting", "Digital storytelling", "SDG advocacy"],
-    image: "/images/tangaza-session.jpg",
+    image: "/images/tangaza-phone.jpg",
     cta: "Explore Tangaza",
   },
   {
@@ -271,7 +271,7 @@ export const stories: Story[] = [
     category: "Global Exchange Stories",
     excerpt:
       "Through Global Stay Tours, a young cultural guide in Nairobi and a classroom in Denmark meet over Zoom — and exchange more than culture.",
-    image: "/images/gst-hd.jpg",
+    image: "/images/creator-camera.jpg",
     quote: {
       text: "It has been a great experience for me, and I've gained significant knowledge throughout the process.",
       by: "Robinson Nyangasi, GST Tour Guide",
@@ -288,7 +288,7 @@ export const stories: Story[] = [
     category: "Tangaza Stories",
     excerpt:
       "Smartphones become film studios. 208 young people — many of them young women — learning to shoot, edit and tell stories that matter.",
-    image: "/images/tangaza-lab.jpg",
+    image: "/images/tangaza-session.jpg",
     body: [
       "A Tangaza cohort starts with the phone already in your pocket. Participants learn framing, sound, lighting and interviewing before moving on to editing, motion graphics and formatting for social media.",
       "Every cohort ends with portfolio-ready work: short documentaries and reports on climate, gender equality and life in Nairobi's informal settlements.",
@@ -314,7 +314,7 @@ export const stories: Story[] = [
     category: "Artist Stories",
     excerpt:
       "For Nafsi's young performers, every rehearsal teaches discipline, teamwork and the confidence to be seen.",
-    image: "/images/community-hd.jpg",
+    image: "/images/theatre-duo.jpg",
     body: [
       "Performance asks a lot of a young person: turning up on time, trusting the person beside you, recovering when a move goes wrong in front of an audience.",
       "Nafsi's performers carry those lessons from community showcases to local and international stages, and back into school and home.",
@@ -338,7 +338,7 @@ export const stories: Story[] = [
     category: "Nafsi Alumni",
     excerpt:
       "Talent development at Nafsi builds a pipeline: today's media students run the social channels and tomorrow's programmes.",
-    image: "/images/youth-movement.jpg",
+    image: "/images/workshop.jpg",
     body: [
       "Nafsi's talent development programme gives young people real responsibility: media students manage social platforms and produce content, while ICT interns support the organisation's technical needs.",
       "As participants gain expertise and confidence, many become mentors and leaders inside Nafsi, which keeps the organisation rooted in the communities it serves.",

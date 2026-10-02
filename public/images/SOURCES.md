@@ -46,3 +46,31 @@ are in `lowres-backup/`.
 Still generated stock, still waiting on real Nafsi photographs: `hero.jpg` /
 `hero-hd.jpg` (needs a 2560px-wide original), `naiwave.jpg` / `naiwave-hd.jpg`
 and `podcast-tall.jpg` (both need real NaiWave Studios interiors).
+
+## Second batch, placed to match the Base44 build (2 October 2026)
+
+Twenty more photographs, kept in `scratch/new-photos-2/` and processed by
+`scratch/process-photos-2.py` (same treatment as above). Slots follow the Base44
+walkthrough recorded that morning: where Base44 shows one of these photos, it
+goes in the same slot here. This supersedes the "still generated stock" note
+above for `hero.jpg`, `naiwave*.jpg` and `podcast-tall*.jpg`.
+
+| Slot | Local file | Source |
+| --- | --- | --- |
+| Home hero | hero.jpg, hero-hd.jpg | 20.jpg, three kids in Nafsi tees under the big top (1600 x 900; still not 2560px) |
+| Home "Who we are" | one.jpeg | from the first batch, as Base44 |
+| Outreach programme | outreach.jpg | 3.jpg, cropped to x 560-1600 / y 0-780 because the supplied file has a lion photo pasted onto it. Ask Nafsi for a clean original. |
+| Tangaza programme | tangaza-phone.jpg | 9.jpg, three creators round a phone |
+| Global Stay Tours programme | gst-hd.jpg | 12.jpg, Nafsi kids performing under a European big top |
+| "Nairobi meets Copenhagen" story | creator-camera.jpg | from the first batch, as Base44 |
+| "Inside a Tangaza cohort" story | tangaza-session.jpg | 7.jpg |
+| "From participant to mentor" story | workshop.jpg | 15.jpg |
+| Creator spotlight | drummer-stage.jpg | 14.jpg (Base44 shows a young drummer here) |
+| Follow the journey, @nafsiafrica tile | podcast-tall.jpg | 13.jpg, the dancer Base44 uses there (photo: Jose Contez) |
+| Follow the journey, NaiWave tile | naiwave-hd.jpg | 6.jpg |
+
+Not shown in Base44 and unplaced: `training-splits.jpg` (1.jpg),
+`sisters-field.jpg` (18.jpg), `outreach-drums.jpg` (5.jpg), `youth-movement.jpg`
+(20.jpg at 3:2). Base44 also uses photos that are not in either batch: the
+Performing Arts drummer in orange, the NaiWave host in headphones, the GST gym
+jump and the Mazingira tree planting.
