@@ -61,8 +61,8 @@ export const nav: NavItem[] = [
       { label: "Tangaza on Smartphone", href: "/programmes/tangaza" },
       { label: "NaiWave Studios", href: "/programmes/naiwave" },
       { label: "Global Stay Tours", href: "/programmes/global-stay-tours" },
+      { label: "Mazingira Climate Action", href: "/programmes/mazingira" },
       { label: "Youth Empowerment", href: "/programmes/youth-empowerment" },
-      { label: "Mazingira (Climate Action)", href: "/programmes/mazingira" },
     ],
   },
   {
@@ -133,6 +133,8 @@ export type Programme = {
   tags: string[];
   image: string;
   cta: string;
+  ctaHref?: string;
+  feature?: string;
 };
 
 export const programmes: Programme[] = [
@@ -146,9 +148,11 @@ export const programmes: Programme[] = [
       "Through music, acrobatics, circus acts, dance, yoga, percussion, theatre, crafts and visual arts, Nafsi creates safe spaces where children and youth can express themselves, gain confidence and grow.",
       "Every week we run training sessions across Kariobangi, Babadogo, Kibera, Dagoretti, Kivuli and Glad Kids School centres, offering consistent support and opportunities for self-discovery. Supporters can sponsor a trainer or a centre to keep this journey going.",
     ],
-    tags: ["Dance", "Acrobatics", "Music & percussion", "Theatre", "Circus arts", "Visual arts"],
+    tags: ["Dance", "Music", "Acrobatics", "Circus", "Theatre", "Percussion", "Yoga", "Visual Arts"],
     image: "/images/dance.jpg",
-    cta: "Explore Performing Arts",
+    cta: "Support the arts",
+    ctaHref: "/donate?programme=performing-arts",
+    feature: "Through weekly training across our community centres, performing arts become a path to confidence, discipline, teamwork and self-expression. Children and young people discover their talents, build stagecraft and create work they perform locally and internationally — turning art into opportunity and, for many, a livelihood.",
   },
   {
     slug: "outreach",
@@ -160,9 +164,11 @@ export const programmes: Programme[] = [
       "Outreach brings Nafsi's work beyond the training centres. Children and youth perform at community events, partner institutions such as St. Christine Centre, and local and international shows.",
       "Outreach also carries Nafsi's advocacy: tree planting and environmental awareness workshops, sanitary workshops for girls, and conversations on gender equality that start in the community.",
     ],
-    tags: ["Community shows", "Children's homes", "Environment", "Gender equality", "Girls' health"],
+    tags: ["Dance", "Music", "Acrobatics", "Mentorship", "Talent Development"],
     image: "/images/outreach.jpg",
-    cta: "Explore Outreach",
+    cta: "Support outreach",
+    ctaHref: "/donate?programme=outreach",
+    feature: "The Outreach Project engages children and young adults in dance, music and acrobatics across Babadogo, Kibera, Kivuli Centre, Kariobangi, Glad Kids Community School and Dagoretti Corner Education Centre. Weekly workshops and holiday activities build self-esteem, talent and teamwork — diverting young people from the challenges of slum life toward end-year performances and, for some, a creative livelihood. The project is supported by Per Agnese in Rome, Italy.",
   },
   {
     slug: "tangaza",
@@ -190,7 +196,8 @@ export const programmes: Programme[] = [
     ],
     tags: ["Podcasts", "Online radio", "Interviews", "Mental health", "Social justice", "Personal development"],
     image: "/images/naiwave.jpg",
-    cta: "Explore NaiWave",
+    cta: "Book the studio",
+    ctaHref: "/get-involved/book-studio",
   },
   {
     slug: "global-stay-tours",
@@ -207,25 +214,11 @@ export const programmes: Programme[] = [
     cta: "Explore Global Stay Tours",
   },
   {
-    slug: "youth-empowerment",
-    title: "Youth Empowerment",
-    eyebrow: "Skills · Mentorship · Leadership",
-    summary:
-      "The through-line of every Nafsi programme — turning creativity into confidence, skills and opportunity.",
-    body: [
-      "Across arts, media and exchange, Nafsi nurtures creative, resilient and socially conscious young leaders. Youth Empowerment brings together talent development, advocacy and mentorship so that young people are not only changing their own lives but positively impacting their communities and the world.",
-      "Through structured mentorship, hands-on training and real-world assignments (running an online radio station, creating podcasts, managing community centres), participants gain practical experience, and many go on to take meaningful roles inside Nafsi itself.",
-    ],
-    tags: ["Talent development", "Advocacy", "Mentorship", "Leadership", "Creative livelihoods"],
-    image: "/images/youth-hd.jpg",
-    cta: "Explore Youth Empowerment",
-  },
-  {
     slug: "mazingira",
     title: "Mazingira: Creative Climate Action",
     eyebrow: "Climate Activism · Art · Environment",
     summary:
-      "Nafsi’s creative response to the climate crisis — using theatre, dance, music, murals, recycled art and smartphone film to spark environmental action in Nairobi’s informal settlements.",
+      "A growing direction: turning the climate crisis into art, film and youth-led environmental activism across Nairobi’s communities.",
     body: [
       "Mazingira — Swahili for “environment” — is Nafsi’s creative response to the climate crisis. Building on Tangaza’s track record of climate storytelling, young people use theatre, dance, music, murals, recycled-material art and smartphone film to raise awareness and spark environmental action in Nairobi’s informal settlements — the communities that feel the effects of climate change first. From performances and community dialogues to youth-made documentaries on local environmental issues, this direction turns young creators into climate voices, proving that creativity can move communities where facts alone cannot.",
     ],
@@ -239,6 +232,23 @@ export const programmes: Programme[] = [
     ],
     image: "/images/mazingira.jpg",
     cta: "Support climate action",
+    ctaHref: "/donate?programme=mazingira",
+  },
+  {
+    slug: "youth-empowerment",
+    title: "Youth Empowerment",
+    eyebrow: "Skills · Mentorship · Leadership",
+    summary:
+      "The through-line of every Nafsi programme — turning creativity into confidence, skills and opportunity.",
+    body: [
+      "Across arts, media and exchange, Nafsi nurtures creative, resilient and socially conscious young leaders. Youth Empowerment brings together talent development, advocacy and mentorship so that young people are not only changing their own lives but positively impacting their communities and the world.",
+      "Through structured mentorship, hands-on training and real-world assignments (running an online radio station, creating podcasts, managing community centres), participants gain practical experience, and many go on to take meaningful roles inside Nafsi itself.",
+    ],
+    tags: ["Talent development", "Advocacy", "Mentorship", "Leadership", "Creative livelihoods"],
+    image: "/images/youth-hd.jpg",
+    feature: "Across arts, media and exchange, Nafsi nurtures creative, resilient and socially conscious young leaders. Youth Empowerment brings together talent development, advocacy and mentorship so that young people are not only changing their own lives but positively impacting their communities and the world.",
+    cta: "Get involved",
+    ctaHref: "/get-involved",
   },
 ];
 

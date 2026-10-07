@@ -149,3 +149,14 @@ h1, h2, h3 { text-wrap: balance; }
 .animate-modal-in {
   animation: modal-in 0.25s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
 }
+
+/* Programme layouts matched to the supplied Base44 recording. */
+.programme-container { max-width: 80rem; padding-inline: clamp(1.25rem, 4vw, 3.5rem); }
+.programme-hero { background: #30190b; color: #fdfbf7; }
+.programme-eyebrow { display: flex; align-items: center; gap: .5rem; font-size: .6875rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #c99a22; }
+.programme-eyebrow::before { content: ""; height: 1px; width: 1.75rem; flex-shrink: 0; background: currentColor; opacity: .5; }
+.programme-icon { display: grid; width: 2.5rem; height: 2.5rem; flex-shrink: 0; place-items: center; border-radius: 9999px; background: #f4b400; color: #30190b; }
+.programme-primary, .programme-donate { background: #f4b400; color: #30190b; }
+.programme-feature:nth-of-type(odd) { background-color: #eee9dd; }
+.programme-donate .programme-eyebrow { color: #fff8df; }
+.programme-feature h2 { text-wrap: initial; }

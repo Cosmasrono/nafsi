@@ -1,5 +1,18 @@
 # Aligning the Next.js site with the Base44 build
 
+## Programme alignment update — 7 October 2026
+
+The programme index and homepage programme grid now follow the saved recording:
+- Dark index hero with the reference heading, line breaks and introduction.
+- Alternating feature rows, reference labels and fuller descriptions.
+- Mazingira before Youth Empowerment in both the content and navigation.
+- Eight homepage tiles, including the Goldie studio-booking link, photo icon badges and photo-overlay labels; no programme filters.
+- Full-width mustard donation banner.
+- Locally bundled Syne and Plus Jakarta Sans fonts, avoiding the observed Arial fallback when Google Fonts cannot be fetched.
+
+Exact parity remains unverified against the live Base44 preview. The supplied assets still differ from the reference for Performing Arts, NaiWave, Global Stay Tours, Mazingira and Youth Empowerment; the Outreach source is cropped differently. Original reference images are needed to finish those matches. Tangaza retains the existing 208 figure rather than copying the recording's conflicting 255 figure. The sections below are the original 2 October audit, not a current completion checklist.
+
+
 Source: screen recording of `app.base44.com/apps/6a8fcc30ee0f8ebb54b65301` (97s,
 2 October 2026). Frames extracted to `scratch/b44-frames/` by
 `scratch/extract-frames.py`. The Base44 preview itself needs a login, so this

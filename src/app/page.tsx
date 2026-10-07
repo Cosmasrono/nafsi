@@ -8,12 +8,12 @@ import {
   ImpactStats,
   PartnersGrid,
   ProgrammeCard,
+  StudioBookingCard,
   Timeline,
 } from "@/components/sections";
 import { VideoGridClient } from "@/components/video-grid-client";
 import { GlobalConnections } from "@/components/global-connections";
 import { Counter } from "@/components/counter";
-import { ProgrammeBrowser } from "@/components/programme-browser";
 import { Reveal } from "@/components/reveal";
 import { StoryCard } from "@/components/story-card";
 import { ButtonLink, Container, Eyebrow, SectionHeading } from "@/components/ui";
@@ -114,16 +114,16 @@ export default function HomePage() {
       </section>
 
       <section className="bg-cream-50">
-        <Container className="py-24">
-          <SectionHeading
-            eyebrow="What we do"
-            title="Seven pathways from creativity to opportunity"
-            intro="Nafsi is not a charity that hands out help. It is a platform where art becomes confidence, confidence becomes skills, and skills become opportunity."
-          />
-          <ProgrammeBrowser items={programmes.map((programme) => ({
-            slug: programme.slug,
-            card: <ProgrammeCard programme={programme} />,
-          }))} />
+        <Container className="programme-container py-24">
+          <p className="programme-eyebrow">What we do</p>
+          <h2 className="mt-4 max-w-2xl font-display text-3xl font-bold leading-tight sm:text-4xl">Seven pathways from creativity to opportunity</h2>
+          <p className="mt-5 max-w-2xl leading-relaxed text-muted">Nafsi is not a charity that hands out help. It is a platform where art becomes confidence, confidence becomes skills, and skills become opportunity.</p>
+          <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {programmes.map((programme, index) => (
+              <li key={programme.slug}><ProgrammeCard programme={programme} index={index} /></li>
+            ))}
+            <li><StudioBookingCard /></li>
+          </ul>
         </Container>
       </section>
 

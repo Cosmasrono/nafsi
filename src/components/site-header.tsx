@@ -34,7 +34,7 @@ export function SiteHeader() {
     const previousOverflow = document.body.style.overflow;
     dialog?.showModal();
     document.body.style.overflow = "hidden";
-    const desktop = window.matchMedia("(min-width: 1280px)");
+    const desktop = window.matchMedia("(min-width: 1100px)");
     const closeOnDesktop = () => { if (desktop.matches) setMobileOpen(false); };
     desktop.addEventListener("change", closeOnDesktop);
     return () => {
@@ -78,7 +78,7 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav aria-label="Main" className="hidden xl:block">
+        <nav aria-label="Main" className="hidden min-[1100px]:block">
           <ul className="flex items-center gap-1">
             {nav.map((item) =>
               item.children ? (
@@ -152,7 +152,7 @@ export function SiteHeader() {
           </Link>
           <button
             type="button"
-            className="grid size-11 place-items-center rounded-full border border-sand-200 text-cocoa-900 xl:hidden"
+            className="grid size-11 place-items-center rounded-full border border-sand-200 text-cocoa-900 min-[1100px]:hidden"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             aria-controls="mobile-navigation"
@@ -164,7 +164,7 @@ export function SiteHeader() {
       </div>
 
       {mobileOpen && (
-        <dialog ref={mobileDialogRef} id="mobile-navigation" aria-label="Main navigation" onCancel={() => setMobileOpen(false)} className="mobile-navigation fixed inset-0 m-0 h-dvh max-h-dvh w-full max-w-none overflow-y-auto bg-cream-50 px-5 pb-10 text-cocoa-900 xl:hidden">
+        <dialog ref={mobileDialogRef} id="mobile-navigation" aria-label="Main navigation" onCancel={() => setMobileOpen(false)} className="mobile-navigation fixed inset-0 m-0 h-dvh max-h-dvh w-full max-w-none overflow-y-auto bg-cream-50 px-5 pb-10 text-cocoa-900 min-[1100px]:hidden">
           <div className="sticky top-0 z-10 flex h-[4.5rem] items-center justify-between border-b border-sand-200 bg-cream-50">
             <Link href="/" onClick={closeAll} className="flex items-center gap-3 font-display text-lg font-bold"><NafsiMark className="size-9" />Nafsi Africa</Link>
             <button type="button" autoFocus aria-label="Close menu" onClick={closeAll} className="grid size-11 place-items-center rounded-full border border-sand-200"><X className="size-5" /></button>

@@ -1,7 +1,7 @@
-import { ArrowRight, ArrowUpRight, CalendarDays, CalendarHeart, Clock, Globe, Heart, MapPin, Smartphone, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CalendarDays, CalendarHeart, Clock, Globe, Heart, MapPin, Smartphone, Sparkles, Handshake, Leaf, Radio, TrendingUp } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { events, impactStats, partners, site, timeline, type NafsiEvent, type Programme } from "@/lib/content";
+import { events, impactStats, partners, site, studioBooking, timeline, type NafsiEvent, type Programme } from "@/lib/content";
 import { FacebookIcon, InstagramIcon, TikTokIcon, YouTubeIcon } from "./brand-icons";
 import { Counter } from "./counter";
 import { VideoGridClient } from "./video-grid-client";
@@ -99,36 +99,19 @@ export function ImpactStats({ tone = "dark" }: { tone?: "dark" | "light" }) {
 
 export function DonateBanner() {
   return (
-    <section className="py-12 sm:py-16">
-      <Container>
-        <Reveal className="relative isolate overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-cocoa-950 via-cocoa-900 to-cocoa-800 p-8 sm:p-12 md:p-16 shadow-2xl text-cream-50 border border-cream-50/10">
-          <Image
-            src="/images/dance.jpg"
-            alt="A young Nafsi dancer mid-step in raffia costume, drummers behind her"
-            fill
-            sizes="(min-width: 1024px) 1024px, 100vw"
-            className="-z-10 object-cover opacity-25 object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-cocoa-950 via-cocoa-950/85 to-transparent -z-10" />
-          <div className="max-w-2xl">
-            <Eyebrow tone="gold">Your support creates opportunity</Eyebrow>
-            <h2 className="mt-4 font-display text-[min(2.5rem,calc((100vw-3rem)/10.2))] font-extrabold leading-[0.98] tracking-tight text-white break-words sm:text-5xl">
-              Art becomes confidence. <span className="text-mustard-400">Confidence becomes change.</span>
-            </h2>
-            <p className="mt-4 text-base sm:text-lg leading-relaxed text-cream-50/80">
-              Your support helps create a safe space where a young person can discover talent, develop skills and see a different
-              future. Give once, or give monthly.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="/donate" variant="primary">
-                <Heart className="size-4 fill-current" />
-                Donate now
-              </ButtonLink>
-              <ButtonLink href="/get-involved" variant="outline-light">
-                Join the journey
-                <ArrowRight className="size-4" />
-              </ButtonLink>
-            </div>
+    <section className="programme-donate py-20 sm:py-24">
+      <Container className="programme-container">
+        <Reveal className="max-w-xl">
+          <p className="programme-eyebrow text-cream-50/80">Your support creates opportunity</p>
+          <h2 className="mt-5 font-display text-4xl font-extrabold leading-[1.02] tracking-tight sm:text-6xl">
+            Art becomes confidence. Confidence becomes change.
+          </h2>
+          <p className="mt-5 text-base leading-relaxed">
+            Your support helps create a safe space where a young person can discover talent, develop skills and see a different future. Give once, or give monthly.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <ButtonLink href="/donate" variant="light"><Heart className="size-4" aria-hidden />Donate now</ButtonLink>
+            <ButtonLink href="/get-involved" className="border border-white/40 bg-transparent text-white hover:bg-white/15">Join the journey</ButtonLink>
           </div>
         </Reveal>
       </Container>
@@ -136,40 +119,50 @@ export function DonateBanner() {
   );
 }
 
+const programmeIcons: Record<string, typeof Sparkles> = {
+  "performing-arts": Sparkles,
+  outreach: Handshake,
+  tangaza: Smartphone,
+  naiwave: Radio,
+  "global-stay-tours": Globe,
+  mazingira: Leaf,
+  "youth-empowerment": TrendingUp,
+};
+
 export function ProgrammeCard({ programme, index = 0 }: { programme: Programme; index?: number }) {
+  const Icon = programmeIcons[programme.slug] ?? Sparkles;
   return (
     <Reveal delay={index * 80} className="h-full">
-      <Link
-        href={`/programmes/${programme.slug}`}
-        className="group flex h-full flex-col overflow-hidden rounded-3xl border border-sand-200/80 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-mustard-400/50 hover:shadow-2xl hover:shadow-cocoa-900/10"
-      >
+      <Link href={`/programmes/${programme.slug}`} className="group flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-sand-200 bg-white transition-shadow hover:shadow-lg">
         <div className="relative aspect-[4/3] overflow-hidden bg-sand-100">
-          <Image
-            src={programme.image}
-            alt={programme.title}
-            fill
-            quality={85}
-            sizes="(min-width: 1328px) 390px, (min-width: 1024px) 30vw, (min-width: 640px) 44vw, 100vw"
-            className="object-cover transition-transform duration-700 group-hover:scale-105 group-focus-visible:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-cocoa-950/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <Image src={programme.image} alt={programme.title} fill quality={85} sizes="(min-width: 1280px) 384px, (min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-t from-cocoa-950/75 via-transparent to-transparent" />
+          <span className="programme-icon absolute left-3.5 top-3.5"><Icon className="size-5" aria-hidden /></span>
+          <p className="absolute inset-x-3.5 bottom-3.5 text-[0.65rem] font-bold uppercase leading-relaxed text-white">{programme.eyebrow}</p>
         </div>
-        <div className="flex flex-1 flex-col p-6 sm:p-7">
-          <span className="w-fit rounded-full bg-mustard-100/80 px-2.5 py-0.5 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-mustard-600">
-            {programme.eyebrow}
-          </span>
-          <h3 className="mt-3 font-display text-2xl font-bold text-cocoa-900 transition-colors group-hover:text-mustard-600">
-            {programme.title}
-          </h3>
-          <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{programme.summary}</p>
-          <div className="mt-6 flex items-center justify-between border-t border-sand-100 pt-4">
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-mustard-600 transition-colors group-hover:text-cocoa-900">
-              Explore programme
-              <ArrowUpRight className="size-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </span>
+        <div className="flex-1 p-5">
+          <div className="flex items-start justify-between gap-4">
+            <h3 className="font-display text-lg font-bold leading-snug text-cocoa-900">{programme.title}</h3>
+            <ArrowUpRight className="mt-1 size-4 shrink-0 text-muted" aria-hidden />
           </div>
+          <p className="mt-3 text-[0.8125rem] leading-relaxed text-muted">{programme.summary}</p>
         </div>
       </Link>
+    </Reveal>
+  );
+}
+
+export function StudioBookingCard() {
+  return (
+    <Reveal className="h-full">
+      <a href={studioBooking.url} target="_blank" rel="noreferrer" className="group relative isolate flex h-full min-h-[25rem] flex-col overflow-hidden rounded-[1.25rem] bg-cocoa-900 p-5 text-white">
+        <Image src="/images/naiwave.jpg" alt="" fill sizes="(min-width: 1280px) 384px, (min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw" className="-z-20 object-cover transition-transform duration-500 group-hover:scale-105" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-cocoa-950/65 via-cocoa-950/50 to-cocoa-950/90" />
+        <span className="programme-icon"><CalendarDays className="size-5" aria-hidden /></span>
+        <h3 className="mt-5 font-display text-lg font-bold">Book NaiWave Podcast</h3>
+        <p className="mt-3 text-[0.8125rem] leading-relaxed text-white/90">Record your episode in the NaiWave studio — pick a slot and book your podcast session in minutes.</p>
+        <span className="mt-auto flex items-center gap-2 pt-8 font-semibold text-mustard-400">Book a session <ArrowUpRight className="size-4" aria-hidden /></span>
+      </a>
     </Reveal>
   );
 }
@@ -177,22 +170,22 @@ export function ProgrammeCard({ programme, index = 0 }: { programme: Programme; 
 export function ProgrammeFeature({ programme, index }: { programme: Programme; index: number }) {
   const flipped = index % 2 === 1;
   return (
-    <section id={programme.slug} className={`scroll-mt-24 ${flipped ? "bg-sand-100" : "bg-cream-50"}`}>
-      <Container className="grid items-center gap-12 py-20 md:grid-cols-2 md:gap-16">
-        <Reveal className={`relative aspect-[4/3] overflow-hidden rounded-3xl shadow-2xl shadow-cocoa-900/15 ${flipped ? "md:order-2" : ""}`}>
+    <section id={programme.slug} className={`programme-feature scroll-mt-24 ${flipped ? "bg-sand-100" : "bg-cream-50"}`}>
+      <Container className="programme-container grid items-center gap-12 py-20 md:grid-cols-2 md:gap-14 md:py-24">
+        <Reveal className={`relative aspect-[4/3] overflow-hidden rounded-[1.25rem] shadow-lg shadow-cocoa-900/10 ${flipped ? "md:order-2" : ""}`}>
           <Image src={programme.image} alt={programme.title} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
         </Reveal>
         <Reveal delay={120}>
-          <Eyebrow>{programme.eyebrow}</Eyebrow>
-          <h2 className="mt-4 font-display text-[min(2.25rem,calc((100vw-2.5rem)/8.6))] font-bold tracking-tight text-cocoa-900 break-words sm:text-5xl md:text-[min(3rem,calc((50vw-4rem)/8.6))]">
+          <p className="programme-eyebrow">{programme.eyebrow}</p>
+          <h2 className="mt-4 font-display text-3xl font-bold leading-[1.08] tracking-tight text-cocoa-900 sm:text-4xl">
             {programme.title}
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-muted">{programme.body[0]}</p>
+          <p className="mt-5 text-base leading-relaxed text-muted">{programme.feature ?? programme.body.join(" ")}</p>
           <div className="mt-6">
             <TagList tags={programme.tags} />
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
-            <ButtonLink href={`/programmes/${programme.slug}`}>
+            <ButtonLink href={programme.ctaHref ?? `/programmes/${programme.slug}`} className="programme-primary">
               {programme.cta}
               <ArrowRight className="size-4" />
             </ButtonLink>
