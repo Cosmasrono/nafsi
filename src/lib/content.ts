@@ -358,13 +358,7 @@ export const stories: Story[] = [
   },
 ];
 
-export const videos = [
-  { title: "Money vs. Presence: Attention is the Best Gift", series: "Real Talk with Nicky", duration: "45:25", image: "/images/video-main-hd.jpg", youtubeId: "WAEEA5t-wNs" },
-  { title: "From Classroom to Corner Office: A GenZ HR", series: "Real Talk with Nicky", duration: "28:07", image: "/images/video-1-hd.jpg", youtubeId: "xkMq-bYMTFI" },
-  { title: "A Mother's Desperation: NHIF/SHA's Neglect", series: "Real Talk with Nicky", duration: "55:46", image: "/images/video-2-hd.jpg", youtubeId: "Us37EUGXltY" },
-  { title: "Ending the Violence: A Future Without Femicide", series: "Real Talk with Nicky", duration: "21:28", image: "/images/video-3-hd.jpg", youtubeId: "VgMaakoms9M" },
-  { title: "The Silent Crisis: The Mask We Wear — Men's Emotions", series: "Real Talk with Nicky", duration: "47:02", image: "/images/video-4-hd.jpg", youtubeId: "h_roaAxRJcs" },
-];
+
 
 export const timeline: { label: string; title: string; text: string; note?: string }[] = [
   {

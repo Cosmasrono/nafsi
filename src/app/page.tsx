@@ -8,16 +8,18 @@ import {
   ImpactStats,
   PartnersGrid,
   ProgrammeCard,
+  VideoGrid,
   StudioBookingCard,
   Timeline,
 } from "@/components/sections";
-import { VideoGridClient } from "@/components/video-grid-client";
 import { GlobalConnections } from "@/components/global-connections";
 import { Counter } from "@/components/counter";
 import { Reveal } from "@/components/reveal";
 import { StoryCard } from "@/components/story-card";
 import { ButtonLink, Container, Eyebrow, SectionHeading } from "@/components/ui";
 import { programmes, site, stories } from "@/lib/content";
+
+export const revalidate = 300;
 
 export default function HomePage() {
   return (
@@ -157,7 +159,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Video-first"
             title="See it. Hear it. Feel it."
-            intro="Nafsi stories, Tangaza films, NaiWave podcasts and performance reels — the work is alive on screen."
+            intro="The latest uploads from NaiWave — fresh conversations, stories and voices, direct from our YouTube channel."
             action={
               <ButtonLink href={site.socials.youtube} variant="outline">
                 All videos
@@ -165,7 +167,7 @@ export default function HomePage() {
               </ButtonLink>
             }
           />
-          <VideoGridClient />
+          <VideoGrid />
         </Container>
       </section>
 

@@ -9,13 +9,15 @@ export const metadata: Metadata = {
   description: "Nafsi stories, Tangaza films, NaiWave podcasts and performance reels.",
 };
 
+export const revalidate = 300;
+
 export default function VideosPage() {
   return (
     <>
       <PageHero
         eyebrow="Video-first"
         title="See it. Hear it. Feel it."
-        intro="Nafsi stories, Tangaza films, NaiWave podcasts and performance reels. The work is alive on screen."
+        intro="Watch the 15 latest uploads from NaiWave, with the newest video first."
       >
         <div className="mt-6">
           <ButtonLink href={site.socials.youtube} variant="outline-light">
@@ -26,7 +28,7 @@ export default function VideosPage() {
       </PageHero>
       <section className="bg-sand-100">
         <Container className="py-20">
-          <VideoGrid />
+          <VideoGrid limit={15} />
           <div className="mt-14">
             <p className="mb-4 font-display text-lg font-bold text-cocoa-900">Watch more on our channels</p>
             <SocialPills />

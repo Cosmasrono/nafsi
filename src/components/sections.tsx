@@ -4,6 +4,7 @@ import Link from "next/link";
 import { events, impactStats, partners, site, studioBooking, timeline, type NafsiEvent, type Programme } from "@/lib/content";
 import { FacebookIcon, InstagramIcon, TikTokIcon, YouTubeIcon } from "./brand-icons";
 import { Counter } from "./counter";
+import { getLatestYouTubeVideos } from "@/lib/youtube";
 import { VideoGridClient } from "./video-grid-client";
 import { Reveal } from "./reveal";
 import { ButtonLink, Container, Eyebrow, SectionHeading, TagList, TextLink } from "./ui";
@@ -300,8 +301,18 @@ export function EventsList() {
   );
 }
 
-export function VideoGrid() {
-  return <VideoGridClient />;
+export async function VideoGrid({ limit = 15 }: { limit?: number }) {
+  const videos = await getLatestYouTubeVideos().then((all) => all.slice(0, limit)).catch((error: unknown) => {
+    console.error("Unable to load NaiWave uploads:", error instanceof Error ? error.message : "Unknown error");
+    return [];
+  });
+  if (videos.length) return <VideoGridClient videos={videos} />;
+  return (
+    <div className="mt-12 rounded-2xl border border-sand-200 bg-white p-8">
+      <p className="mb-4 text-muted">Latest uploads are unavailable right now. You can watch them on NaiWave’s YouTube channel.</p>
+      <ButtonLink href={`${site.socials.youtube}/videos`}>Watch latest uploads <ArrowUpRight className="size-4" aria-hidden /></ButtonLink>
+    </div>
+  );
 }
 
 export function CreatorsSpotlight() {
