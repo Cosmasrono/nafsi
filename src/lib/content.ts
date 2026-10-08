@@ -132,6 +132,7 @@ export type Programme = {
   body: string[];
   tags: string[];
   image: string;
+  imagePosition?: string;
   cta: string;
   ctaHref?: string;
   feature?: string;
@@ -195,7 +196,8 @@ export const programmes: Programme[] = [
       "Driven by a community-based approach, it fosters dialogue and promotes positive change through podcasts and live radio. The studio is also available to book.",
     ],
     tags: ["Podcasts", "Online radio", "Interviews", "Mental health", "Social justice", "Personal development"],
-    image: "/images/naiwave.jpg",
+    image: "/images/naiwave-host.jpeg",
+    imagePosition: "center 25%",
     cta: "Book the studio",
     ctaHref: "/get-involved/book-studio",
   },
@@ -230,7 +232,7 @@ export const programmes: Programme[] = [
       "Youth climate advocacy",
       "SDG 13 action",
     ],
-    image: "/images/mazingira.jpg",
+    image: "/images/mazingira-tree-planting.jpeg",
     cta: "Support climate action",
     ctaHref: "/donate?programme=mazingira",
   },

@@ -47,7 +47,7 @@ export default async function ProgrammePage({ params }: Props) {
       <section className="bg-cream-50">
         <Container className="grid items-start gap-14 py-24 md:grid-cols-2">
           <Reveal className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-2xl shadow-cocoa-900/15 md:sticky md:top-28">
-            <Image src={programme.image} alt={programme.title} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+            <Image src={programme.image} style={{ objectPosition: programme.imagePosition }} alt={programme.title} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
           </Reveal>
           <Reveal delay={120}>
             {programme.body.map((paragraph) => (

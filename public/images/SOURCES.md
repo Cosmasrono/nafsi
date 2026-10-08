@@ -74,3 +74,11 @@ Not shown in Base44 and unplaced: `training-splits.jpg` (1.jpg),
 (20.jpg at 3:2). Base44 also uses photos that are not in either batch: the
 Performing Arts drummer in orange, the NaiWave host in headphones, the GST gym
 jump and the Mazingira tree planting.
+
+## NaiWave programme portrait — 8 October 2026
+
+`naiwave-host.jpeg` is the user-supplied 900 × 1100 portrait of the NaiWave host in a blue hat and headphones (attachment `image-1.jpeg`). The original file is preserved unchanged. Used for the NaiWave programme with a 25% vertical focal position to keep the face and headphones visible in landscape layouts. This supersedes the missing-host note above.
+
+## Mazingira programme photo — 8 October 2026
+
+`mazingira-tree-planting.jpeg` is the user-supplied tree-planting photograph (`WhatsApp Image 2026-10-08 at 12.11.36.jpeg`, 1024 × 1024). The original is preserved unchanged and used for the Mazingira programme. This supersedes the missing tree-planting photo note above.

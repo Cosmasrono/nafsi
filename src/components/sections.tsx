@@ -135,7 +135,7 @@ export function ProgrammeCard({ programme, index = 0 }: { programme: Programme; 
     <Reveal delay={index * 80} className="h-full">
       <Link href={`/programmes#${programme.slug}`} className="group flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-sand-200 bg-white transition-shadow hover:shadow-lg">
         <div className="relative aspect-[4/3] overflow-hidden bg-sand-100">
-          <Image src={programme.image} alt={programme.title} fill quality={85} sizes="(min-width: 1280px) 384px, (min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+          <Image src={programme.image} style={{ objectPosition: programme.imagePosition }} alt={programme.title} fill quality={85} sizes="(min-width: 1280px) 384px, (min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
           <div className="absolute inset-0 bg-gradient-to-t from-cocoa-950/75 via-transparent to-transparent" />
           <span className="programme-icon absolute left-3.5 top-3.5"><Icon className="size-5" aria-hidden /></span>
           <p className="absolute inset-x-3.5 bottom-3.5 text-[0.65rem] font-bold uppercase leading-relaxed text-white">{programme.eyebrow}</p>
@@ -173,7 +173,7 @@ export function ProgrammeFeature({ programme, index }: { programme: Programme; i
     <section id={programme.slug} className={`programme-feature scroll-mt-24 ${flipped ? "bg-sand-100" : "bg-cream-50"}`}>
       <Container className="programme-container grid items-center gap-12 py-20 md:grid-cols-2 md:gap-14 md:py-24">
         <Reveal className={`relative aspect-[4/3] overflow-hidden rounded-[1.25rem] shadow-lg shadow-cocoa-900/10 ${flipped ? "md:order-2" : ""}`}>
-          <Image src={programme.image} alt={programme.title} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+          <Image src={programme.image} style={{ objectPosition: programme.imagePosition }} alt={programme.title} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
         </Reveal>
         <Reveal delay={120}>
           <p className="programme-eyebrow">{programme.eyebrow}</p>
