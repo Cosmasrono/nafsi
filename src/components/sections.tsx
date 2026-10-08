@@ -301,7 +301,7 @@ export function EventsList() {
   );
 }
 
-export async function VideoGrid({ limit = 15 }: { limit?: number }) {
+export async function VideoGrid({ limit = 5 }: { limit?: number }) {
   const videos = await getLatestYouTubeVideos().then((all) => all.slice(0, limit)).catch((error: unknown) => {
     console.error("Unable to load NaiWave uploads:", error instanceof Error ? error.message : "Unknown error");
     return [];

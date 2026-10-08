@@ -5,10 +5,10 @@ import { parseYouTubeFeed } from "../src/lib/youtube-feed.ts";
 const entry = (id, title, date) => `<entry><yt:videoId>${id}</yt:videoId><title>${title}</title><published>${date}</published></entry>`;
 const feed = (entries) => `<feed>${entries.join("")}</feed>`;
 
-test("returns only the 15 newest unique uploads, ordered by publication rather than feed order", () => {
+test("returns only the 5 newest unique uploads, ordered by publication rather than feed order", () => {
   const entries = Array.from({ length: 17 }, (_, i) => entry(`video${String(i).padStart(6, "0")}`, `Upload ${i}`, `2026-09-${10 + i}T12:00:00Z`));
   const result = parseYouTubeFeed(feed([...entries, entries[16]]));
-  assert.deepEqual(result.map(v => v.title), Array.from({ length: 15 }, (_, i) => `Upload ${16 - i}`));
+  assert.deepEqual(result.map(v => v.title), Array.from({ length: 5 }, (_, i) => `Upload ${16 - i}`));
 });
 
 test("decodes titles safely and supports CDATA and Unicode", () => {

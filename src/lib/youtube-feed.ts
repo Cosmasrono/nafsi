@@ -34,5 +34,5 @@ export function parseYouTubeFeed(xml: string): YouTubeVideo[] {
     });
   }
   if (entries.length && !videos.size) throw new Error("No valid videos in YouTube feed");
-  return [...videos.values()].sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt)).slice(0, 15);
+  return [...videos.values()].sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt)).slice(0, 5);
 }

@@ -36,7 +36,7 @@ Deploy to Vercel (or any Node host), add the environment variables and point `na
 
 ## Latest YouTube uploads
 
-The homepage and `/stories/videos` load the 15 newest public uploads from NaiWave (`UCxdaiu7u2n8wsdEsCTKgobQ`), ordered by publication date. The server reads YouTube’s public Atom feed; no API key is needed. Next.js revalidates the feed and pages every 300 seconds when visited, so updates require no rebuild. Upload dates replace the old hard-coded durations. If the feed cannot be loaded, the section links to the channel rather than presenting the old curated videos as latest. The host must allow outbound HTTPS to YouTube.
+The homepage and `/stories/videos` load the 5 newest public uploads from NaiWave (`UCxdaiu7u2n8wsdEsCTKgobQ`), ordered by publication date. The server reads YouTube’s public Atom feed; no API key is needed. Next.js revalidates the feed and pages every 300 seconds when visited, so updates require no rebuild. Upload dates replace the old hard-coded durations. If the feed cannot be loaded, the section links to the channel rather than presenting the old curated videos as latest. The host must allow outbound HTTPS to YouTube.
 
 Feed reference: https://developers.google.com/youtube/v3/guides/push_notifications
 

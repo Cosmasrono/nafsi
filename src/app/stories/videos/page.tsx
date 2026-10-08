@@ -17,7 +17,7 @@ export default function VideosPage() {
       <PageHero
         eyebrow="Video-first"
         title="See it. Hear it. Feel it."
-        intro="Watch the 15 latest uploads from NaiWave, with the newest video first."
+        intro="Watch the 5 latest uploads from NaiWave, with the newest video first."
       >
         <div className="mt-6">
           <ButtonLink href={site.socials.youtube} variant="outline-light">
@@ -28,7 +28,7 @@ export default function VideosPage() {
       </PageHero>
       <section className="bg-sand-100">
         <Container className="py-20">
-          <VideoGrid limit={15} />
+          <VideoGrid limit={5} />
           <div className="mt-14">
             <p className="mb-4 font-display text-lg font-bold text-cocoa-900">Watch more on our channels</p>
             <SocialPills />
