@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${syne.variable} ${jakarta.variable} antialiased`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${syne.variable} ${jakarta.variable} antialiased`}>
       <body className="site-shell flex min-h-screen flex-col">
         <a
           href="#main"

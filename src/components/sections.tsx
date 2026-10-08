@@ -133,7 +133,7 @@ export function ProgrammeCard({ programme, index = 0 }: { programme: Programme; 
   const Icon = programmeIcons[programme.slug] ?? Sparkles;
   return (
     <Reveal delay={index * 80} className="h-full">
-      <Link href={`/programmes/${programme.slug}`} className="group flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-sand-200 bg-white transition-shadow hover:shadow-lg">
+      <Link href={`/programmes#${programme.slug}`} className="group flex h-full flex-col overflow-hidden rounded-[1.25rem] border border-sand-200 bg-white transition-shadow hover:shadow-lg">
         <div className="relative aspect-[4/3] overflow-hidden bg-sand-100">
           <Image src={programme.image} alt={programme.title} fill quality={85} sizes="(min-width: 1280px) 384px, (min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
           <div className="absolute inset-0 bg-gradient-to-t from-cocoa-950/75 via-transparent to-transparent" />

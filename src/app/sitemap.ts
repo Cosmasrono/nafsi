@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const paths = new Set<string>(["/", "/donate", "/privacy", "/safeguarding", "/terms"]);
   for (const item of nav) {
     paths.add(item.href);
-    item.children?.forEach((child) => paths.add(child.href));
+    item.children?.forEach((child) => paths.add(child.href.split("#")[0]));
   }
   programmes.forEach((p) => paths.add(`/programmes/${p.slug}`));
   stories.forEach((s) => paths.add(`/stories/${s.slug}`));
