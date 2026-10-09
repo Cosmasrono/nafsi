@@ -187,13 +187,15 @@ export const programmes: Programme[] = [
   },
   {
     slug: "naiwave",
-    title: "NaiWave Studios",
+    title: "Studio Project",
     eyebrow: "Podcasts · Online radio · Youth voices",
     summary:
-      "A podcast studio and online radio opening up conversations on mental health, social justice, relationships and personal development.",
+      "The Studio Project is a community media and peacebuilding initiative creating a positive space for young people in Kenya to connect, share ideas and engage in constructive conversations.",
     body: [
-      "NaiWave is a creative hub and media platform that gives young people a voice. By leveraging familiar, accessible digital media, NaiWave creates a safe space for youth to explore sensitive topics like mental health, social justice, relationships and personal development.",
-      "Driven by a community-based approach, it fosters dialogue and promotes positive change through podcasts and live radio. The studio is also available to book.",
+      "The Studio Project is a community media and peacebuilding initiative creating a positive space for young people in Kenya to connect, share ideas and engage in constructive conversations.",
+      "In a politically charged environment, the project uses media, storytelling, podcasts and digital content to promote peace, resilience, tolerance and dialogue—encouraging Kenyans to engage with one another respectfully regardless of their political or ideological affiliations.",
+      "The Studio also brings positive energy to the airwaves by creating conversations around issues that matter to young people, including employment and livelihoods, relationships, mental wellbeing, civic education and participation, and everyday life. Through these conversations, the project aims to counter divisive messaging, encourage critical thinking and strengthen young people's confidence to participate positively in society.",
+      "The project is implemented by Nafsi Africa in partnership with Spor Media, Denmark, with support from CISU – Civil Society in Development, Denmark.",
     ],
     tags: ["Podcasts", "Online radio", "Interviews", "Mental health", "Social justice", "Personal development"],
     image: "/images/naiwave-host.jpeg",
